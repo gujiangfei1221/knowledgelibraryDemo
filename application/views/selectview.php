@@ -50,6 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">修改密码</a></li>
                 <li><a href="<?php echo site_url('Login/logout') ?>">退出</a></li>
             </ul>
             <?php echo form_open('Select/search', 'class="navbar-form navbar-right" role="search"') ?>
