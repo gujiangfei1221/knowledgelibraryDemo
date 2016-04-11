@@ -3,18 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * Created by PhpStorm.
  * User: gujiangfei
- * Date: 16/4/3
- * Time: 17:03
+ * Date: 16/4/11
+ * Time: 20:14
  */
 
-class Login extends CI_Controller{
+class Select extends CI_Controller{
     public function __construct()
     {
         parent::__construct();
     }
 
     public function index(){
-        $this->load->view('loginview');
+        $this->load->view('selectview');
     }
+
 }
+
 ?>
