@@ -11,10 +11,16 @@ class Select extends CI_Controller{
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('Selectmodel');
     }
 
     public function index(){
         $this->load->view('selectview');
+    }
+
+    public function search(){
+        $value = $this->input->post('search');
+        $this->Selectmodel->search($value);
     }
 
 }
