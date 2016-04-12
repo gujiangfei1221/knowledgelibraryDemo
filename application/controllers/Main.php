@@ -15,7 +15,7 @@ class Main extends CI_Controller{
 
     public function index(){
         if(!isset($_SESSION['name'])){
-            echo '<script>alert("请先登录系统！")</script>';
+            echo '<script>alert("请登录系统!")</script>';
             echo '<script>window.location.href=\''.site_url('Login/index').'\';</script>';
             return;
         }

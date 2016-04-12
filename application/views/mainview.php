@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <button type="button" class="btn" data-toggle="modal" data-target="#myModal"
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"
                             style="margin-top: 8px">
                         修改密码
                     </button>
