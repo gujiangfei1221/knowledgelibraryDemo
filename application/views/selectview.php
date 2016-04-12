@@ -51,13 +51,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <button type="button" class="btn" data-toggle="modal" data-target="#myModal" style="margin-top: 8px">
+                    <button type="button" class="btn" data-toggle="modal" data-target="#myModal"
+                            style="margin-top: 8px">
                         修改密码
                     </button>
                 </li>
-                <li><a href="<?php echo site_url('Login/logout') ?>">退出</a></li>
+                <li><a href="<?php echo site_url('Common/logout') ?>">退出</a></li>
             </ul>
-            <?php echo form_open('Select/search', 'class="navbar-form navbar-right" role="search"') ?>
+            <?php echo form_open('Common/search', 'class="navbar-form navbar-right" role="search"') ?>
             <div class="form-group">
                 <?php
                 $data = array(
@@ -107,37 +108,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">修改密码</h4>
-            </div>
-            <div class="modal-body">
-                <form>
+            <form>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+                </div>
+                <div class="modal-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <label for="oldpassword">原密码</label>
+                        <input type="password" class="form-control" id="oldpassword" placeholder="原密码">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <input type="file" id="exampleInputFile">
-                        <p class="help-block">Example block-level help text here.</p>
+                        <label for="newpassword">新密码</label>
+                        <input type="password" class="form-control" id="newpassword" placeholder="新密码">
                     </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Check me out
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">保存</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">保存</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

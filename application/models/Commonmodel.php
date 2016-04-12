@@ -3,23 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * Created by PhpStorm.
  * User: gujiangfei
- * Date: 16/4/11
- * Time: 20:14
+ * Date: 2016/4/12
+ * Time: 10:31
  */
-
-class Select extends CI_Controller{
+class Commonmodel extends CI_Model{
     public function __construct()
     {
         parent::__construct();
-
     }
 
-    public function index(){
-        $this->load->view('selectview');
+    public function search($value){
+        $query = $this->db->query('');
+        return $query->result_array();
     }
-
-
-
 }
-
 ?>

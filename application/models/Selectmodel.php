@@ -11,11 +11,6 @@ class Selectmodel extends CI_Model{
     {
         parent::__construct();
     }
-
-    public function search($value){
-        $query = $this->db->query('');
-        return $query->result_array();
-    }
 }
 
 ?>
