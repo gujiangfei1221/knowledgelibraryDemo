@@ -108,27 +108,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+            <?php echo form_open('Common/xiugaimima') ?>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="oldpassword">原密码</label>
+                    <?php
+                    $data = array(
+                        'type' => 'password',
+                        'class' => 'form-control',
+                        'id' => 'oldpassword',
+                        'placeholder' => '原密码',
+                        'name' => 'oldpassword',
+                        'value'=>''
+                    );
+                    echo form_input($data);
+                    ?>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="oldpassword">原密码</label>
-                        <input type="password" class="form-control" id="oldpassword" placeholder="原密码">
-                    </div>
-                    <div class="form-group">
-                        <label for="newpassword">新密码</label>
-                        <input type="password" class="form-control" id="newpassword" placeholder="新密码">
-                    </div>
+                <div class="form-group">
+                    <label for="newpassword">新密码</label>
+                    <?php
+                    $data = array(
+                        'type' => 'password',
+                        'class' => 'form-control',
+                        'id' => 'newpassword',
+                        'placeholder' => '新密码',
+                        'name' => 'newpassword',
+                        'value'=>''
+                    );
+                    echo form_input($data);
+                    ?>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="submit" class="btn btn-primary">保存</button>
-                </div>
-            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="submit" class="btn btn-primary">保存</button>
+            </div>
+            <?php
+            $data = array(
+                'controlname' => 'Select'
+            );
+            echo form_hidden($data);
+            ?>
+            <?php echo form_close() ?>
         </div>
     </div>
 </div>

@@ -22,6 +22,22 @@ class Common extends CI_Controller{
         $value = $this->input->post('search');
         $this->Commonmodel->search($value);
     }
+
+    public function xiugaimima(){
+        $oldpassword = md5($this->input->post('oldpassword'));
+        $newpassword = md5($this->input->post('newpassword'));
+        $controlname = $this->input->post('controlname');
+        $name = $_SESSION['name'];
+        $data = $this->Commonmodel->searchuser($oldpassword,$name);
+        if($data){
+            $this->Commonmodel->xiugaimima($newpassword,$name);
+            redirect($controlname.'/index');
+        }
+        else{
+            echo '<script>alert("原密码不正确,请确认!")</script>';
+            echo '<script>window.location.href=\''.site_url($controlname.'/index').'\';</script>';
+        }
+    }
 }
 
 ?>

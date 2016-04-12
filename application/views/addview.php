@@ -39,12 +39,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="#">欢迎：顾疆飞</a></li>
-						<li><a href="#">下载文档</a></li>
-						<li><a href="#">上传文档</a></li>
+						<li><a href="#">欢迎：<?php echo $_SESSION['name'] ?></a></li>
+						<li><a href="<?php echo site_url('Main/index') ?>">下载文档</a></li>
+						<li><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
+						<?php
+						if ($_SESSION['quanxian'] == '管理员') {
+							echo '<li><a href="' . site_url('Manage/index') . '">后台管理</a></li>';
+						}
+						?>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">退出</a></li>
+						<li>
+							<button type="button" class="btn" data-toggle="modal" data-target="#myModal"
+									style="margin-top: 8px">
+								修改密码
+							</button>
+						</li>
+						<li><a href="<?php echo site_url('Common/logout') ?>">退出</a></li>
 					</ul>
 					<form class="navbar-form navbar-right" role="search">
 						<div class="form-group">
@@ -90,6 +101,60 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</form>
 			</div>
 			<div class="col-md-3"></div>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<?php echo form_open('Common/xiugaimima') ?>
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+									aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">修改密码</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="oldpassword">原密码</label>
+							<?php
+							$data = array(
+									'type' => 'password',
+									'class' => 'form-control',
+									'id' => 'oldpassword',
+									'placeholder' => '原密码',
+									'name' => 'oldpassword',
+									'value'=>''
+							);
+							echo form_input($data);
+							?>
+						</div>
+						<div class="form-group">
+							<label for="newpassword">新密码</label>
+							<?php
+							$data = array(
+									'type' => 'password',
+									'class' => 'form-control',
+									'id' => 'newpassword',
+									'placeholder' => '新密码',
+									'name' => 'newpassword',
+									'value'=>''
+							);
+							echo form_input($data);
+							?>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="submit" class="btn btn-primary">保存</button>
+					</div>
+					<?php
+					$data = array(
+							'controlname' => 'Select'
+					);
+					echo form_hidden($data);
+					?>
+					<?php echo form_close() ?>
+				</div>
+			</div>
 		</div>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

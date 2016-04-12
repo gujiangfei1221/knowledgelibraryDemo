@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/application/controllers/Add.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/controllers/Common.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/controllers/Login.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/controllers/Main.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/controllers/Manage.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/controllers/Select.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/models/Commonmodel.php" charset="UTF-8" />
     <file url="PROJECT" charset="GB2312" />
   </component>
 </project>
