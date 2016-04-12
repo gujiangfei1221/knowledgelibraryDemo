@@ -44,13 +44,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li><a href="<?php echo site_url('Main/index') ?>">下载文档</a></li>
                 <li><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
                 <?php
-                    if($_SESSION['quanxian'] == '管理员'){
-                        echo '<li><a href="'.site_url('Manage/index').'">后台管理</a></li>';
-                    }
+                if ($_SESSION['quanxian'] == '管理员') {
+                    echo '<li><a href="' . site_url('Manage/index') . '">后台管理</a></li>';
+                }
                 ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">修改密码</a></li>
+                <li>
+                    <button type="button" class="btn" data-toggle="modal" data-target="#myModal" style="margin-top: 8px">
+                        修改密码
+                    </button>
+                </li>
                 <li><a href="<?php echo site_url('Login/logout') ?>">退出</a></li>
             </ul>
             <?php echo form_open('Select/search', 'class="navbar-form navbar-right" role="search"') ?>
@@ -67,10 +71,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <?php
             $data = array(
-                'type'=>'submit',
-                'class'=>'btn btn-default',
-                'name'=>'submit',
-                'value'=>'搜索'
+                'type' => 'submit',
+                'class' => 'btn btn-default',
+                'name' => 'submit',
+                'value' => '搜索'
             );
             echo form_submit($data);
             ?>
@@ -97,6 +101,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
     <div class="col-md-1"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
