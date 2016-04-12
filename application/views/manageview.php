@@ -81,15 +81,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<!-- Tab panes -->
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane active" id="home">
-					<button class="btn btn-default">新增</button>
-					<button class="btn btn-default">删除 </button>
+					<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal1"
+							style="margin-top: 8px">
+						新增
+					</button>
+					<button class="btn btn-default" style="margin-top: 8px">删除 </button>
 					<table class="table table-striped table-hover" style="margin-top: 5px;">
 						<tr>
+							<td>
+								<input type="checkbox">
+							</td>
 							<td>序号</td>
 							<td>名称</td>
 							<td>维护</td>
 						</tr>
 						<tr>
+							<td>
+								<input type="checkbox">
+							</td>
 							<td>1</td>
 							<td>loadrunner处理关联</td>
 							<td>维护</td>
@@ -97,15 +106,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</table>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="profile">
-					<button class="btn btn-default">新增</button>
-					<button class="btn btn-default">删除 </button>
+					<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal2"
+							style="margin-top: 8px">
+						新增
+					</button>
+					<button class="btn btn-default" style="margin-top: 8px">删除 </button>
 					<table class="table table-striped table-hover" style="margin-top: 5px;">
 						<tr>
+							<td>
+								<input type="checkbox">
+							</td>
 							<td>序号</td>
 							<td>名称</td>
 							<td>维护</td>
 						</tr>
 						<tr>
+							<td>
+								<input type="checkbox">
+							</td>
 							<td>1</td>
 							<td>loadrunner处理关联2</td>
 							<td>维护</td>
@@ -113,15 +131,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</table>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="messages">
-					<button class="btn btn-default">新增</button>
-					<button class="btn btn-default">删除 </button>
+					<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal3"
+							style="margin-top: 8px">
+						新增
+					</button>
+					<button class="btn btn-default" style="margin-top: 8px">删除 </button>
 					<table class="table table-striped table-hover" style="margin-top: 5px;">
 						<tr>
+							<td>
+								<input type="checkbox">
+							</td>
 							<td>序号</td>
 							<td>名称</td>
 							<td>维护</td>
 						</tr>
 						<tr>
+							<td>
+								<input type="checkbox">
+							</td>
 							<td>1</td>
 							<td>loadrunner处理关联3</td>
 							<td>维护</td>
@@ -129,15 +156,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</table>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="settings">
-					<button class="btn btn-default">新增</button>
-					<button class="btn btn-default">删除 </button>
+					<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal4"
+							style="margin-top: 8px">
+						新增
+					</button>
+					<button class="btn btn-default" style="margin-top: 8px">删除 </button>
 					<table class="table table-striped table-hover" style="margin-top: 5px;">
 						<tr>
+							<td>
+								<input type="checkbox">
+							</td>
 							<td>序号</td>
 							<td>名称</td>
 							<td>维护</td>
 						</tr>
 						<tr>
+							<td>
+								<input type="checkbox">
+							</td>
 							<td>1</td>
 							<td>loadrunner处理关联4</td>
 							<td>维护</td>
@@ -155,6 +191,226 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
 									aria-hidden="true">&times;</span></button>
 						<h4 class="modal-title" id="myModalLabel">修改密码</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="oldpassword">原密码</label>
+							<?php
+							$data = array(
+									'type' => 'password',
+									'class' => 'form-control',
+									'id' => 'oldpassword',
+									'placeholder' => '原密码',
+									'name' => 'oldpassword',
+									'value'=>''
+							);
+							echo form_input($data);
+							?>
+						</div>
+						<div class="form-group">
+							<label for="newpassword">新密码</label>
+							<?php
+							$data = array(
+									'type' => 'password',
+									'class' => 'form-control',
+									'id' => 'newpassword',
+									'placeholder' => '新密码',
+									'name' => 'newpassword',
+									'value'=>''
+							);
+							echo form_input($data);
+							?>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="submit" class="btn btn-primary">保存</button>
+					</div>
+					<?php
+					$data = array(
+							'controlname' => 'Select'
+					);
+					echo form_hidden($data);
+					?>
+					<?php echo form_close() ?>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal1 -->
+		<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<?php echo form_open('Common/xiugaimima') ?>
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+									aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">新增栏目1</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="oldpassword">原密码</label>
+							<?php
+							$data = array(
+									'type' => 'password',
+									'class' => 'form-control',
+									'id' => 'oldpassword',
+									'placeholder' => '原密码',
+									'name' => 'oldpassword',
+									'value'=>''
+							);
+							echo form_input($data);
+							?>
+						</div>
+						<div class="form-group">
+							<label for="newpassword">新密码</label>
+							<?php
+							$data = array(
+									'type' => 'password',
+									'class' => 'form-control',
+									'id' => 'newpassword',
+									'placeholder' => '新密码',
+									'name' => 'newpassword',
+									'value'=>''
+							);
+							echo form_input($data);
+							?>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="submit" class="btn btn-primary">保存</button>
+					</div>
+					<?php
+					$data = array(
+							'controlname' => 'Select'
+					);
+					echo form_hidden($data);
+					?>
+					<?php echo form_close() ?>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal2 -->
+		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<?php echo form_open('Common/xiugaimima') ?>
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+									aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">新增栏目2</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="oldpassword">原密码</label>
+							<?php
+							$data = array(
+									'type' => 'password',
+									'class' => 'form-control',
+									'id' => 'oldpassword',
+									'placeholder' => '原密码',
+									'name' => 'oldpassword',
+									'value'=>''
+							);
+							echo form_input($data);
+							?>
+						</div>
+						<div class="form-group">
+							<label for="newpassword">新密码</label>
+							<?php
+							$data = array(
+									'type' => 'password',
+									'class' => 'form-control',
+									'id' => 'newpassword',
+									'placeholder' => '新密码',
+									'name' => 'newpassword',
+									'value'=>''
+							);
+							echo form_input($data);
+							?>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="submit" class="btn btn-primary">保存</button>
+					</div>
+					<?php
+					$data = array(
+							'controlname' => 'Select'
+					);
+					echo form_hidden($data);
+					?>
+					<?php echo form_close() ?>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal3 -->
+		<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<?php echo form_open('Common/xiugaimima') ?>
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+									aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">新增栏目3</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="oldpassword">原密码</label>
+							<?php
+							$data = array(
+									'type' => 'password',
+									'class' => 'form-control',
+									'id' => 'oldpassword',
+									'placeholder' => '原密码',
+									'name' => 'oldpassword',
+									'value'=>''
+							);
+							echo form_input($data);
+							?>
+						</div>
+						<div class="form-group">
+							<label for="newpassword">新密码</label>
+							<?php
+							$data = array(
+									'type' => 'password',
+									'class' => 'form-control',
+									'id' => 'newpassword',
+									'placeholder' => '新密码',
+									'name' => 'newpassword',
+									'value'=>''
+							);
+							echo form_input($data);
+							?>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="submit" class="btn btn-primary">保存</button>
+					</div>
+					<?php
+					$data = array(
+							'controlname' => 'Select'
+					);
+					echo form_hidden($data);
+					?>
+					<?php echo form_close() ?>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal4 -->
+		<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<?php echo form_open('Common/xiugaimima') ?>
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+									aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">新增栏目4</h4>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
