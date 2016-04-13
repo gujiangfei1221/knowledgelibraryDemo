@@ -31,30 +31,34 @@ class Manage extends CI_Controller{
             $level = 1;
             $parentpath = 'root/';
             $namepath = $parentpath.$lanmuname.'/';
-            $this->Managemodel->addlanmu($selectvalue,$lanmuname,$level,$parentpath,$namepath);
-            redirect('Manage/index');
+            if(!is_dir('mulu/'.$namepath)){
+                $this->Managemodel->addlanmu($selectvalue,$lanmuname,$level,$parentpath,$namepath);
+                mkdir('mulu/'.$namepath,0777);
+                redirect('Manage/index');
+            }
+            else{
+                echo '<script>alert("目录已经存在!")</script>';
+                echo '<script>window.location.href=\'' . site_url('Manage/index') . '\';</script>';
+            }
         }
         else{
             $data = $this->Managemodel->selectall($selectvalue);
-//            var_dump($data);
             $level = intval($data[0]['level']);
             $parentpath = $data[0]['namepath'];
             $namepath = $parentpath.$lanmuname.'/';
-            $this->Managemodel->addlanmu($selectvalue,$lanmuname,$level+1,$parentpath,$namepath);
-            redirect('Manage/index');
+            if(!is_dir('mulu/'.$namepath)){
+                $this->Managemodel->addlanmu($selectvalue,$lanmuname,$level+1,$parentpath,$namepath);
+                mkdir('mulu/'.$namepath,0777);
+                redirect('Manage/index');
+            }
+            else{
+                echo '<script>alert("目录已经存在!")</script>';
+                echo '<script>window.location.href=\'' . site_url('Manage/index') . '\';</script>';
+            }
         }
-//        $data2 = $this->Managemodel->selectall();
-//        var_dump($data2);
-//        if(!is_dir('mulu/'.$selectvalue.'/'.$lanmuname)){
-//            $this->Managemodel->addlanmu($selectvalue,$lanmuname);
-//            mkdir('mulu/'.$selectvalue.'/'.$lanmuname,0777);
-//            redirect('Manage/index');
-//        }
-//        else{
-//            echo '<script>alert("目录已经存在!")</script>';
-//            echo '<script>window.location.href=\''.site_url('Manage/index').'\';</script>';
-//        }
     }
+
+
 }
 
 ?>
