@@ -56,10 +56,11 @@ class Main extends CI_Controller
         foreach ($data as $row) {
             $row['parentname'] = $row['name'];
             if (isset($row['child'])) {
-                $this->handledata($row['child']);
+                $tmp = $this->handledata($row['child']);
+                $arr[] = $tmp;
+//                var_dump($tmp);
             }
             $arr[] = $row;
-            var_dump($arr);
         }
         return $arr;
     }
