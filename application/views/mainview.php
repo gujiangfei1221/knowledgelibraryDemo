@@ -76,6 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="col-md-3">
         <div id="treeview6" class="treeview">
         </div>
+
     </div>
     <div class="col-md-9">
         <table class="table table-striped table-hover">
@@ -172,31 +173,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(function () {
-        var defaultData = [
-            {
-                text: 'Parent 1',
-                href: '#parent1',
-                tags: ['4'],
-                nodes: [{
-                    text: 'Child 1',
-                    href: '#child1',
-                    tags: ['2'],
-                    nodes: [{
-                        text: 'Grandchild 1',
-                        href: '#grandchild1',
-                        tags: ['1']
-                    }, {
-                        text: 'Grandchild 2',
-                        href: '#grandchild2',
-                        tags: ['1']
-                    }]
-                }, {
-                    text: 'Child 2',
-                    href: '#child2',
-                    tags: ['2']
-                }]
-            },
-        ];
+        var defaultData =
+            <?php echo $lanmu ?>
+        ;
 
         $('#treeview6').treeview({
             color: "#428bca",

@@ -14,7 +14,7 @@ class Mainmodel extends CI_Model{
     }
 
     public function selectlanmu(){
-        $query = $this->db->query('select * from lanmu');
+        $query = $this->db->query('select parentname,name from lanmu');
         return $query->result_array();
     }
 }

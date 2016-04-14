@@ -21,10 +21,14 @@ class Main extends CI_Controller{
             return;
         }
         $data = $this->Mainmodel->selectlanmu();
-        $data2['lanmu'] = $this->getmulu($data);
+        $data2 = $this->getmulu($data);
 
-        var_dump($data2['lanmu']);
-        $this->load->view('mainview',$data2);
+        $tmp = json_encode($data2,JSON_UNESCAPED_UNICODE);
+        $tmp = str_replace('parentname','text',$tmp);
+        $tmp = str_replace('name','text',$tmp);
+        $tmp = str_replace('child','nodes',$tmp);
+        $data3['lanmu'] = $tmp;
+        $this->load->view('mainview',$data3);
     }
 
     public function getmulu($data,$parentname = 'root'){
@@ -40,6 +44,7 @@ class Main extends CI_Controller{
         }
         return $tree;
     }
+
 }
 
 ?>
