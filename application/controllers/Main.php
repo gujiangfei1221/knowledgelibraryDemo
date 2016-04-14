@@ -25,14 +25,18 @@ class Main extends CI_Controller
         $data = $this->Mainmodel->selectlanmu();
         $data2 = $this->getmulu($data);
 
-        var_dump($this->handledata($data2));
+        $data3 = $this->handledata($data2);
 
-        $tmp = json_encode($data2, JSON_UNESCAPED_UNICODE);
+        $tmp = json_encode($data3, JSON_UNESCAPED_UNICODE);
         $tmp = str_replace('parentname', 'href', $tmp);
         $tmp = str_replace('name', 'text', $tmp);
         $tmp = str_replace('child', 'nodes', $tmp);
         $data3['lanmu'] = $tmp;
         $this->load->view('mainview', $data3);
+    }
+
+    public function visit($mulu){
+
     }
 
     public function getmulu($data, $parentname = 'root')
@@ -54,16 +58,15 @@ class Main extends CI_Controller
     {
         $arr = array();
         foreach ($data as $row) {
-            $row['parentname'] = $row['name'];
+            $row['parentname'] = 'visit'.'/'.$row['name'];
             if (isset($row['child'])) {
-                $tmp = $this->handledata($row['child']);
-                $arr[] = $tmp;
-//                var_dump($tmp);
+                $row['child'] = $this->handledata($row['child']);
             }
             $arr[] = $row;
         }
         return $arr;
     }
+
 }
 
 ?>
