@@ -73,16 +73,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-        <form>
+        <?php echo form_open_multipart('Add/do_upload');?>
             <div class="form-group">
                 <label for="exampleInputEmail1">标题</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入标题">
+                <input type="text" class="form-control" id="title" placeholder="请输入标题" name="title">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">描述</label>
+                <label >目录</label>
+                <?php
+                $options = array('root' => 'root');
+                foreach ($lanmu as $row):
+                    $options[$row['name']] = $row['name'];
+                endforeach;
+                echo form_dropdown('lanmus', $options, 'root','class="form-control"');
+                ?>
+            </div>
+            <div class="form-group">
+                <label>描述</label>
                 <!-- 加载编辑器的容器 -->
                 <script id="container" name="content" type="text/plain">
-							这里写你的初始化内容
 
                 </script>
                 <!-- 配置文件 -->
@@ -95,13 +104,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </script>
             </div>
             <div class="form-group">
-                <label for="exampleInputFile">附件上传</label>
-                <input type="file" id="exampleInputFile">
-
+                <label>附件上传</label>
+                <input type="file" id="userfile" name="userfile">
                 <p class="help-block">支持XX格式文件</p>
             </div>
             <button type="submit" class="btn btn-default">提交</button>
-        </form>
+        <?php echo form_close() ?>
     </div>
     <div class="col-md-3"></div>
 </div>
