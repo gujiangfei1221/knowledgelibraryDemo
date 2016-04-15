@@ -22,8 +22,8 @@ class Addmodel extends CI_Model{
         return $query->result_array();
     }
 
-    public function insertcontent($title,$lanmu,$content,$filename,$filepath){
-        $this->db->query('insert into content(title,lanmu,content,filename,filepath) values(\''.$title.'\',\''.$lanmu.'\',\''.$content.'\',\''.$filename.'\',\''.$filepath.'\')');
+    public function insertcontent($title,$lanmu,$content,$filename,$filepath,$lanmupath){
+        $this->db->query('insert into content(title,lanmu,content,filename,filepath,lanmupath) values(\''.$title.'\',\''.$lanmu.'\',\''.$content.'\',\''.$filename.'\',\''.$filepath.'\',\''.$lanmupath.'\')');
     }
 }
 

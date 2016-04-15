@@ -89,7 +89,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <tr>
                 <td>1</td>
                 <td><?php echo $row['title'] ?></td>
-                <td>下载</td>
+                <td><a href="<?php echo base_url().'mulu/'.$row['lanmupath'].$row['filename'] ?>">下载</a></td>
             </tr>
             <?php endforeach; ?>
         </table>

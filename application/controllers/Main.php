@@ -33,12 +33,12 @@ class Main extends CI_Controller
         $tmp = str_replace('child', 'nodes', $tmp);
         $data3['lanmu'] = $tmp;
         if($lanmu == 'all'){
-
-        }
-        else{
             $data3['content'] = $this->Mainmodel->getcontent($lanmu);
         }
-        var_dump($data3);
+        else{
+            $lanmu = urldecode($lanmu);
+            $data3['content'] = $this->Mainmodel->getcontent($lanmu);
+        }
         $this->load->view('mainview', $data3);
     }
 
@@ -61,7 +61,8 @@ class Main extends CI_Controller
     {
         $arr = array();
         foreach ($data as $row) {
-            $row['parentname'] = 'Main/index'.'/'.$row['name'];
+//            $row['parentname'] = 'Main/index'.'/'.$row['name'];
+            $row['parentname'] = site_url('Main/index/'.$row['name']);
             if (isset($row['child'])) {
                 $row['child'] = $this->handledata($row['child']);
             }

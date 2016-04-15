@@ -53,10 +53,11 @@ class Add extends CI_Controller{
         {
             $data = array('upload_data' => $this->upload->data());
             $filepath = iconv('gbk', 'utf-8',$data['upload_data']['full_path']);
-//            var_dump($filepath);
-            $this->Addmodel->insertcontent($title,$selectvalue,$content,$data['upload_data']['file_name'],$filepath);
-            echo '<script>alert("新增成功！")</script>';
-            echo '<script>window.location.href=\''.site_url('Add/index').'\';</script>';
+            $filename = iconv('gbk', 'utf-8',$data['upload_data']['file_name']);
+            var_dump($data,$filepath,$filename);
+//            $this->Addmodel->insertcontent($title,$selectvalue,$content,$filename,$filepath,$path[0]['namepath']);
+//            echo '<script>alert("新增成功！")</script>';
+//            echo '<script>window.location.href=\''.site_url('Add/index').'\';</script>';
         }
     }
 }
