@@ -28,8 +28,14 @@ class Add extends CI_Controller{
         $title = $this->input->post('title');
         $selectvalue = $this->input->post('lanmus');
         $content = $this->input->post('content');
+        $path = $this->Addmodel->getpath($selectvalue);
+        if(!empty($path)){
+            $config['upload_path']      = iconv('utf-8', 'gbk','mulu/'.$path[0]['namepath']);
+        }
+        else{
+            $config['upload_path']      = 'mulu/root/';
+        }
 
-        $config['upload_path']      = './uploads/';
         $config['allowed_types']    = 'gif|jpg|png|doc|docx|rar|zip|pdf';
         $config['max_size']     = 102400;
         $config['max_width']        = 0;
@@ -39,15 +45,18 @@ class Add extends CI_Controller{
 
         if ( ! $this->upload->do_upload('userfile'))
         {
-            $error = array('error' => $this->upload->display_errors());
-
-            var_dump($error);
+//            $error = array('error' => $this->upload->display_errors());
+            echo '<script>alert("上传失败，请检查路径！")</script>';
+            echo '<script>window.location.href=\''.site_url('Add/index').'\';</script>';
         }
         else
         {
             $data = array('upload_data' => $this->upload->data());
-
-            var_dump($data);
+            $filepath = iconv('gbk', 'utf-8',$data['upload_data']['full_path']);
+//            var_dump($filepath);
+            $this->Addmodel->insertcontent($title,$selectvalue,$content,$data['upload_data']['file_name'],$filepath);
+            echo '<script>alert("新增成功！")</script>';
+            echo '<script>window.location.href=\''.site_url('Add/index').'\';</script>';
         }
     }
 }

@@ -17,4 +17,9 @@ class Mainmodel extends CI_Model{
         $query = $this->db->query('select parentname,name from lanmu');
         return $query->result_array();
     }
+
+    public function getcontent($lanmu){
+        $query = $this->db->query('select * from content where lanmu = \''.$lanmu.'\'');
+        return $query->result_array();
+    }
 }

@@ -85,11 +85,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td>标题</td>
                 <td>下载</td>
             </tr>
+            <?php foreach($content as $row): ?>
             <tr>
                 <td>1</td>
-                <td>loadrunner处理关联</td>
+                <td><?php echo $row['title'] ?></td>
                 <td>下载</td>
             </tr>
+            <?php endforeach; ?>
         </table>
         <nav class="text-center">
             <ul class="pagination">

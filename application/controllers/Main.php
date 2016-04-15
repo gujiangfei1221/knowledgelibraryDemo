@@ -15,7 +15,7 @@ class Main extends CI_Controller
         $this->load->model('Mainmodel');
     }
 
-    public function index()
+    public function index($lanmu = 'all')
     {
         if (!isset($_SESSION['name'])) {
             echo '<script>alert("请登录系统!")</script>';
@@ -32,11 +32,14 @@ class Main extends CI_Controller
         $tmp = str_replace('name', 'text', $tmp);
         $tmp = str_replace('child', 'nodes', $tmp);
         $data3['lanmu'] = $tmp;
+        if($lanmu == 'all'){
+
+        }
+        else{
+            $data3['content'] = $this->Mainmodel->getcontent($lanmu);
+        }
+        var_dump($data3);
         $this->load->view('mainview', $data3);
-    }
-
-    public function visit($mulu){
-
     }
 
     public function getmulu($data, $parentname = 'root')
@@ -58,7 +61,7 @@ class Main extends CI_Controller
     {
         $arr = array();
         foreach ($data as $row) {
-            $row['parentname'] = 'visit'.'/'.$row['name'];
+            $row['parentname'] = 'Main/index'.'/'.$row['name'];
             if (isset($row['child'])) {
                 $row['child'] = $this->handledata($row['child']);
             }

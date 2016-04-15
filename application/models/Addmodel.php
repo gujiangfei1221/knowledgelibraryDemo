@@ -16,6 +16,15 @@ class Addmodel extends CI_Model{
         $query = $this->db->query('select name from lanmu');
         return $query->result_array();
     }
+
+    public function getpath($name){
+        $query = $this->db->query('select namepath from lanmu where name=\''.$name.'\'');
+        return $query->result_array();
+    }
+
+    public function insertcontent($title,$lanmu,$content,$filename,$filepath){
+        $this->db->query('insert into content(title,lanmu,content,filename,filepath) values(\''.$title.'\',\''.$lanmu.'\',\''.$content.'\',\''.$filename.'\',\''.$filepath.'\')');
+    }
 }
 
 ?>

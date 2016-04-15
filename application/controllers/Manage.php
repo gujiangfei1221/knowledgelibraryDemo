@@ -33,7 +33,7 @@ class Manage extends CI_Controller{
             $namepath = $parentpath.$lanmuname.'/';
             if(!is_dir('mulu/'.$namepath)){
                 $this->Managemodel->addlanmu($selectvalue,$lanmuname,$level,$parentpath,$namepath);
-                mkdir('mulu/'.$namepath,0777);
+                mkdir(iconv('utf-8', 'gbk','mulu/'.$namepath),0777);
                 redirect('Manage/index');
             }
             else{
@@ -48,7 +48,7 @@ class Manage extends CI_Controller{
             $namepath = $parentpath.$lanmuname.'/';
             if(!is_dir('mulu/'.$namepath)){
                 $this->Managemodel->addlanmu($selectvalue,$lanmuname,$level+1,$parentpath,$namepath);
-                mkdir('mulu/'.$namepath,0777);
+                mkdir(iconv('utf-8', 'gbk','mulu/'.$namepath),0777);
                 redirect('Manage/index');
             }
             else{
