@@ -36,13 +36,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">知识库</a>
+            <a class="navbar-brand" href="<?php echo site_url('Select/index') ?>">知识库</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#">欢迎：<?php echo $_SESSION['name'] ?></a></li>
+                <li><a href="<?php echo site_url('Select/index') ?>">欢迎：<?php echo $_SESSION['name'] ?></a></li>
                 <li><a href="<?php echo site_url('Main/index') ?>">下载文档</a></li>
                 <li><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
                 <?php
@@ -85,13 +85,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td>标题</td>
                 <td>下载</td>
             </tr>
-            <?php foreach($content as $row): ?>
-            <tr>
-                <td>1</td>
-                <td><?php echo $row['title'] ?></td>
-                <td><a href="<?php echo base_url().'mulu/'.$row['lanmupath'].$row['filename'] ?>">下载</a></td>
-            </tr>
-            <?php endforeach; ?>
+            <?php
+            $i=1;
+            foreach ($content as $row) {
+                echo "<tr>
+                            <td>" . $i . "</td>
+                <td>" . $row['title'] . "</td>
+                <td><a href=\"" . base_url() . 'mulu/' . $row['lanmupath'] . $row['filename'] . "\" download=\"w3logo\">下载</a></td>
+            </tr>";
+            $i++;
+            }
+            ?>
+            <!--            --><?php //foreach($content as $row):?>
+            <!--            <tr>-->
+            <!--                <td>--><?php //echo $row['uid'] ?><!--</td>-->
+            <!--                <td>--><?php //echo $row['title'] ?><!--</td>-->
+            <!--                <td><a href="-->
+            <?php //echo base_url().'mulu/'.$row['lanmupath'].$row['filename'] ?><!--" download="w3logo">下载</a></td>-->
+            <!--            </tr>-->
+            <!--            --><?php //endforeach; ?>
         </table>
         <nav class="text-center">
             <ul class="pagination">
@@ -177,7 +189,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $(function () {
         var defaultData =
             <?php echo $lanmu ?>
-        ;
+            ;
 
         $('#treeview6').treeview({
             color: "#428bca",

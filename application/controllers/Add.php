@@ -30,7 +30,7 @@ class Add extends CI_Controller{
         $content = $this->input->post('content');
         $path = $this->Addmodel->getpath($selectvalue);
         if(!empty($path)){
-            $config['upload_path']      = iconv('utf-8', 'gbk','mulu/'.$path[0]['namepath']);
+            $config['upload_path']      = 'mulu/'.$path[0]['namepath'];
         }
         else{
             $config['upload_path']      = 'mulu/root/';
@@ -52,12 +52,11 @@ class Add extends CI_Controller{
         else
         {
             $data = array('upload_data' => $this->upload->data());
-            $filepath = iconv('gbk', 'utf-8',$data['upload_data']['full_path']);
-            $filename = iconv('gbk', 'utf-8',$data['upload_data']['file_name']);
-            var_dump($data,$filepath,$filename);
-//            $this->Addmodel->insertcontent($title,$selectvalue,$content,$filename,$filepath,$path[0]['namepath']);
-//            echo '<script>alert("新增成功！")</script>';
-//            echo '<script>window.location.href=\''.site_url('Add/index').'\';</script>';
+            $filepath = $data['upload_data']['full_path'];
+            $filename = $data['upload_data']['file_name'];
+            $this->Addmodel->insertcontent($title,$selectvalue,$content,$filename,$filepath,$path[0]['namepath']);
+            echo '<script>alert("新增成功！")</script>';
+            echo '<script>window.location.href=\''.site_url('Add/index').'\';</script>';
         }
     }
 }

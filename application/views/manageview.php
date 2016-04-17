@@ -34,13 +34,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">知识库</a>
+            <a class="navbar-brand" href="<?php echo site_url('Select/index') ?>">知识库</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#">欢迎：<?php echo $_SESSION['name'] ?></a></li>
+                <li><a href="<?php echo site_url('Select/index') ?>">欢迎：<?php echo $_SESSION['name'] ?></a></li>
                 <li><a href="<?php echo site_url('Main/index') ?>">下载文档</a></li>
                 <li><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
                 <?php
@@ -76,112 +76,133 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
                                                   data-toggle="tab">栏目维护</a></li>
         <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">文档维护</a></li>
-        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">问题维护</a></li>
+        <!--        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">问题维护</a></li>-->
         <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">用户维护</a></li>
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content">
+        <!--栏目维护-->
         <div role="tabpanel" class="tab-pane active" id="home">
+            <?php echo form_open('Manage/deletelanmu') ?>
             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal1"
                     style="margin-top: 8px">
                 新增
             </button>
-            <button class="btn btn-default" style="margin-top: 8px">删除</button>
+            <button class="btn btn-default" style="margin-top: 8px" type="submit">删除</button>
             <table class="table table-striped table-hover" style="margin-top: 5px;">
                 <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
+                    <td></td>
                     <td>序号</td>
                     <td>名称</td>
-                    <td>维护</td>
+                    <td>修改</td>
                 </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>1</td>
-                    <td>loadrunner处理关联</td>
-                    <td>维护</td>
-                </tr>
+                <?php
+                $i = 1;
+                foreach ($lanmu as $row) {
+                    echo "<tr>
+                    <td><input type=\"checkbox\" name=\"lanmu[]\" value=\"" . $row['name'] . "\"></td>
+                    <td>" . $i . "</td>
+                    <td>" . $row['name'] . "</td>
+                    <td>修改</td>
+                </tr>";
+                    $i++;
+                }
+                ?>
             </table>
+            <?php echo form_close() ?>
         </div>
+
+        <!--文档维护-->
+
         <div role="tabpanel" class="tab-pane" id="profile">
+            <?php echo form_open('Manage/deletecontent') ?>
             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal2"
                     style="margin-top: 8px">
                 新增
             </button>
-            <button class="btn btn-default" style="margin-top: 8px">删除</button>
+            <button class="btn btn-default" style="margin-top: 8px" type="submit">删除</button>
             <table class="table table-striped table-hover" style="margin-top: 5px;">
                 <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
+                    <td></td>
                     <td>序号</td>
                     <td>名称</td>
-                    <td>维护</td>
+                    <td>修改</td>
                 </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>1</td>
-                    <td>loadrunner处理关联2</td>
-                    <td>维护</td>
-                </tr>
+                <?php
+                $i = 1;
+                foreach ($content as $row) {
+                    echo "<tr>
+                    <td><input type=\"checkbox\" name=\"content[]\" value=\"" . $row['title'] . "\"></td>
+                    <td>" . $i . "</td>
+                    <td>" . $row['title'] . "</td>
+                    <td>修改</td>
+                </tr>";
+                    $i++;
+                }
+                ?>
             </table>
+            <?php echo form_close() ?>
         </div>
-        <div role="tabpanel" class="tab-pane" id="messages">
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal3"
-                    style="margin-top: 8px">
-                新增
-            </button>
-            <button class="btn btn-default" style="margin-top: 8px">删除</button>
-            <table class="table table-striped table-hover" style="margin-top: 5px;">
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>序号</td>
-                    <td>名称</td>
-                    <td>维护</td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>1</td>
-                    <td>loadrunner处理关联3</td>
-                    <td>维护</td>
-                </tr>
-            </table>
-        </div>
+
+        <!--        <div role="tabpanel" class="tab-pane" id="messages">-->
+        <!--            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal3"-->
+        <!--                    style="margin-top: 8px">-->
+        <!--                新增-->
+        <!--            </button>-->
+        <!--            <button class="btn btn-default" style="margin-top: 8px">删除</button>-->
+        <!--            <table class="table table-striped table-hover" style="margin-top: 5px;">-->
+        <!--                <tr>-->
+        <!--                    <td>-->
+        <!--                        <input type="checkbox">-->
+        <!--                    </td>-->
+        <!--                    <td>序号</td>-->
+        <!--                    <td>名称</td>-->
+        <!--                    <td>维护</td>-->
+        <!--                </tr>-->
+        <!--                <tr>-->
+        <!--                    <td>-->
+        <!--                        <input type="checkbox">-->
+        <!--                    </td>-->
+        <!--                    <td>1</td>-->
+        <!--                    <td>loadrunner处理关联3</td>-->
+        <!--                    <td>维护</td>-->
+        <!--                </tr>-->
+        <!--            </table>-->
+        <!--        </div>-->
+        <!--用户维护-->
+
         <div role="tabpanel" class="tab-pane" id="settings">
+
+            <?php echo form_open('Manage/deleteuser') ?>
             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal4"
                     style="margin-top: 8px">
                 新增
             </button>
-            <button class="btn btn-default" style="margin-top: 8px">删除</button>
+            <button class="btn btn-default" style="margin-top: 8px" type="submit">删除</button>
             <table class="table table-striped table-hover" style="margin-top: 5px;">
                 <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
+                    <td></td>
                     <td>序号</td>
                     <td>名称</td>
-                    <td>维护</td>
+                    <td>修改</td>
                 </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox">
-                    </td>
-                    <td>1</td>
-                    <td>loadrunner处理关联4</td>
-                    <td>维护</td>
-                </tr>
+                <?php
+                $i = 1;
+                foreach ($user as $row) {
+                    echo "<tr>
+                    <td><input type=\"checkbox\" name=\"user[]\" value=\"" . $row['username'] . "\"></td>
+                    <td>" . $i . "</td>
+                    <td>" . $row['username'] . "</td>
+                    <td>修改</td>
+                </tr>";
+                    $i++;
+                }
+                ?>
             </table>
+            <?php echo form_close() ?>
         </div>
+
     </div>
 </div>
 <!-- Modal -->
@@ -271,7 +292,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     foreach ($lanmu as $row):
                         $options[$row['name']] = $row['name'];
                     endforeach;
-                    echo form_dropdown('lanmus', $options, 'root','class="form-control"');
+                    echo form_dropdown('lanmus', $options, 'root', 'class="form-control"');
                     ?>
                 </div>
             </div>

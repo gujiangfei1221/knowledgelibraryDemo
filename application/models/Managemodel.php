@@ -17,13 +17,35 @@ class Managemodel extends CI_Model{
     }
 
     public function selectlanmu(){
-        $query = $this->db->query('select name from lanmu');
+        $query = $this->db->query('select * from lanmu');
         return $query->result_array();
     }
 
     public function selectall($value){
         $query = $this->db->query('select * from lanmu where name = \''.$value.'\'');
         return $query->result_array();
+    }
+
+    public function selectcontent(){
+        $query = $this->db->query('select * from content');
+        return $query->result_array();
+    }
+
+    public function selectuser(){
+        $query = $this->db->query('select * from user');
+        return $query->result_array();
+    }
+
+    public function deletelanmu($lanmu){
+        $this->db->query('delete from lanmu where name = \''.$lanmu.'\'');
+    }
+
+    public function deletecontent($content){
+        $this->db->query('delete from content where title = \''.$content.'\'');
+    }
+
+    public function deleteuser($user){
+        $this->db->query('delete from user where username = \''.$user.'\'');
     }
 }
 

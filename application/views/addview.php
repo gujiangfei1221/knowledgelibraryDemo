@@ -34,13 +34,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">知识库</a>
+            <a class="navbar-brand" href="<?php echo site_url('Select/index') ?>">知识库</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#">欢迎：<?php echo $_SESSION['name'] ?></a></li>
+                <li><a href="<?php echo site_url('Select/index') ?>">欢迎：<?php echo $_SESSION['name'] ?></a></li>
                 <li><a href="<?php echo site_url('Main/index') ?>">下载文档</a></li>
                 <li><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
                 <?php
