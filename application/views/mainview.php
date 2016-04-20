@@ -79,31 +79,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     </div>
     <div class="col-md-9">
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover text-center">
             <tr>
-                <td>序号</td>
-                <td>标题</td>
-                <td>下载</td>
+                <td width="10%">序号</td>
+                <td width="70%">标题</td>
+                <td width="10%">下载</td>
+                <td width="10%">删除</td>
             </tr>
             <?php
             $i=1;
             foreach ($content as $row) {
                 echo "<tr>
-                            <td>" . $i . "</td>
-                <td>" . $row['title'] . "</td>
-                <td><a href=\"" . base_url() . 'mulu/' . $row['lanmupath'] . $row['filename'] . "\" download=\"w3logo\">下载</a></td>
+                        <td>" . $i . "</td>
+                        <td>" . $row['title'] . "</td>
+                        <td><a href=\"" . base_url() . 'mulu/' . $row['lanmupath'] . $row['filename'] . "\" download=\"".$row['filename']."\">下载</a></td>
+                        <td><a href=\"".site_url('Main/deletecontent/'.$row['title'])."\">删除</a></td>
             </tr>";
             $i++;
             }
             ?>
-            <!--            --><?php //foreach($content as $row):?>
-            <!--            <tr>-->
-            <!--                <td>--><?php //echo $row['uid'] ?><!--</td>-->
-            <!--                <td>--><?php //echo $row['title'] ?><!--</td>-->
-            <!--                <td><a href="-->
-            <?php //echo base_url().'mulu/'.$row['lanmupath'].$row['filename'] ?><!--" download="w3logo">下载</a></td>-->
-            <!--            </tr>-->
-            <!--            --><?php //endforeach; ?>
         </table>
         <nav class="text-center">
             <ul class="pagination">

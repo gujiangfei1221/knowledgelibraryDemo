@@ -27,4 +27,13 @@ class Mainmodel extends CI_Model{
         }
         return $query->result_array();
     }
+
+    public function deletecontent($title){
+        $this->db->query('delete from content where title = \''.$title.'\'');
+    }
+
+    public function getpath($title){
+        $query = $this->db->query('select * from content where title = \''.$title.'\'');
+        return $query->result_array();
+    }
 }

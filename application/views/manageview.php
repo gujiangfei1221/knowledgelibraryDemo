@@ -75,8 +75,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
                                                   data-toggle="tab">栏目维护</a></li>
-        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">文档维护</a></li>
-        <!--        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">问题维护</a></li>-->
         <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">用户维护</a></li>
     </ul>
 
@@ -113,65 +111,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?php echo form_close() ?>
         </div>
 
-        <!--文档维护-->
-
-        <div role="tabpanel" class="tab-pane" id="profile">
-            <?php echo form_open('Manage/deletecontent') ?>
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal2"
-                    style="margin-top: 8px">
-                新增
-            </button>
-            <button class="btn btn-default" style="margin-top: 8px" type="submit">删除</button>
-            <table class="table table-striped table-hover" style="margin-top: 5px;">
-                <tr>
-                    <td></td>
-                    <td>序号</td>
-                    <td>名称</td>
-                    <td>修改</td>
-                </tr>
-                <?php
-                $i = 1;
-                foreach ($content as $row) {
-                    echo "<tr>
-                    <td><input type=\"checkbox\" name=\"content[]\" value=\"" . $row['title'] . "\"></td>
-                    <td>" . $i . "</td>
-                    <td>" . $row['title'] . "</td>
-                    <td>修改</td>
-                </tr>";
-                    $i++;
-                }
-                ?>
-            </table>
-            <?php echo form_close() ?>
-        </div>
-
-        <!--        <div role="tabpanel" class="tab-pane" id="messages">-->
-        <!--            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal3"-->
-        <!--                    style="margin-top: 8px">-->
-        <!--                新增-->
-        <!--            </button>-->
-        <!--            <button class="btn btn-default" style="margin-top: 8px">删除</button>-->
-        <!--            <table class="table table-striped table-hover" style="margin-top: 5px;">-->
-        <!--                <tr>-->
-        <!--                    <td>-->
-        <!--                        <input type="checkbox">-->
-        <!--                    </td>-->
-        <!--                    <td>序号</td>-->
-        <!--                    <td>名称</td>-->
-        <!--                    <td>维护</td>-->
-        <!--                </tr>-->
-        <!--                <tr>-->
-        <!--                    <td>-->
-        <!--                        <input type="checkbox">-->
-        <!--                    </td>-->
-        <!--                    <td>1</td>-->
-        <!--                    <td>loadrunner处理关联3</td>-->
-        <!--                    <td>维护</td>-->
-        <!--                </tr>-->
-        <!--            </table>-->
-        <!--        </div>-->
         <!--用户维护-->
-
         <div role="tabpanel" class="tab-pane" id="settings">
 
             <?php echo form_open('Manage/deleteuser') ?>
@@ -293,116 +233,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         $options[$row['name']] = $row['name'];
                     endforeach;
                     echo form_dropdown('lanmus', $options, 'root', 'class="form-control"');
-                    ?>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="submit" class="btn btn-primary">保存</button>
-            </div>
-            <?php
-            $data = array(
-                'controlname' => 'Select'
-            );
-            echo form_hidden($data);
-            ?>
-            <?php echo form_close() ?>
-        </div>
-    </div>
-</div>
-
-<!-- Modal2 -->
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <?php echo form_open('Common/xiugaimima') ?>
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">新增栏目2</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="oldpassword">原密码</label>
-                    <?php
-                    $data = array(
-                        'type' => 'password',
-                        'class' => 'form-control',
-                        'id' => 'oldpassword',
-                        'placeholder' => '原密码',
-                        'name' => 'oldpassword',
-                        'value' => ''
-                    );
-                    echo form_input($data);
-                    ?>
-                </div>
-                <div class="form-group">
-                    <label for="newpassword">新密码</label>
-                    <?php
-                    $data = array(
-                        'type' => 'password',
-                        'class' => 'form-control',
-                        'id' => 'newpassword',
-                        'placeholder' => '新密码',
-                        'name' => 'newpassword',
-                        'value' => ''
-                    );
-                    echo form_input($data);
-                    ?>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="submit" class="btn btn-primary">保存</button>
-            </div>
-            <?php
-            $data = array(
-                'controlname' => 'Select'
-            );
-            echo form_hidden($data);
-            ?>
-            <?php echo form_close() ?>
-        </div>
-    </div>
-</div>
-
-<!-- Modal3 -->
-<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <?php echo form_open('Common/xiugaimima') ?>
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">新增栏目3</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="oldpassword">原密码</label>
-                    <?php
-                    $data = array(
-                        'type' => 'password',
-                        'class' => 'form-control',
-                        'id' => 'oldpassword',
-                        'placeholder' => '原密码',
-                        'name' => 'oldpassword',
-                        'value' => ''
-                    );
-                    echo form_input($data);
-                    ?>
-                </div>
-                <div class="form-group">
-                    <label for="newpassword">新密码</label>
-                    <?php
-                    $data = array(
-                        'type' => 'password',
-                        'class' => 'form-control',
-                        'id' => 'newpassword',
-                        'placeholder' => '新密码',
-                        'name' => 'newpassword',
-                        'value' => ''
-                    );
-                    echo form_input($data);
                     ?>
                 </div>
             </div>

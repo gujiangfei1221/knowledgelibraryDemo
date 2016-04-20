@@ -74,17 +74,6 @@ class Manage extends CI_Controller
         }
     }
 
-    public function deletecontent()
-    {
-        $content = $this->input->post('content');
-        foreach($content as $row){
-            var_dump($row);
-            $this->Managemodel->deletecontent($row);
-            echo '<script>alert("删除成功!")</script>';
-            echo '<script>window.location.href=\'' . site_url('Manage/index') . '\';</script>';
-        }
-    }
-
     public function deleteuser()
     {
         $user = $this->input->post('user');

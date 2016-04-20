@@ -40,10 +40,6 @@ class Managemodel extends CI_Model{
         $this->db->query('delete from lanmu where name = \''.$lanmu.'\'');
     }
 
-    public function deletecontent($content){
-        $this->db->query('delete from content where title = \''.$content.'\'');
-    }
-
     public function deleteuser($user){
         $this->db->query('delete from user where username = \''.$user.'\'');
     }

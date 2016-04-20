@@ -71,6 +71,14 @@ class Main extends CI_Controller
         return $arr;
     }
 
+    public function deletecontent($title){
+        $data = $this->Mainmodel->getpath($title);
+        unlink($data[0]['filepath']);
+        $this->Mainmodel->deletecontent($title);
+        echo '<script>alert("删除成功！")</script>';
+        echo '<script>window.location.href=\''.site_url('Main/index').'\';</script>';
+    }
+
 }
 
 ?>
