@@ -39,6 +39,7 @@ class Main extends CI_Controller
             $lanmu = urldecode($lanmu);
             $data3['content'] = $this->Mainmodel->getcontent($lanmu);
         }
+
         $this->load->view('mainview', $data3);
     }
 

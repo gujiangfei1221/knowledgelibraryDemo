@@ -124,8 +124,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <tr>
                     <td></td>
                     <td>序号</td>
+                    <td>登录账号</td>
                     <td>名称</td>
-                    <td>修改</td>
+                    <td>重置密码</td>
                 </tr>
                 <?php
                 $i = 1;
@@ -134,7 +135,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td><input type=\"checkbox\" name=\"user[]\" value=\"" . $row['username'] . "\"></td>
                     <td>" . $i . "</td>
                     <td>" . $row['username'] . "</td>
-                    <td>修改</td>
+                    <td>".$row['name']."</td>
+                    <td><a href=\"".site_url('Manage/resetpassword/'.$row['uid'])."\">重置密码</a></td>
                 </tr>";
                     $i++;
                 }
@@ -220,7 +222,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'id' => 'lanmuname',
                         'placeholder' => '栏目名称',
                         'name' => 'lanmuname',
-                        'value' => ''
+                        'value' => '',
+                        'required'=>''
                     );
                     echo form_input($data);
                     ?>
@@ -255,61 +258,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <?php echo form_open('Common/xiugaimima') ?>
+            <?php echo form_open('Manage/adduser') ?>
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">新增栏目4</h4>
+                <h4 class="modal-title" id="myModalLabel">新增用户</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="oldpassword">原密码</label>
-                    <?php
-                    $data = array(
-                        'type' => 'password',
-                        'class' => 'form-control',
-                        'id' => 'oldpassword',
-                        'placeholder' => '原密码',
-                        'name' => 'oldpassword',
-                        'value' => ''
-                    );
-                    echo form_input($data);
-                    ?>
+                    <label>登录账号</label>
+                    <input type="text" class="form-control" id="loginid" placeholder="登录账号" name="loginid" required="">
                 </div>
                 <div class="form-group">
-                    <label for="newpassword">新密码</label>
-                    <?php
-                    $data = array(
-                        'type' => 'password',
-                        'class' => 'form-control',
-                        'id' => 'newpassword',
-                        'placeholder' => '新密码',
-                        'name' => 'newpassword',
-                        'value' => ''
-                    );
-                    echo form_input($data);
-                    ?>
+                    <label>用户名</label>
+                    <input type="text" class="form-control" id="loginname" placeholder="用户名" name="loginname" required="">
+                </div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="password" class="form-control" id="password" placeholder="密码" name="password" required="">
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
                 <button type="submit" class="btn btn-primary">保存</button>
             </div>
-            <?php
-            $data = array(
-                'controlname' => 'Select'
-            );
-            echo form_hidden($data);
-            ?>
             <?php echo form_close() ?>
         </div>
     </div>
 </div>
 
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

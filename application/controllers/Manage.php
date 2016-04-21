@@ -63,6 +63,22 @@ class Manage extends CI_Controller
         }
     }
 
+    public function adduser(){
+        $loginid = $this->input->post('loginid');
+        $loginname = $this->input->post('loginname');
+        $password = $this->input->post('password');
+        $password = md5($password);
+        $this->Managemodel->adduser($loginid,$loginname,$password);
+        echo '<script>alert("用户新增成功!")</script>';
+        echo '<script>window.location.href=\'' . site_url('Manage/index') . '\';</script>';
+    }
+
+    public function resetpassword($uid){
+        $this->Managemodel->resetuserpassword($uid);
+        echo '<script>alert("重置密码成功!")</script>';
+        echo '<script>window.location.href=\'' . site_url('Manage/index') . '\';</script>';
+    }
+
     public function deletelanmu()
     {
         $lanmu = $this->input->post('lanmu');
