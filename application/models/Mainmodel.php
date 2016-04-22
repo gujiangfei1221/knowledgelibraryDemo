@@ -46,4 +46,9 @@ class Mainmodel extends CI_Model
         return $query->result_array();
     }
 
+    public function getcount(){
+        $query = $this->db->query('select count(*) from content');
+        return $query->result_array();
+    }
+
 }

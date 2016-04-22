@@ -22,6 +22,11 @@ class Main extends CI_Controller
             echo '<script>window.location.href=\'' . site_url('Login/index') . '\';</script>';
             return;
         }
+        $count = $this->Mainmodel->getcount();
+        $count = $count[0]['count(*)'];
+        $config['total_rows'] = $count;
+        $config['per_page'] = 10;
+
         $data = $this->Mainmodel->selectlanmu();
         $data2 = $this->getmulu($data);
 
