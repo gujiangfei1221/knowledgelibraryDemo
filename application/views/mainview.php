@@ -92,7 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 echo "<tr>
                         <td>" . $i . "</td>
                         <td>" . $row['title'] . "</td>
-                        <td><a href=\"" . base_url() . 'mulu/' . $row['lanmupath'] . $row['filename'] . "\" download=\"".$row['filename']."\">下载</a></td>
+                        <td><a href=\"" .site_url('Main/download/'.$row['filename']) ."\">下载</a></td>
                         <td><a href=\"".site_url('Main/deletecontent/'.$row['title'])."\">删除</a></td>
             </tr>";
             $i++;

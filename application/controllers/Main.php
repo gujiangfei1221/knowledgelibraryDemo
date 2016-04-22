@@ -39,6 +39,7 @@ class Main extends CI_Controller
             $lanmu = urldecode($lanmu);
             $data3['content'] = $this->Mainmodel->getcontent($lanmu);
         }
+//        $this->forceDownload('D:/xampp/htdocs/knowledgelibraryDemo/mulu/root/1jimulu/img7.jpg','new.jpg');
 
         $this->load->view('mainview', $data3);
     }
@@ -79,6 +80,32 @@ class Main extends CI_Controller
         echo '<script>alert("删除成功！")</script>';
         echo '<script>window.location.href=\''.site_url('Main/index').'\';</script>';
     }
+
+    public function download($filename){
+        $data = $this->Mainmodel->getpath2($filename);
+        $filename0 = $data[0]['filepath'];
+        $out_filename0 = $data[0]['name'];
+        $this->forceDownload($filename0,$out_filename0);
+    }
+
+    function forceDownload($filename,$out_filename) {
+        if( ! file_exists($filename)){
+            return false;
+        }
+        else {
+            // We'll be outputting a file
+            header('Accept-Ranges: bytes');
+            header('Accept-Length: ' . filesize($filename));
+            // It will be called
+            header('Content-Transfer-Encoding: binary');
+            header('Content-type: application/octet-stream');
+            header('Content-Disposition: attachment; filename=' . $out_filename);
+            header('Content-Type: application/octet-stream; name=' . $out_filename);
+            // The source is in filename
+            return readfile($filename);;
+        }
+    }
+
 
 }
 
