@@ -15,17 +15,19 @@ class Main extends CI_Controller
         $this->load->model('Mainmodel');
     }
 
-    public function index($lanmu = 'all')
+    public function index($p=1,$lanmu = 'all')
     {
         if (!isset($_SESSION['name'])) {
             echo '<script>alert("请登录系统!")</script>';
             echo '<script>window.location.href=\'' . site_url('Login/index') . '\';</script>';
             return;
         }
+
         $count = $this->Mainmodel->getcount();
         $count = $count[0]['count(*)'];
-        $config['total_rows'] = $count;
-        $config['per_page'] = 10;
+        $pagesize = 5;
+        $offset = ($p-1)*$pagesize;
+
 
         $data = $this->Mainmodel->selectlanmu();
         $data2 = $this->getmulu($data);
@@ -38,13 +40,20 @@ class Main extends CI_Controller
         $tmp = str_replace('child', 'nodes', $tmp);
         $data3['lanmu'] = $tmp;
         if($lanmu == 'all'){
-            $data3['content'] = $this->Mainmodel->getcontent($lanmu);
+            $data3['content'] = $this->Mainmodel->getcontent($lanmu,$offset,$pagesize);
         }
         else{
             $lanmu = urldecode($lanmu);
-            $data3['content'] = $this->Mainmodel->getcontent($lanmu);
+            $data3['content'] = $this->Mainmodel->getcontent($lanmu,$offset,$pagesize);
         }
-//        $this->forceDownload('D:/xampp/htdocs/knowledgelibraryDemo/mulu/root/1jimulu/img7.jpg','new.jpg');
+
+        $page = array();
+        for($i=0;$i<$count;$i++){
+            if($i % $pagesize == 0){
+                $page[] = $i / $pagesize + 1;
+            }
+        }
+        $data3['page'] = $page;
 
         $this->load->view('mainview', $data3);
     }

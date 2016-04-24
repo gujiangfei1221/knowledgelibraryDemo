@@ -20,12 +20,12 @@ class Mainmodel extends CI_Model
         return $query->result_array();
     }
 
-    public function getcontent($lanmu)
+    public function getcontent($lanmu,$offset,$pagesize)
     {
         if ($lanmu == 'all') {
-            $query = $this->db->query('select * from content');
+            $query = $this->db->query('select * from content limit '.$offset.','.$pagesize);
         } else {
-            $query = $this->db->query('select * from content where lanmu = \'' . $lanmu . '\'');
+            $query = $this->db->query('select * from content where lanmu = \'' . $lanmu . '\' limit '.$offset.','.$pagesize);
         }
         return $query->result_array();
     }

@@ -87,35 +87,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td width="10%">删除</td>
             </tr>
             <?php
-            $i=1;
+            $i = 1;
             foreach ($content as $row) {
                 echo "<tr>
                         <td>" . $i . "</td>
                         <td>" . $row['title'] . "</td>
-                        <td><a href=\"" .site_url('Main/download/'.$row['filename']) ."\">下载</a></td>
-                        <td><a href=\"".site_url('Main/deletecontent/'.$row['title'])."\">删除</a></td>
+                        <td><a href=\"" . site_url('Main/download/' . $row['filename']) . "\">下载</a></td>
+                        <td><a href=\"" . site_url('Main/deletecontent/' . $row['title']) . "\">删除</a></td>
             </tr>";
-            $i++;
+                $i++;
             }
             ?>
         </table>
         <nav class="text-center">
             <ul class="pagination">
-<!--                <li>-->
-<!--                    <a href="#" aria-label="Previous">-->
-<!--                        <span aria-hidden="true">&laquo;</span>-->
-<!--                    </a>-->
-<!--                </li>-->
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-<!--                <li>-->
-<!--                    <a href="#" aria-label="Next">-->
-<!--                        <span aria-hidden="true">&raquo;</span>-->
-<!--                    </a>-->
-<!--                </li>-->
+                <li>
+                    <a href="<?php echo site_url('Main/index/1'); ?>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <?php foreach($page as $row): ?>
+                <li><a href="<?php echo site_url('Main/index/'.$row); ?>"><?php echo ($row); ?></a></li>
+                <?php endforeach; ?>
+                <li>
+                    <a href="<?php echo site_url('Main/index/'.count($page)); ?>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
