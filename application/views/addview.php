@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-        <?php echo form_open_multipart('Add/do_upload');?>
+        <?php echo form_open_multipart('Add/do_upload','id="upoad-form"');?>
             <div class="form-group">
                 <label for="exampleInputEmail1">标题</label>
                 <input type="text" class="form-control" id="title" placeholder="请输入标题" name="title">
@@ -105,7 +105,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="form-group">
                 <label>附件上传</label>
+                <input type="hidden" name="<?php echo ini_get("session.upload_progress.name"); ?>" value="test" />
                 <input type="file" id="userfile" name="userfile">
+                <input type="button" value="确定上传" id="upload">
+                <div class="progress" style="display: none">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                        0%
+                    </div>
+                </div>
                 <p class="help-block">支持XX格式文件</p>
             </div>
             <button type="submit" class="btn btn-default">提交</button>
@@ -172,6 +179,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    function fetch_progress(){
+        $.get('<?php echo site_url('Add/progress'); ?>', function(data){
+            var progress = parseInt(data);
+            $('.progress-bar').text(progress+'%');
+            $('.progress-bar').css('width', progress + '%');
+
+            if(progress < 100){
+                setTimeout('fetch_progress()', 1000);
+            }else{
+                $('.progress-bar').html('完成!');
+            }
+        }, 'html');
+    }
+
+    $('#upload').click(function(){
+        $('.progress').show();
+        setTimeout('fetch_progress()', 1000);
+    });
+</script>
 </body>
 
 </html>
