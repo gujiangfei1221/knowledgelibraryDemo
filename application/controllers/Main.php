@@ -22,8 +22,8 @@ class Main extends CI_Controller
             echo '<script>window.location.href=\'' . site_url('Login/index') . '\';</script>';
             return;
         }
-
-        $count = $this->Mainmodel->getcount();
+        $lanmu = urldecode($lanmu);
+        $count = $this->Mainmodel->getcount($lanmu);
         $count = $count[0]['count(*)'];
         $pagesize = 5;
         $offset = ($p-1)*$pagesize;
@@ -38,12 +38,13 @@ class Main extends CI_Controller
         $tmp = str_replace('parentname', 'href', $tmp);
         $tmp = str_replace('name', 'text', $tmp);
         $tmp = str_replace('child', 'nodes', $tmp);
+
         $data3['lanmu'] = $tmp;
         if($lanmu == 'all'){
             $data3['content'] = $this->Mainmodel->getcontent($lanmu,$offset,$pagesize);
         }
         else{
-            $lanmu = urldecode($lanmu);
+
             $data3['content'] = $this->Mainmodel->getcontent($lanmu,$offset,$pagesize);
         }
 
@@ -54,6 +55,7 @@ class Main extends CI_Controller
             }
         }
         $data3['page'] = $page;
+        $data3['lanmu2'] = $lanmu;
 
         $this->load->view('mainview', $data3);
     }
@@ -78,7 +80,7 @@ class Main extends CI_Controller
         $arr = array();
         foreach ($data as $row) {
 //            $row['parentname'] = 'Main/index'.'/'.$row['name'];
-            $row['parentname'] = site_url('Main/index/'.$row['name']);
+            $row['parentname'] = site_url('Main/index/1/'.$row['name']);
             if (isset($row['child'])) {
                 $row['child'] = $this->handledata($row['child']);
             }

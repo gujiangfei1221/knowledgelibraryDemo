@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="<?php echo site_url('Select/index') ?>">欢迎：<?php echo $_SESSION['name'] ?></a></li>
-                <li><a href="<?php echo site_url('Main/index') ?>">下载文档</a></li>
+                <li><a href="<?php echo site_url('Main/index/1') ?>">下载文档</a></li>
                 <li><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
                 <?php
                 if ($_SESSION['quanxian'] == '管理员') {
@@ -82,19 +82,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <table class="table table-striped table-hover text-center">
             <tr>
                 <td width="10%">序号</td>
-                <td width="70%">标题</td>
+                <td width="50%">标题</td>
+                <td width="20%">上传者</td>
                 <td width="10%">下载</td>
                 <td width="10%">删除</td>
             </tr>
             <?php
             $i = 1;
             foreach ($content as $row) {
-                echo "<tr>
+                if ($_SESSION['name'] != $row['user']) {
+                    echo "<tr>
                         <td>" . $i . "</td>
                         <td>" . $row['title'] . "</td>
+                        <td>" . $row['user'] . "</td>
                         <td><a href=\"" . site_url('Main/download/' . $row['filename']) . "\">下载</a></td>
-                        <td><a href=\"" . site_url('Main/deletecontent/' . $row['title']) . "\">删除</a></td>
+                        <td style='display:none;'><a href=\"" . site_url('Main/deletecontent/' . $row['title']) . "\"> 删除</a ></td >
             </tr>";
+                } else {
+                    echo "<tr>
+                        <td>" . $i . "</td>
+                        <td>" . $row['title'] . "</td>
+                        <td>" . $row['user'] . "</td>
+                        <td><a href=\"" . site_url('Main/download/' . $row['filename']) . "\">下载</a></td>
+                        <td><a href=\"" . site_url('Main/deletecontent/' . $row['title']) . "\"> 删除</a ></td >
+            </tr>";
+                }
                 $i++;
             }
             ?>
@@ -102,15 +114,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <nav class="text-center">
             <ul class="pagination">
                 <li>
-                    <a href="<?php echo site_url('Main/index/1'); ?>" aria-label="Previous">
+                    <a href="<?php echo site_url('Main/index/1/' . $lanmu2); ?>" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
-                <?php foreach($page as $row): ?>
-                <li><a href="<?php echo site_url('Main/index/'.$row); ?>"><?php echo ($row); ?></a></li>
+                <?php foreach ($page as $row): ?>
+                    <li><a href="<?php echo site_url('Main/index/' . $row . '/' . $lanmu2); ?>"><?php echo($row); ?></a>
+                    </li>
                 <?php endforeach; ?>
                 <li>
-                    <a href="<?php echo site_url('Main/index/'.count($page)); ?>" aria-label="Next">
+                    <a href="<?php
+                    if (count($page) == 0) {
+                        echo site_url('Main/index/1/' . $lanmu2);
+                    } else {
+                        echo site_url('Main/index/' . count($page) . '/' . $lanmu2);
+                    }
+
+                    ?>" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>

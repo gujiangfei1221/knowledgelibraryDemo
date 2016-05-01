@@ -46,9 +46,16 @@ class Mainmodel extends CI_Model
         return $query->result_array();
     }
 
-    public function getcount(){
-        $query = $this->db->query('select count(*) from content');
-        return $query->result_array();
+    public function getcount($lanmu){
+        if($lanmu == 'all'){
+            $query = $this->db->query('select count(*) from content');
+            return $query->result_array();
+        }
+        else{
+            $query = $this->db->query('select count(*) from content where lanmu =\''.$lanmu.'\'');
+            return $query->result_array();
+        }
+
     }
 
 }

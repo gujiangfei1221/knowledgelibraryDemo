@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="<?php echo site_url('Select/index') ?>">欢迎：<?php echo $_SESSION['name'] ?></a></li>
-                <li><a href="<?php echo site_url('Main/index') ?>">下载文档</a></li>
+                <li><a href="<?php echo site_url('Main/index/1') ?>">下载文档</a></li>
                 <li><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
                 <?php
                 if ($_SESSION['quanxian'] == '管理员') {
@@ -88,12 +88,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 新增
             </button>
             <button class="btn btn-default" style="margin-top: 8px" type="submit">删除</button>
-            <table class="table table-striped table-hover" style="margin-top: 5px;">
+            <label><h5 style="color: red">*删除目录会删除该目录下的子目录和目录下所有的文件,谨慎删除!</h5></label>
+            <table class="table table-striped table-hover text-center" style="margin-top: 5px;">
                 <tr>
                     <td></td>
                     <td>序号</td>
                     <td>名称</td>
-                    <td>修改</td>
+                    <td>父级目录</td>
                 </tr>
                 <?php
                 $i = 1;
@@ -102,7 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td><input type=\"checkbox\" name=\"lanmu[]\" value=\"" . $row['name'] . "\"></td>
                     <td>" . $i . "</td>
                     <td>" . $row['name'] . "</td>
-                    <td>修改</td>
+                    <td>".$row['parentname']."</td>
                 </tr>";
                     $i++;
                 }
@@ -120,12 +121,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 新增
             </button>
             <button class="btn btn-default" style="margin-top: 8px" type="submit">删除</button>
-            <table class="table table-striped table-hover" style="margin-top: 5px;">
+            <table class="table table-striped table-hover text-center" style="margin-top: 5px;">
                 <tr>
                     <td></td>
                     <td>序号</td>
                     <td>登录账号</td>
-                    <td>名称</td>
+                    <td>姓名</td>
                     <td>重置密码</td>
                 </tr>
                 <?php

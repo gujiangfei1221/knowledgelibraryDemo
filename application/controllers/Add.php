@@ -31,6 +31,7 @@ class Add extends CI_Controller{
         $content = $this->input->post('content');
         $path = $this->Addmodel->getpath($selectvalue);
         $name = $_FILES['userfile']['name'];
+        $user = $_SESSION['name'];
 
         if(!empty($path)){
             $config['upload_path']      = 'mulu/'.$path[0]['namepath'];
@@ -58,7 +59,7 @@ class Add extends CI_Controller{
             $data = array('upload_data' => $this->upload->data());
             $filepath = $data['upload_data']['full_path'];
             $filename = $data['upload_data']['file_name'];
-            $this->Addmodel->insertcontent($title,$selectvalue,$content,$filename,$filepath,$path[0]['namepath'],$name);
+            $this->Addmodel->insertcontent($title,$selectvalue,$content,$filename,$filepath,$path[0]['namepath'],$name,$user);
             echo '<script>alert("新增成功！")</script>';
             echo '<script>window.location.href=\''.site_url('Add/index').'\';</script>';
         }

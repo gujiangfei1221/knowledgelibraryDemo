@@ -82,11 +82,13 @@ class Manage extends CI_Controller
     public function deletelanmu()
     {
         $lanmu = $this->input->post('lanmu');
+        $path = $this->Managemodel->selectall($lanmu[0]);
+        $this->deldir('mulu/'.$path[0]['namepath'],$path[0]['namepath']);
+        echo $this->db->last_query();
         foreach ($lanmu as $row) {
-            var_dump($row);
             $this->Managemodel->deletelanmu($row);
-        echo '<script>alert("删除成功!")</script>';
-        echo '<script>window.location.href=\'' . site_url('Manage/index') . '\';</script>';
+            echo '<script>alert("删除成功!")</script>';
+            echo '<script>window.location.href=\'' . site_url('Manage/index') . '\';</script>';
         }
     }
 
@@ -94,10 +96,34 @@ class Manage extends CI_Controller
     {
         $user = $this->input->post('user');
         foreach($user as $row){
-            var_dump($row);
             $this->Managemodel->deleteuser($row);
             echo '<script>alert("删除成功!")</script>';
             echo '<script>window.location.href=\'' . site_url('Manage/index') . '\';</script>';
+        }
+    }
+
+    public function deldir($dir,$namepath) {
+        //先删除目录下的文件：
+        $dh=opendir($dir);
+        while ($file=readdir($dh)) {
+            if($file!="." && $file!="..") {
+                $fullpath=$dir."/".$file;
+                if(!is_dir($fullpath)) {
+                    $this->Managemodel->deletecontent($namepath);
+                    $this->Managemodel->deletelanmu2($namepath);
+                    unlink($fullpath);
+                } else {
+                    $this->deldir($fullpath,$namepath.$file.'/');
+                }
+            }
+        }
+
+        closedir($dh);
+        //删除当前文件夹：
+        if(rmdir($dir)) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
