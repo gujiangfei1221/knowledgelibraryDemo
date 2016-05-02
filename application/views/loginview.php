@@ -47,7 +47,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         'class' => 'form-control',
         'placeholder' => '密码',
         'required' => '',
-        'type' => 'password'
+        'type' => 'password',
+        'style'=>'margin-top: 10px'
     );
     echo form_input($data);
     ?>
