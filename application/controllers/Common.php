@@ -19,10 +19,6 @@ class Common extends CI_Controller{
         redirect('Login/index');
     }
 
-    public function search(){
-        $value = $this->input->post('search');
-        $this->Commonmodel->search($value);
-    }
 
     public function xiugaimima(){
         $oldpassword = md5($this->input->post('oldpassword'));

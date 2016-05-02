@@ -27,6 +27,8 @@ class Main extends CI_Controller
         $count = $count[0]['count(*)'];
         $pagesize = 5;
         $offset = ($p-1)*$pagesize;
+        $value = $this->input->post('search');
+//        var_dump($value);
 
 
         $data = $this->Mainmodel->selectlanmu();
@@ -40,12 +42,22 @@ class Main extends CI_Controller
         $tmp = str_replace('child', 'nodes', $tmp);
 
         $data3['lanmu'] = $tmp;
+        $data3['value'] = $value;
         if($lanmu == 'all'){
-            $data3['content'] = $this->Mainmodel->getcontent($lanmu,$offset,$pagesize);
+            if($value != null && $value != ''){
+                $data3['content'] = $this->Mainmodel->search($value);
+            }
+            else{
+                $data3['content'] = $this->Mainmodel->getcontent($lanmu,$offset,$pagesize);
+            }
         }
         else{
-
-            $data3['content'] = $this->Mainmodel->getcontent($lanmu,$offset,$pagesize);
+            if($value != null && $value != ''){
+                $data3['content'] = $this->Mainmodel->search($value);
+            }
+            else{
+                $data3['content'] = $this->Mainmodel->getcontent($lanmu,$offset,$pagesize);
+            }
         }
 
         $page = array();
@@ -120,6 +132,47 @@ class Main extends CI_Controller
             // The source is in filename
             return readfile($filename);;
         }
+    }
+
+    public function search($p=1,$lanmu = 'all'){
+        $value = $this->input->post('search');
+
+        $lanmu = urldecode($lanmu);
+        $count = $this->Mainmodel->getcount($lanmu);
+        $count = $count[0]['count(*)'];
+        $pagesize = 5;
+        $offset = ($p-1)*$pagesize;
+
+
+        $data = $this->Mainmodel->selectlanmu();
+        $data2 = $this->getmulu($data);
+
+        $data3 = $this->handledata($data2);
+
+        $tmp = json_encode($data3, JSON_UNESCAPED_UNICODE);
+        $tmp = str_replace('parentname', 'href', $tmp);
+        $tmp = str_replace('name', 'text', $tmp);
+        $tmp = str_replace('child', 'nodes', $tmp);
+
+        $data3['lanmu'] = $tmp;
+        if($lanmu == 'all'){
+            $data3['content'] = $this->Mainmodel->search($value);
+        }
+        else{
+
+            $data3['content'] = $this->Mainmodel->search($value);
+        }
+
+        $page = array();
+        for($i=0;$i<$count;$i++){
+            if($i % $pagesize == 0){
+                $page[] = $i / $pagesize + 1;
+            }
+        }
+        $data3['page'] = $page;
+        $data3['lanmu2'] = $lanmu;
+
+        $this->load->view('mainview', $data3);
     }
 
 

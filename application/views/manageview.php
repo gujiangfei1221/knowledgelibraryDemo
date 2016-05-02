@@ -58,12 +58,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </li>
                 <li><a href="<?php echo site_url('Common/logout') ?>">退出</a></li>
             </ul>
-            <form class="navbar-form navbar-right" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="请输入">
-                </div>
-                <button type="submit" class="btn btn-default">搜索</button>
-            </form>
+<!--            <form class="navbar-form navbar-right" role="search">-->
+<!--                <div class="form-group">-->
+<!--                    <input type="text" class="form-control" placeholder="请输入">-->
+<!--                </div>-->
+<!--                <button type="submit" class="btn btn-default">搜索</button>-->
+<!--            </form>-->
 
         </div>
         <!-- /.navbar-collapse -->

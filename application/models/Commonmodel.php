@@ -12,11 +12,6 @@ class Commonmodel extends CI_Model{
         parent::__construct();
     }
 
-    public function search($value){
-        $query = $this->db->query('');
-        return $query->result_array();
-    }
-
     public function searchuser($oldpassword,$name){
         $query = $this->db->query('select * from user where name =\''.$name.'\' and password = \''.$oldpassword.'\'');
         return $query->result_array();

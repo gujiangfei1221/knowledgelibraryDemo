@@ -58,28 +58,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </li>
                 <li><a href="<?php echo site_url('Common/logout') ?>">退出</a></li>
             </ul>
-            <?php echo form_open('Common/search', 'class="navbar-form navbar-right" role="search"') ?>
-            <div class="form-group">
-                <?php
-                $data = array(
-                    'type' => 'text',
-                    'class' => 'form-control',
-                    'placeholder' => '请输入',
-                    'name' => 'search'
-                );
-                echo form_input($data);
-                ?>
-            </div>
-            <?php
-            $data = array(
-                'type' => 'submit',
-                'class' => 'btn btn-default',
-                'name' => 'submit',
-                'value' => '搜索'
-            );
-            echo form_submit($data);
-            ?>
-            <?php echo form_close() ?>
+<!--            --><?php //echo form_open('Common/search', 'class="navbar-form navbar-right" role="search"') ?>
+<!--            <div class="form-group">-->
+<!--                --><?php
+//                $data = array(
+//                    'type' => 'text',
+//                    'class' => 'form-control',
+//                    'placeholder' => '请输入',
+//                    'name' => 'search'
+//                );
+//                echo form_input($data);
+//                ?>
+<!--            </div>-->
+<!--            --><?php
+//            $data = array(
+//                'type' => 'submit',
+//                'class' => 'btn btn-default',
+//                'name' => 'submit',
+//                'value' => '搜索'
+//            );
+//            echo form_submit($data);
+//            ?>
+<!--            --><?php //echo form_close() ?>
         </div>
         <!-- /.navbar-collapse -->
     </div>

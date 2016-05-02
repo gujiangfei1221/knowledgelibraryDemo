@@ -60,12 +60,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </li>
                 <li><a href="<?php echo site_url('Common/logout') ?>">退出</a></li>
             </ul>
-            <form class="navbar-form navbar-right" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="请输入">
-                </div>
-                <button type="submit" class="btn btn-default">搜索</button>
-            </form>
+            <?php echo form_open('Main/index/1', 'class="navbar-form navbar-right" role="search"') ?>
+            <div class="form-group">
+                <?php
+                $data = array(
+                    'type' => 'text',
+                    'class' => 'form-control',
+                    'placeholder' => '请输入标题进行搜索',
+                    'name' => 'search'
+                );
+                echo form_input($data);
+                ?>
+            </div>
+            <?php
+            $data = array(
+                'type' => 'submit',
+                'class' => 'btn btn-default',
+                'name' => 'submit',
+                'value' => '搜索'
+            );
+            echo form_submit($data);
+            ?>
+            <?php echo form_close() ?>
 
         </div>
         <!-- /.navbar-collapse -->
@@ -83,7 +99,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <tr>
                 <td width="10%">序号</td>
                 <td width="50%">标题</td>
-                <td width="20%">上传者</td>
+                <td width="10%">所属栏目</td>
+                <td width="10%">上传者</td>
                 <td width="10%">下载</td>
                 <td width="10%">删除</td>
             </tr>
@@ -93,7 +110,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 if ($_SESSION['name'] != $row['user']) {
                     echo "<tr>
                         <td>" . $i . "</td>
-                        <td>" . $row['title'] . "</td>
+                        <td><a href=\"" . site_url('Detail/index/' . $row['uid']) . "\">" . $row['title'] . "</a></td>
+                        <td>" . $row['lanmu'] . "</td>
                         <td>" . $row['user'] . "</td>
                         <td><a href=\"" . site_url('Main/download/' . $row['filename']) . "\">下载</a></td>
                         <td style='display:none;'><a href=\"" . site_url('Main/deletecontent/' . $row['title']) . "\"> 删除</a ></td >
@@ -101,7 +119,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 } else {
                     echo "<tr>
                         <td>" . $i . "</td>
-                        <td>" . $row['title'] . "</td>
+                        <td><a href=\"" . site_url('Detail/index/' . $row['uid']) . "\" >" . $row['title'] . "</a></td>
+                        <td>" . $row['lanmu'] . "</td>
                         <td>" . $row['user'] . "</td>
                         <td><a href=\"" . site_url('Main/download/' . $row['filename']) . "\">下载</a></td>
                         <td><a href=\"" . site_url('Main/deletecontent/' . $row['title']) . "\"> 删除</a ></td >
@@ -111,7 +130,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
             ?>
         </table>
-        <nav class="text-center">
+        <nav class="text-center" style="<?php if($value != null && $value != ''){echo 'display:none';} ?>">
             <ul class="pagination">
                 <li>
                     <a href="<?php echo site_url('Main/index/1/' . $lanmu2); ?>" aria-label="Previous">

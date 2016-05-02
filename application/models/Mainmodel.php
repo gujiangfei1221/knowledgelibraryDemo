@@ -58,4 +58,9 @@ class Mainmodel extends CI_Model
 
     }
 
+    public function search($value){
+        $query = $this->db->query('select * from content where title like \'%'.$value.'%\'');
+        return $query->result_array();
+    }
+
 }
