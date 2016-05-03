@@ -41,9 +41,6 @@ class Add extends CI_Controller{
         }
 
         $config['allowed_types']    = 'gif|jpg|png|doc|docx|rar|zip|pdf';
-        $config['max_size']     = 102400;
-        $config['max_width']        = 0;
-        $config['max_height']       = 0;
         $config['file_name'] = md5(time());
 
         $this->load->library('upload', $config);

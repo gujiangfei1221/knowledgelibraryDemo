@@ -102,6 +102,7 @@ class Main extends CI_Controller
     }
 
     public function deletecontent($title){
+        $title = urldecode($title);
         $data = $this->Mainmodel->getpath($title);
         unlink($data[0]['filepath']);
         $this->Mainmodel->deletecontent($title);
