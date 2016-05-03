@@ -25,7 +25,9 @@ class Mainmodel extends CI_Model
         if ($lanmu == 'all') {
             $query = $this->db->query('select * from content limit '.$offset.','.$pagesize);
         } else {
-            $query = $this->db->query('select * from content where lanmu = \'' . $lanmu . '\' limit '.$offset.','.$pagesize);
+            $query0 = $this->db->query('select lanmupath from content where lanmu =\''.$lanmu.'\'');
+            $data = $query0->result_array();
+            $query = $this->db->query('select * from content where lanmupath like \'%' . $data[0]['lanmupath'] . '%\' limit '.$offset.','.$pagesize);
         }
         return $query->result_array();
     }

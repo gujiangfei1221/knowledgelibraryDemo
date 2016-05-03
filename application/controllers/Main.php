@@ -57,6 +57,7 @@ class Main extends CI_Controller
             }
             else{
                 $data3['content'] = $this->Mainmodel->getcontent($lanmu,$offset,$pagesize);
+                echo $this->db->last_query();
             }
         }
 
