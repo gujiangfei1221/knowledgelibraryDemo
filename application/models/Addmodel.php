@@ -22,6 +22,11 @@ class Addmodel extends CI_Model{
         return $query->result_array();
     }
 
+    public function getlanmu($lanmupath){
+        $query = $this->db->query('select name from lanmu where namepath=\''.$lanmupath.'\'');
+        return $query->result_array();
+    }
+
     public function insertcontent($title,$lanmu,$content,$filename,$filepath,$lanmupath,$name,$user){
         $this->db->query('insert into content(title,lanmu,content,filename,filepath,lanmupath,name,user) values(\''.$title.'\',\''.$lanmu.'\',\''.$content.'\',\''.$filename.'\',\''.$filepath.'\',\''.$lanmupath.'\',\''.$name.'\',\''.$user.'\')');
     }

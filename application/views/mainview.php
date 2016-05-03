@@ -97,12 +97,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="col-md-9">
         <table class="table table-striped table-hover text-center">
             <tr>
-                <td width="10%">序号</td>
-                <td width="50%">标题</td>
-                <td width="10%">所属栏目</td>
-                <td width="10%">上传者</td>
-                <td width="10%">下载</td>
-                <td width="10%">删除</td>
+                <td>序号</td>
+                <td>标题</td>
+                <td>所属栏目</td>
+                <td>上传者</td>
+                <td>下载</td>
+                <td>删除</td>
             </tr>
             <?php
             $i = 1;
@@ -111,7 +111,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     echo "<tr>
                         <td>" . $i . "</td>
                         <td><a href=\"" . site_url('Detail/index/' . $row['uid']) . "\">" . $row['title'] . "</a></td>
-                        <td>" . $row['lanmu'] . "</td>
+                        <td>" . $row['lanmupath'] . "</td>
                         <td>" . $row['user'] . "</td>
                         <td><a href=\"" . site_url('Main/download/' . $row['filename']) . "\">下载</a></td>
                         <td style='display:none;'><a href=\"" . site_url('Main/deletecontent/' . $row['title']) . "\"> 删除</a ></td >
@@ -120,7 +120,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     echo "<tr>
                         <td>" . $i . "</td>
                         <td><a href=\"" . site_url('Detail/index/' . $row['uid']) . "\" >" . $row['title'] . "</a></td>
-                        <td>" . $row['lanmu'] . "</td>
+                        <td>" . $row['lanmupath'] . "</td>
                         <td>" . $row['user'] . "</td>
                         <td><a href=\"" . site_url('Main/download/' . $row['filename']) . "\">下载</a></td>
                         <td><a href=\"" . site_url('Main/deletecontent/' . $row['title']) . "\"> 删除</a ></td >
