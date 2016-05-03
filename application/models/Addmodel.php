@@ -13,12 +13,12 @@ class Addmodel extends CI_Model{
     }
 
     public function selectlanmu(){
-        $query = $this->db->query('select name from lanmu');
+        $query = $this->db->query('select * from lanmu');
         return $query->result_array();
     }
 
     public function getpath($name){
-        $query = $this->db->query('select namepath from lanmu where name=\''.$name.'\'');
+        $query = $this->db->query('select namepath from lanmu where namepath=\''.$name.'\'');
         return $query->result_array();
     }
 

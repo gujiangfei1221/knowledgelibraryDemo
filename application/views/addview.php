@@ -83,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php
                 $options = array('root' => 'root');
                 foreach ($lanmu as $row):
-                    $options[$row['name']] = $row['name'];
+                    $options[$row['namepath']] = $row['namepath'];
                 endforeach;
                 echo form_dropdown('lanmus', $options, 'root','class="form-control"');
                 ?>
