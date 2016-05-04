@@ -54,7 +54,9 @@ class Mainmodel extends CI_Model
             return $query->result_array();
         }
         else{
-            $query = $this->db->query('select count(*) from content where lanmu =\''.$lanmu.'\'');
+            $query0 = $this->db->query('select namepath from lanmu where name =\''.$lanmu.'\'');
+            $data = $query0->result_array();
+            $query = $this->db->query('select count(*) from content where lanmupath like \'%'.$data[0]['namepath'].'%\'');
             return $query->result_array();
         }
 
