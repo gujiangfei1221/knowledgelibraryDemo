@@ -119,6 +119,7 @@ class Main extends CI_Controller
     }
 
     function forceDownload($filename,$out_filename) {
+        $ua = $_SERVER["HTTP_USER_AGENT"];
         if( ! file_exists($filename)){
             return false;
         }
@@ -129,7 +130,15 @@ class Main extends CI_Controller
             // It will be called
             header('Content-Transfer-Encoding: binary');
             header('Content-type: application/octet-stream');
-            header('Content-Disposition: attachment; filename=' . $out_filename);
+            if (preg_match("/MSIE/", $ua)){
+                header('Content-Disposition: attachment; filename=' . urlencode($out_filename));
+            }
+            else if(preg_match("/Firefox/", $ua)){
+                header('Content-Disposition: attachment; filename=' . $out_filename);
+            }
+            else{
+                header('Content-Disposition: attachment; filename=' . urlencode($out_filename));
+            }
             header('Content-Type: application/octet-stream; name=' . $out_filename);
             // The source is in filename
             return readfile($filename);;
