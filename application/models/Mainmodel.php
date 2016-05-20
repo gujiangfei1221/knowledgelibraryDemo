@@ -32,14 +32,14 @@ class Mainmodel extends CI_Model
         return $query->result_array();
     }
 
-    public function deletecontent($title)
+    public function deletecontent($uid)
     {
-        $this->db->query('delete from content where title = \'' . $title . '\'');
+        $this->db->query('delete from content where uid = \'' . $uid . '\'');
     }
 
-    public function getpath($title)
+    public function getpath($uid)
     {
-        $query = $this->db->query('select * from content where title = \'' . $title . '\'');
+        $query = $this->db->query('select * from content where uid = \'' . $uid . '\'');
         return $query->result_array();
     }
 

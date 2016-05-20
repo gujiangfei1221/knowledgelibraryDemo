@@ -25,7 +25,7 @@ class Main extends CI_Controller
         $lanmu = urldecode($lanmu);
         $count = $this->Mainmodel->getcount($lanmu);
         $count = $count[0]['count(*)'];
-        $pagesize = 5;
+        $pagesize = 20;
         $offset = ($p-1)*$pagesize;
         $value = $this->input->post('search');
 //        var_dump($value);
@@ -102,11 +102,12 @@ class Main extends CI_Controller
         return $arr;
     }
 
-    public function deletecontent($title){
-        $title = urldecode($title);
-        $data = $this->Mainmodel->getpath($title);
+    public function deletecontent($uid){
+        $uid = urldecode($uid);
+        $data = $this->Mainmodel->getpath($uid);
+        var_dump($data);
         unlink($data[0]['filepath']);
-        $this->Mainmodel->deletecontent($title);
+        $this->Mainmodel->deletecontent($uid);
         echo '<script>alert("删除成功！")</script>';
         echo '<script>window.location.href=\''.site_url('Main/index').'\';</script>';
     }
@@ -151,7 +152,7 @@ class Main extends CI_Controller
         $lanmu = urldecode($lanmu);
         $count = $this->Mainmodel->getcount($lanmu);
         $count = $count[0]['count(*)'];
-        $pagesize = 5;
+        $pagesize = 20;
         $offset = ($p-1)*$pagesize;
 
 

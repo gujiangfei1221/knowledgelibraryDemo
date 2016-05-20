@@ -123,7 +123,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td>" . $row['lanmupath'] . "</td>
                         <td>" . $row['user'] . "</td>
                         <td><a href=\"" . site_url('Main/download/' . $row['filename']) . "\">下载</a></td>
-                        <td><a href=\"" . site_url('Main/deletecontent/' . $row['title']) . "\"> 删除</a ></td >
+                        <td><a href=\"" . site_url('Main/deletecontent/' . $row['uid']) . "\"> 删除</a ></td >
             </tr>";
                 }
                 $i++;
