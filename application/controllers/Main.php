@@ -148,7 +148,6 @@ class Main extends CI_Controller
 
     public function search($p=1,$lanmu = 'all'){
         $value = $this->input->post('search');
-
         $lanmu = urldecode($lanmu);
         $count = $this->Mainmodel->getcount($lanmu);
         $count = $count[0]['count(*)'];

@@ -26,6 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container">
     <?php echo form_open('Login/login', 'class="form-signin"') ?>
     <h2 class="form-signin-heading">知识库</h2>
+    <h5>（请使用ie9以上的浏览器，推荐使用火狐）</h5>
     <label for="loginid" class="sr-only">账号</label>
     <?php
     $data = array(
