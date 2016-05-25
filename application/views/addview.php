@@ -113,7 +113,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         0%
                     </div>
                 </div>
-                <p class="help-block">支持XX格式文件</p>
+                <p class="help-block">支持“gif、jpg、png、doc、docx、rar、zip、pdf、txt、ppt、pptx、exe”格式文件</p>
             </div>
             <button type="submit" class="btn btn-default">提交</button>
         <?php echo form_close() ?>

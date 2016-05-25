@@ -69,7 +69,7 @@ class Main extends CI_Controller
         }
         $data3['page'] = $page;
         $data3['lanmu2'] = $lanmu;
-
+        $data3['p'] = $p;
         $this->load->view('mainview', $data3);
     }
 
@@ -105,7 +105,6 @@ class Main extends CI_Controller
     public function deletecontent($uid){
         $uid = urldecode($uid);
         $data = $this->Mainmodel->getpath($uid);
-        var_dump($data);
         unlink($data[0]['filepath']);
         $this->Mainmodel->deletecontent($uid);
         echo '<script>alert("删除成功！")</script>';

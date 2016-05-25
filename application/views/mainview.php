@@ -138,7 +138,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </a>
                 </li>
                 <?php foreach ($page as $row): ?>
-                    <li><a href="<?php echo site_url('Main/index/' . $row . '/' . $lanmu2); ?>"><?php echo($row); ?></a>
+                    <li><a href="<?php echo site_url('Main/index/' . $row . '/' . $lanmu2); ?> " <?php if($p == $row){echo "style=\"color: red\"";} ?>><?php echo($row); ?></a>
                     </li>
                 <?php endforeach; ?>
                 <li>

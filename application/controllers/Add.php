@@ -43,7 +43,7 @@ class Add extends CI_Controller{
             $config['upload_path']      = 'mulu/root/';
         }
 
-        $config['allowed_types']    = 'gif|jpg|png|doc|docx|rar|zip|pdf|txt';
+        $config['allowed_types']    = 'gif|jpg|png|doc|docx|rar|zip|pdf|txt|ppt|pptx|exe';
         $config['file_name'] = md5(time());
 
         $this->load->library('upload', $config);
