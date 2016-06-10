@@ -58,68 +58,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </li>
                 <li><a href="<?php echo site_url('Common/logout') ?>">退出</a></li>
             </ul>
-<!--            --><?php //echo form_open('Common/search', 'class="navbar-form navbar-right" role="search"') ?>
-<!--            <div class="form-group">-->
-<!--                --><?php
-//                $data = array(
-//                    'type' => 'text',
-//                    'class' => 'form-control',
-//                    'placeholder' => '请输入',
-//                    'name' => 'search'
-//                );
-//                echo form_input($data);
-//                ?>
-<!--            </div>-->
-<!--            --><?php
-//            $data = array(
-//                'type' => 'submit',
-//                'class' => 'btn btn-default',
-//                'name' => 'submit',
-//                'value' => '搜索'
-//            );
-//            echo form_submit($data);
-//            ?>
-<!--            --><?php //echo form_close() ?>
+            <!--            --><?php //echo form_open('Common/search', 'class="navbar-form navbar-right" role="search"') ?>
+            <!--            <div class="form-group">-->
+            <!--                --><?php
+            //                $data = array(
+            //                    'type' => 'text',
+            //                    'class' => 'form-control',
+            //                    'placeholder' => '请输入',
+            //                    'name' => 'search'
+            //                );
+            //                echo form_input($data);
+            //                ?>
+            <!--            </div>-->
+            <!--            --><?php
+            //            $data = array(
+            //                'type' => 'submit',
+            //                'class' => 'btn btn-default',
+            //                'name' => 'submit',
+            //                'value' => '搜索'
+            //            );
+            //            echo form_submit($data);
+            //            ?>
+            <!--            --><?php //echo form_close() ?>
         </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
 </nav>
-<div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-5">
-        <div class="jumbotron text-center">
-            <h2>下载文档或搜索问题</h2>
 
-            <p><a class="btn btn-primary btn-lg" href="<?php echo site_url('Main/index') ?>" role="button">下载文档</a></p>
-        </div>
-    </div>
-    <div class="col-md-5">
-        <div class="jumbotron text-center">
-            <h2>上传文档或登记问题</h2>
 
-            <p><a class="btn btn-primary btn-lg" href="<?php echo site_url('Add/index') ?>" role="button">上传文档</a></p>
-        </div>
-    </div>
-    <div class="col-md-1"></div>
-</div>
 
 <div class="row">
-    <div class="col-md-1"></div>
     <div class="col-md-5">
-        <div class="jumbotron text-center">
-            <h2>编解码小工具</h2>
-            <a class="btn btn-primary btn-lg" href="<?php echo site_url('Urltool/index') ?>" role="button">URl编解码</a>
-            <a class="btn btn-primary btn-lg" href="<?php echo site_url('Md5tool/index') ?>" role="button">MD5加密</a>
-        </div>
+        <textarea class="form-control" rows="30"></textarea>
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-block btn-primary" style="margin-top: 130%">md5加密→</button>
     </div>
     <div class="col-md-5">
-        <div class="jumbotron text-center">
-            <h2>待新增</h2>
-            <a class="btn btn-primary btn-lg" href="#" role="button">上传文档</a>
-        </div>
+        <textarea class="form-control" rows="30"></textarea>
     </div>
-    <div class="col-md-1"></div>
 </div>
 
 <!-- Modal -->
