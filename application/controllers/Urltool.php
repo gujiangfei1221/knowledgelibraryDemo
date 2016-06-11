@@ -17,8 +17,9 @@ class Urltool extends CI_Controller{
         }
 
         $lefttextarea = $this->input->post('lefttextarea');
-        $data = explode('\r\n',$lefttextarea);
+        $data = str_replace('','yy',$lefttextarea);
         var_dump($data);
+
 
         $this->load->view('urltoolview');
     }
