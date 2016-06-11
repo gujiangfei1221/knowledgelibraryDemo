@@ -86,18 +86,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- /.container-fluid -->
 </nav>
 
+<?php echo form_open('Urltool/index') ?>
 <div class="row">
     <div class="col-md-5">
-        <textarea class="form-control" rows="30"></textarea>
+        <textarea class="form-control" rows="30" name="lefttextarea"></textarea>
     </div>
     <div class="col-md-2">
-        <button class="btn btn-block btn-primary" style="margin-top: 100%">url编码→</button>
-        <button class="btn btn-block btn-primary" style="margin-top: 20%">url解码→</button>
+        <button class="btn btn-block btn-primary" style="margin-top: 100%" type="submit" >url编码→</button>
+        <button class="btn btn-block btn-primary" style="margin-top: 20%" type="submit">url解码→</button>
     </div>
     <div class="col-md-5">
-        <textarea class="form-control" rows="30"></textarea>
+        <textarea class="form-control" rows="30" name="righttextarea"></textarea>
     </div>
 </div>
+<?php echo form_close() ?>
 
 
 <!-- Modal -->
@@ -120,7 +122,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'id' => 'oldpassword',
                         'placeholder' => '原密码',
                         'name' => 'oldpassword',
-                        'value'=>''
+                        'value' => ''
                     );
                     echo form_input($data);
                     ?>
@@ -134,7 +136,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'id' => 'newpassword',
                         'placeholder' => '新密码',
                         'name' => 'newpassword',
-                        'value'=>''
+                        'value' => ''
                     );
                     echo form_input($data);
                     ?>

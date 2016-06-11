@@ -15,6 +15,11 @@ class Urltool extends CI_Controller{
             echo '<script>window.location.href=\''.site_url('Login/index').'\';</script>';
             return;
         }
+
+        $lefttextarea = $this->input->post('lefttextarea');
+        $data = explode('\r\n',$lefttextarea);
+        var_dump($data);
+
         $this->load->view('urltoolview');
     }
 
