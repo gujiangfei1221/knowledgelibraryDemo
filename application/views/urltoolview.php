@@ -86,17 +86,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- /.container-fluid -->
 </nav>
 
-<?php echo form_open('Urltool/index') ?>
-<div class="row">
-    <div class="col-md-5">
-        <textarea class="form-control" rows="30" name="lefttextarea"></textarea>
-    </div>
-    <div class="col-md-2">
-        <button class="btn btn-block btn-primary" style="margin-top: 100%" type="submit" >url编码→</button>
-        <button class="btn btn-block btn-primary" style="margin-top: 20%" type="submit">url解码→</button>
-    </div>
-    <div class="col-md-5">
-        <textarea class="form-control" rows="30" name="righttextarea"></textarea>
+<?php echo form_open_multipart('Urltool/index') ?>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <input type="file" name="txt">
+            <p></p>
+            <button class="btn  btn-primary" type="submit" name="bianma">url编码</button>
+            <button class="btn  btn-primary" type="submit" name="jiema">url解码</button>
+            <p></p>
+            <?php foreach($output as $row){ echo $row.'</br>';}?>
+        </div>
+        <div class="col-md-2"></div>
     </div>
 </div>
 <?php echo form_close() ?>

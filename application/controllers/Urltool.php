@@ -15,13 +15,18 @@ class Urltool extends CI_Controller{
             echo '<script>window.location.href=\''.site_url('Login/index').'\';</script>';
             return;
         }
+        $data['output'] = array();
+        if($_FILES != null){
+            $file = $_FILES['txt']['tmp_name'];
+            $content = file_get_contents($file);
+            $array = explode("\r\n", $content);
+            foreach($array as $row){
+                $tmp = urlencode($row);
+                array_push($data['output'],$tmp);
+            }
+        }
 
-        $lefttextarea = $this->input->post('lefttextarea');
-        $data = str_replace('','yy',$lefttextarea);
-        var_dump($data);
-
-
-        $this->load->view('urltoolview');
+        $this->load->view('urltoolview',$data);
     }
 
 }
