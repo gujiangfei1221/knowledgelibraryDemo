@@ -109,8 +109,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="col-md-5">
         <div class="jumbotron text-center">
             <h2>编解码小工具</h2>
-            <a class="btn btn-primary btn-lg" href="<?php echo site_url('Urltool/index') ?>" role="button">URl编解码</a>
-            <a class="btn btn-primary btn-lg" href="<?php echo site_url('Md5tool/index') ?>" role="button">MD5加密</a>
+            <a class="btn btn-primary btn-lg" href="<?php echo site_url('Urltool/index') ?>" role="button">编解码工具</a>
         </div>
     </div>
     <div class="col-md-5">

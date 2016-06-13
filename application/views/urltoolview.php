@@ -93,8 +93,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-md-8">
             <input type="file" name="txt">
             <p></p>
-            <button class="btn  btn-primary" type="submit" name="bianma">url编码</button>
-            <button class="btn  btn-primary" type="submit" name="jiema">url解码</button>
+            <button class="btn  btn-primary" type="submit" name="urlbianma">url编码(utf-8)</button>
+            <button class="btn  btn-primary" type="submit" name="urlbianma">url编码(gb2312)</button>
+            <button class="btn  btn-primary" type="submit" name="urljiema">url解码(utf-8)</button>
+            <button class="btn  btn-primary" type="submit" name="urljiema">url解码(gb2312)</button>
+            <button class="btn  btn-primary" type="submit" name="md5">md5加密</button>
             <p></p>
             <?php foreach($output as $row){ echo $row.'</br>';}?>
         </div>
