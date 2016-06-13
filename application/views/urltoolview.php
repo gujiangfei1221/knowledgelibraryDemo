@@ -91,6 +91,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
+            <a href="#" data-toggle="tooltip" title="这个页面提供常见的编码方法，主要方便性能测试准备数据！只能上传txt！" data-placement="right">说明</a>
+            <p></p>
             <input type="file" name="txt">
             <p></p>
             <button class="btn  btn-primary" type="submit" name="urlbianma_utf8">url编码(utf-8)</button>
@@ -166,6 +168,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script>
+    $(function () { $("[data-toggle='tooltip']").tooltip(); });
+</script>
+
 </body>
 
 </html>

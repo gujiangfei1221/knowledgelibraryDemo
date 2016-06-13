@@ -114,9 +114,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="col-md-5">
         <div class="jumbotron text-center">
-            <h2>待新增</h2>
-            <a class="btn btn-primary btn-lg" href="#" role="button">上传文档</a>
+            <h2>部门测试环境查看</h2>
+            <a class="btn btn-primary btn-lg" href="#" role="button">查看信息</a>
         </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+        <div class="jumbotron text-center">
+            <h2>待新增</h2>
+            <a class="btn btn-primary btn-lg" href="<?php echo site_url('Urltool/index') ?>" role="button">待新增</a>
+        </div>
+    </div>
+    <div class="col-md-5">
+
     </div>
     <div class="col-md-1"></div>
 </div>
