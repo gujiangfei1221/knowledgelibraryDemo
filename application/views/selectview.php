@@ -55,6 +55,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             style="margin-top: 8px">
                         修改密码
                     </button>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal2"
+                            style="margin-top: 8px">
+                        修改测试环境
+                    </button>
                 </li>
                 <li><a href="<?php echo site_url('Common/logout') ?>">退出</a></li>
             </ul>
@@ -114,8 +118,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="col-md-5">
         <div class="jumbotron text-center">
-            <h2>部门测试环境查看</h2>
-            <a class="btn btn-primary btn-lg" href="#" role="button">查看信息</a>
+            <h2>部门个人测试环境查看</h2>
+            <a class="btn btn-primary btn-lg" href="<?php echo site_url('Testinfo/index') ?>" role="button">查看信息</a>
         </div>
     </div>
     <div class="col-md-1"></div>
@@ -168,6 +172,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'id' => 'newpassword',
                         'placeholder' => '新密码',
                         'name' => 'newpassword',
+                        'value'=>''
+                    );
+                    echo form_input($data);
+                    ?>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="submit" class="btn btn-primary">保存</button>
+            </div>
+            <?php
+            $data = array(
+                'controlname' => 'Select'
+            );
+            echo form_hidden($data);
+            ?>
+            <?php echo form_close() ?>
+        </div>
+    </div>
+</div>
+
+<!-- Modal2 -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <?php echo form_open('Common/xiugaitestinfo') ?>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">修改测试环境</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="oldpassword">操作系统</label>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'form-control',
+                        'placeholder' => '操作系统版本',
+                        'name' => 'osinfo',
+                        'value'=>''
+                    );
+                    echo form_input($data);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label for="newpassword">浏览器版本</label>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'form-control',
+                        'placeholder' => '浏览器版本',
+                        'name' => 'ieinfo',
                         'value'=>''
                     );
                     echo form_input($data);

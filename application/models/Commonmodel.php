@@ -20,5 +20,9 @@ class Commonmodel extends CI_Model{
     public function xiugaimima($newpassword,$name){
         $this->db->query('update user set password = \''.$newpassword.'\' where name = \''.$name.'\'');
     }
+
+    public function xiugaitestinfo($osinfo,$ieinfo,$name){
+        $this->db->query('update user set osinfo = \''.$osinfo.'\',ieinfo=\''.$ieinfo.'\' where name = \''.$name.'\'');
+    }
 }
 ?>

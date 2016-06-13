@@ -35,6 +35,15 @@ class Common extends CI_Controller{
             echo '<script>window.location.href=\''.site_url($controlname.'/index').'\';</script>';
         }
     }
+
+    public function xiugaitestinfo(){
+        $osinfo = strtolower($this->input->post('osinfo'));
+        $ieinfo = strtolower($this->input->post('ieinfo'));
+        $name = $_SESSION['name'];
+        $controlname = $this->input->post('controlname');
+        $this->Commonmodel->xiugaitestinfo($osinfo,$ieinfo,$name);
+        redirect($controlname.'/index');
+    }
 }
 
 ?>
