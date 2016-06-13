@@ -21,25 +21,49 @@ class Urltool extends CI_Controller{
             $content = file_get_contents($file);
             $array = explode("\r\n", $content);
 
-            if(isset($_POST['urlbianma'])){
+            //ok
+            if(isset($_POST['urlbianma_utf8']) && $_FILES['txt']['name'] != null){
                 foreach($array as $row){
                     $tmp = urlencode(iconv('gb2312','utf-8',$row));
                     array_push($data['output'],$tmp);
                 }
             }
-            elseif(isset($_POST['urljiema'])){
+            //ok
+            elseif(isset($_POST['urlbianma_gb2312']) && $_FILES['txt']['name'] != null){
                 foreach($array as $row){
-                    $tmp = urldecode('%B2%E2%CA%D4');
+                    $tmp = urlencode($row);
                     array_push($data['output'],$tmp);
                 }
             }
-            else{
+            //ok
+            elseif(isset($_POST['urljiema_utf8']) && $_FILES['txt']['name'] != null){
+                foreach($array as $row){
+                    $tmp = urldecode(iconv('gb2312','utf-8',$row));
+                    array_push($data['output'],$tmp);
+                }
+            }
+            //not ok
+            elseif(isset($_POST['urljiema_gb2312']) && $_FILES['txt']['name'] != null){
+                foreach($array as $row){
+                    $encode = mb_detect_encoding($row, array('GB2312','utf-8'));
+                    var_dump($encode);
+                    $tmp = urldecode(iconv('ASCII','GB2312',$row));
+                    array_push($data['output'],$tmp);
+                }
+            }
+            //ok
+            elseif(isset($_POST['md5_32low'])){
                 foreach($array as $row){
                     $tmp = md5($row);
                     array_push($data['output'],$tmp);
                 }
             }
+            else{
+                echo '<script>alert("请上传附件！")</script>';
+                echo '<script>window.location.href=\''.site_url('Urltool/index').'\';</script>';
+            }
         }
+
 
         $this->load->view('urltoolview',$data);
     }
