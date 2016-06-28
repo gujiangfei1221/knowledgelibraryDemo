@@ -21,11 +21,9 @@ class Select extends CI_Controller{
             echo '<script>window.location.href=\''.site_url('Login/index').'\';</script>';
             return;
         }
+
         $this->load->view('selectview');
     }
-
-
-
 }
 
 ?>

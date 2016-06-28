@@ -23,15 +23,22 @@ class Login extends CI_Controller{
         $username = $this->input->post('loginid');
         $password = $this->input->post('password');
         $password = md5($password);
-        $data = $this->Loginmodel->dologin($username,$password);
-        if($data){
+        $data0 = $this->Loginmodel->userisexist($username);
+        if($data0){
+            $data = $this->Loginmodel->dologin($username,$password);
+            if($data){
 //            echo '登录成功';
-            $_SESSION['name'] = $data[0]['name'];
-            $_SESSION['quanxian'] = $data[0]['quanxian'];
-            redirect('Select/index');
+                $_SESSION['name'] = $data[0]['name'];
+                $_SESSION['quanxian'] = $data[0]['quanxian'];
+                redirect('Select/index');
+            }
+            else{
+                echo '<script>alert("账号或密码不正确,请确认!")</script>';
+                echo '<script>window.location.href=\''.site_url('Login/index').'\';</script>';
+            }
         }
         else{
-            echo '<script>alert("账号或密码不正确,请确认!")</script>';
+            echo '<script>alert("账号不存在,请确认!")</script>';
             echo '<script>window.location.href=\''.site_url('Login/index').'\';</script>';
         }
     }

@@ -17,4 +17,9 @@ class loginmodel extends CI_Model{
         $query = $this->db->query('select * from user where username = \''.$username.'\' and password = \''.$password.'\'');
         return $query->result_array();
     }
+
+    public function userisexist($username){
+        $query = $this->db->query('select * from user where username = \''.$username.'\'' );
+        return $query->result_array();
+    }
 }
