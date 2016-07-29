@@ -64,12 +64,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </li>
                 <li><a href="<?php echo site_url('Common/logout') ?>">退出</a></li>
             </ul>
-<!--            <form class="navbar-form navbar-right" role="search">-->
-<!--                <div class="form-group">-->
-<!--                    <input type="text" class="form-control" placeholder="请输入">-->
-<!--                </div>-->
-<!--                <button type="submit" class="btn btn-default">搜索</button>-->
-<!--            </form>-->
+            <!--            <form class="navbar-form navbar-right" role="search">-->
+            <!--                <div class="form-group">-->
+            <!--                    <input type="text" class="form-control" placeholder="请输入">-->
+            <!--                </div>-->
+            <!--                <button type="submit" class="btn btn-default">搜索</button>-->
+            <!--            </form>-->
 
         </div>
         <!-- /.navbar-collapse -->
@@ -109,7 +109,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td><input type=\"checkbox\" name=\"lanmu[]\" value=\"" . $row['name'] . "\"></td>
                     <td>" . $i . "</td>
                     <td>" . $row['name'] . "</td>
-                    <td>".$row['parentname']."</td>
+                    <td>" . $row['parentname'] . "</td>
                 </tr>";
                     $i++;
                 }
@@ -142,8 +142,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td><input type=\"checkbox\" name=\"user[]\" value=\"" . $row['username'] . "\"></td>
                     <td>" . $i . "</td>
                     <td>" . $row['username'] . "</td>
-                    <td>".$row['name']."</td>
-                    <td><a href=\"".site_url('Manage/resetpassword/'.$row['uid'])."\">重置密码</a></td>
+                    <td>" . $row['name'] . "</td>
+                    <td><a href=\"" . site_url('Manage/resetpassword/' . $row['uid']) . "\">重置密码</a></td>
                 </tr>";
                     $i++;
                 }
@@ -230,7 +230,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'placeholder' => '栏目名称',
                         'name' => 'lanmuname',
                         'value' => '',
-                        'required'=>''
+                        'required' => ''
                     );
                     echo form_input($data);
                     ?>
@@ -278,11 +278,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <div class="form-group">
                     <label>用户名</label>
-                    <input type="text" class="form-control" id="loginname" placeholder="用户名" name="loginname" required="">
+                    <input type="text" class="form-control" id="loginname" placeholder="用户名" name="loginname"
+                           required="">
                 </div>
                 <div class="form-group">
                     <label>密码</label>
-                    <input type="password" class="form-control" id="password" placeholder="密码" name="password" required="">
+                    <input type="password" class="form-control" id="password" placeholder="密码" name="password"
+                           required="">
                 </div>
             </div>
             <div class="modal-footer">
@@ -313,7 +315,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'class' => 'form-control',
                         'placeholder' => '操作系统版本',
                         'name' => 'osinfo',
-                        'value'=>''
+                        'value' => ''
                     );
                     echo form_input($data);
                     ?>
@@ -326,7 +328,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'class' => 'form-control',
                         'placeholder' => '浏览器版本',
                         'name' => 'ieinfo',
-                        'value'=>''
+                        'value' => ''
                     );
                     echo form_input($data);
                     ?>
