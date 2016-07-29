@@ -288,7 +288,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             nodeIcon: "glyphicon glyphicon-folder-close",
             enableLinks: true,
             showCheckbox: false,
-            levels: 10,
+            levels: 2,
             showTags: true,
             data: defaultData
         });

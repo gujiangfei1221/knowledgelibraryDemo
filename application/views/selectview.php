@@ -130,8 +130,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="col-md-1"></div>
     <div class="col-md-5">
         <div class="jumbotron text-center">
-            <h2>待新增</h2>
-            <a class="btn btn-primary btn-lg" href="<?php echo site_url('Urltool/index') ?>" role="button">待新增</a>
+            <h2>技术研究小组项目统计</h2>
+            <a class="btn btn-primary btn-lg" href="<?php echo site_url('Team/index') ?>" role="button">查看信息</a>
         </div>
     </div>
     <div class="col-md-5">
