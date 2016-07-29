@@ -30,6 +30,7 @@ class Login extends CI_Controller{
 //            echo '登录成功';
                 $_SESSION['name'] = $data[0]['name'];
                 $_SESSION['quanxian'] = $data[0]['quanxian'];
+                $_SESSION['team'] = $data[0]['team'];
                 redirect('Select/index');
             }
             else{

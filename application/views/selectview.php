@@ -64,28 +64,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </li>
                 <li><a href="<?php echo site_url('Common/logout') ?>">退出</a></li>
             </ul>
-<!--            --><?php //echo form_open('Common/search', 'class="navbar-form navbar-right" role="search"') ?>
-<!--            <div class="form-group">-->
-<!--                --><?php
-//                $data = array(
-//                    'type' => 'text',
-//                    'class' => 'form-control',
-//                    'placeholder' => '请输入',
-//                    'name' => 'search'
-//                );
-//                echo form_input($data);
-//                ?>
-<!--            </div>-->
-<!--            --><?php
-//            $data = array(
-//                'type' => 'submit',
-//                'class' => 'btn btn-default',
-//                'name' => 'submit',
-//                'value' => '搜索'
-//            );
-//            echo form_submit($data);
-//            ?>
-<!--            --><?php //echo form_close() ?>
+            <!--            --><?php //echo form_open('Common/search', 'class="navbar-form navbar-right" role="search"') ?>
+            <!--            <div class="form-group">-->
+            <!--                --><?php
+            //                $data = array(
+            //                    'type' => 'text',
+            //                    'class' => 'form-control',
+            //                    'placeholder' => '请输入',
+            //                    'name' => 'search'
+            //                );
+            //                echo form_input($data);
+            //                ?>
+            <!--            </div>-->
+            <!--            --><?php
+            //            $data = array(
+            //                'type' => 'submit',
+            //                'class' => 'btn btn-default',
+            //                'name' => 'submit',
+            //                'value' => '搜索'
+            //            );
+            //            echo form_submit($data);
+            //            ?>
+            <!--            --><?php //echo form_close() ?>
         </div>
         <!-- /.navbar-collapse -->
     </div>
@@ -126,19 +126,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="col-md-1"></div>
 </div>
-<div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-5">
-        <div class="jumbotron text-center">
-            <h2>技术研究小组项目统计</h2>
-            <a class="btn btn-primary btn-lg" href="<?php echo site_url('Team/index') ?>" role="button">查看信息</a>
+
+<?php
+if ($_SESSION['team'] == 'yes') {
+    echo "<div class=\"row\">
+    <div class=\"col-md-1\"></div>
+    <div class=\"col-md-5\">
+        <div class=\"jumbotron text-center\">
+            <h2>技术研究小组</h2>
+            <a class=\"btn btn-primary btn-lg\" href=\"".site_url('Team/index') ."\" role=\"button\">查看信息</a>
         </div>
     </div>
-    <div class="col-md-5">
+    <div class=\"col-md-5\">
 
     </div>
-    <div class="col-md-1"></div>
-</div>
+    <div class=\"col-md-1\"></div>
+</div>";
+}
+?>
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -160,7 +166,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'id' => 'oldpassword',
                         'placeholder' => '原密码',
                         'name' => 'oldpassword',
-                        'value'=>''
+                        'value' => ''
                     );
                     echo form_input($data);
                     ?>
@@ -174,7 +180,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'id' => 'newpassword',
                         'placeholder' => '新密码',
                         'name' => 'newpassword',
-                        'value'=>''
+                        'value' => ''
                     );
                     echo form_input($data);
                     ?>
@@ -214,7 +220,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'class' => 'form-control',
                         'placeholder' => '操作系统版本',
                         'name' => 'osinfo',
-                        'value'=>''
+                        'value' => ''
                     );
                     echo form_input($data);
                     ?>
@@ -227,7 +233,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'class' => 'form-control',
                         'placeholder' => '浏览器版本',
                         'name' => 'ieinfo',
-                        'value'=>''
+                        'value' => ''
                     );
                     echo form_input($data);
                     ?>
