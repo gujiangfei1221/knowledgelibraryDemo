@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>选择</title>
-
+    <script src="//cdn.bootcss.com/echarts/3.2.2/echarts.min.js"></script>
     <!-- Bootstrap -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -105,16 +105,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="home">
-                    总览
+                    <h1>总览</h1>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#ceshixiangmu"
+                            style="margin-bottom: 8px">
+                        新增
+                    </button>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>序号</th>
+                            <th>项目名称</th>
+                            <th>任务名称</th>
+                            <th>测试人员</th>
+                            <th>起止时间</th>
+                            <th>工时(小时)</th>
+                            <th>备注</th>
+                            <th>删除</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>F9标版</td>
+                            <td>工程建设</td>
+                            <td>顾疆飞</td>
+                            <td>2016/7/29~2016/7/30</td>
+                            <td>8</td>
+                            <td>备注</td>
+                            <td>删除</td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="tab-pane fade" id="home2">
-                    测试项目统计
+                    <h1>测试项目统计</h1>
                 </div>
                 <div class="tab-pane fade" id="home3">
-                    研究任务统计
+                    <h1>研究任务统计</h1>
                 </div>
                 <div class="tab-pane fade" id="home4">
-                    服务器自动巡检结果
+                    <h1>服务器自动巡检结果</h1>
                 </div>
             </div>
         </div>
@@ -213,6 +239,118 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     echo form_input($data);
                     ?>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="submit" class="btn btn-primary">保存</button>
+            </div>
+            <?php
+            $data = array(
+                'controlname' => 'Select'
+            );
+            echo form_hidden($data);
+            ?>
+            <?php echo form_close() ?>
+        </div>
+    </div>
+</div>
+
+<!-- ceshixiangmu -->
+<div class="modal fade" id="ceshixiangmu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <?php echo form_open('Common/xiugaimima') ?>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">新增</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="oldpassword">项目名称</label>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'form-control',
+                        'id' => 'xiangmumingcheng',
+                        'placeholder' => '项目名称',
+                        'name' => 'xiangmumingcheng',
+                        'value' => ''
+                    );
+                    echo form_input($data);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label for="oldpassword">任务名称</label>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'form-control',
+                        'id' => 'renwumingcheng',
+                        'placeholder' => '任务名称',
+                        'name' => 'renwumingcheng',
+                        'value' => ''
+                    );
+                    echo form_input($data);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label for="oldpassword">测试人员</label>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'form-control',
+                        'id' => 'renwumingcheng',
+                        'placeholder' => '任务名称',
+                        'name' => 'renwumingcheng',
+                        'value' => ''
+                    );
+                    echo form_input($data);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label for="oldpassword">起止时间</label>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'form-control',
+                        'id' => 'renwumingcheng',
+                        'placeholder' => '任务名称',
+                        'name' => 'renwumingcheng',
+                        'value' => ''
+                    );
+                    echo form_input($data);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label for="oldpassword">任务工时</label>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'form-control',
+                        'id' => 'renwumingcheng',
+                        'placeholder' => '任务名称',
+                        'name' => 'renwumingcheng',
+                        'value' => ''
+                    );
+                    echo form_input($data);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label for="oldpassword">备注</label>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'form-control',
+                        'id' => 'renwumingcheng',
+                        'placeholder' => '任务名称',
+                        'name' => 'renwumingcheng',
+                        'value' => ''
+                    );
+                    echo form_input($data);
+                    ?>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
