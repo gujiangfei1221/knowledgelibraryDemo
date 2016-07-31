@@ -65,28 +65,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </li>
                 <li><a href="<?php echo site_url('Common/logout') ?>">退出</a></li>
             </ul>
-            <!--            --><?php //echo form_open('Common/search', 'class="navbar-form navbar-right" role="search"') ?>
-            <!--            <div class="form-group">-->
-            <!--                --><?php
-            //                $data = array(
-            //                    'type' => 'text',
-            //                    'class' => 'form-control',
-            //                    'placeholder' => '请输入',
-            //                    'name' => 'search'
-            //                );
-            //                echo form_input($data);
-            //                ?>
-            <!--            </div>-->
-            <!--            --><?php
-            //            $data = array(
-            //                'type' => 'submit',
-            //                'class' => 'btn btn-default',
-            //                'name' => 'submit',
-            //                'value' => '搜索'
-            //            );
-            //            echo form_submit($data);
-            //            ?>
-            <!--            --><?php //echo form_close() ?>
+            <?php echo form_open('Common/search', 'class="navbar-form navbar-right" role="search"') ?>
+            <div class="form-group">
+                <?php
+                $data = array(
+                    'type' => 'text',
+                    'class' => 'form-control',
+                    'placeholder' => '请输入',
+                    'name' => 'search'
+                );
+                echo form_input($data);
+                ?>
+            </div>
+            <?php
+            $data = array(
+                'type' => 'submit',
+                'class' => 'btn btn-default',
+                'name' => 'submit',
+                'value' => '搜索'
+            );
+            echo form_submit($data);
+            ?>
+            <?php echo form_close() ?>
         </div>
         <!-- /.navbar-collapse -->
     </div>
@@ -164,12 +164,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         }
                                     }
                                 },
-                                data:[
-                                    {value:335, name:'直接访问'},
-                                    {value:310, name:'邮件营销'},
-                                    {value:234, name:'联盟广告'},
-                                    {value:135, name:'视频广告'},
-                                    {value:1548, name:'搜索引擎'}
+                                data: [
+                                    {value: 335, name: '直接访问'},
+                                    {value: 310, name: '邮件营销'},
+                                    {value: 234, name: '联盟广告'},
+                                    {value: 135, name: '视频广告'},
+                                    {value: 1548, name: '搜索引擎'}
                                 ],
                                 itemStyle: itemStyle
                             }]
@@ -181,7 +181,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <div class="tab-pane fade" id="home2">
                     <h1>测试项目统计</h1>
-                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#ceshixiangmu"
+                    <button id="exampleInputName2" type="button" class="btn btn-default" data-toggle="modal"
+                            data-target="#ceshixiangmu"
                             style="margin-bottom: 8px">
                         新增
                     </button>
@@ -192,7 +193,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>任务名称</th>
                             <th>类别</th>
                             <th>测试人员</th>
-                            <th>起止时间</th>
+                            <th>测试轮次</th>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
                             <th>工时(小时)</th>
                             <th>备注</th>
                             <th>修改</th>
@@ -204,7 +207,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td>工程建设</td>
                             <td>功能测试</td>
                             <td>顾疆飞</td>
-                            <td>2016/7/29~2016/7/30</td>
+                            <td>2</td>
+                            <td>2016/7/29</td>
+                            <td>2016/7/30</td>
                             <td>8</td>
                             <td>备注</td>
                             <td>修改</td>
@@ -243,7 +248,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'id' => 'oldpassword',
                         'placeholder' => '原密码',
                         'name' => 'oldpassword',
-                        'value'=>''
+                        'value' => ''
                     );
                     echo form_input($data);
                     ?>
@@ -257,7 +262,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'id' => 'newpassword',
                         'placeholder' => '新密码',
                         'name' => 'newpassword',
-                        'value'=>''
+                        'value' => ''
                     );
                     echo form_input($data);
                     ?>
@@ -297,7 +302,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'class' => 'form-control',
                         'placeholder' => '操作系统版本',
                         'name' => 'osinfo',
-                        'value'=>''
+                        'value' => ''
                     );
                     echo form_input($data);
                     ?>
@@ -310,7 +315,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'class' => 'form-control',
                         'placeholder' => '浏览器版本',
                         'name' => 'ieinfo',
-                        'value'=>''
+                        'value' => ''
                     );
                     echo form_input($data);
                     ?>
@@ -343,60 +348,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="oldpassword">项目名称</label>
-                    <?php
-                    $data = array(
-                        'type' => 'text',
-                        'class' => 'form-control',
-                        'id' => 'xiangmumingcheng',
-                        'placeholder' => '项目名称',
-                        'name' => 'xiangmumingcheng',
-                        'value' => ''
-                    );
-                    echo form_input($data);
-                    ?>
+                    <label >项目名称</label>
+                    <input type="text" placeholder="项目名称" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="oldpassword">任务名称</label>
-                    <?php
-                    $data = array(
-                        'type' => 'text',
-                        'class' => 'form-control',
-                        'id' => 'renwumingcheng',
-                        'placeholder' => '任务名称',
-                        'name' => 'renwumingcheng',
-                        'value' => ''
-                    );
-                    echo form_input($data);
-                    ?>
+                    <label >任务名称</label>
+                    <input type="text" placeholder="任务名称" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label >类别</label>
+                    <select class="form-control">
+                        <option>功能测试</option>
+                        <option>性能测试</option>
+                        <option>安全测试</option>
+                        <option>自动化测试</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="oldpassword">测试人员</label>
-                    <?php
-                    $data = array(
-                        'type' => 'text',
-                        'class' => 'form-control',
-                        'id' => 'renwumingcheng',
-                        'placeholder' => '任务名称',
-                        'name' => 'renwumingcheng',
-                        'value' => ''
-                    );
-                    echo form_input($data);
-                    ?>
+                    <select class="form-control">
+                        <option>顾疆飞</option>
+                        <option>姜志伟</option>
+                        <option>安全测试</option>
+                        <option>自动化测试</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="oldpassword">起止时间</label>
-                    <?php
-                    $data = array(
-                        'type' => 'text',
-                        'class' => 'form-control',
-                        'id' => 'renwumingcheng',
-                        'placeholder' => '任务名称',
-                        'name' => 'renwumingcheng',
-                        'value' => ''
-                    );
-                    echo form_input($data);
-                    ?>
+                    <label for="oldpassword">测试轮次</label>
+                    <input type="text" placeholder="测试轮次" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="oldpassword">开始时间</label>
+                </div>
+                <div class="form-group">
+                    <label for="oldpassword">结束时间</label>
                 </div>
                 <div class="form-group">
                     <label for="oldpassword">任务工时</label>
