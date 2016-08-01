@@ -181,11 +181,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <div class="tab-pane fade" id="home2">
                     <h1>测试项目统计</h1>
-                    <button id="exampleInputName2" type="button" class="btn btn-default" data-toggle="modal"
-                            data-target="#ceshixiangmu"
-                            style="margin-bottom: 8px">
-                        新增
-                    </button>
+                    <button id="exampleInputName2" type="button" class="btn btn-default" data-toggle="modal" data-target="#ceshixiangmu" style="margin-bottom: 8px">新增</button>
                     <table class="table table-striped">
                         <tr>
                             <th>序号</th>
@@ -212,7 +208,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td>2016/7/30</td>
                             <td>8</td>
                             <td>备注</td>
-                            <td>修改</td>
+                            <td><a href="#" data-toggle="modal" data-target="#ceshixiangmu">修改</a></td>
                             <td>删除</td>
                         </tr>
                     </table>
@@ -358,19 +354,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="form-group">
                     <label >类别</label>
                     <select class="form-control">
-                        <option>功能测试</option>
-                        <option>性能测试</option>
-                        <option>安全测试</option>
-                        <option>自动化测试</option>
+                        <option value="功能测试">功能测试</option>
+                        <option value="性能测试">性能测试</option>
+                        <option value="安全测试">安全测试</option>
+                        <option value="自动化测试">自动化测试</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="oldpassword">测试人员</label>
                     <select class="form-control">
-                        <option>顾疆飞</option>
-                        <option>姜志伟</option>
-                        <option>安全测试</option>
-                        <option>自动化测试</option>
+                        <option value="顾疆飞">顾疆飞</option>
+                        <option value="姜志伟">姜志伟</option>
+                        <option value="田园">田园</option>
+                        <option value="杨剑">杨剑</option>
+                        <option value="张榆">张榆</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -379,37 +376,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <div class="form-group">
                     <label for="oldpassword">开始时间</label>
+                    <input type="text" placeholder="测试轮次" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="oldpassword">结束时间</label>
+                    <input type="text" placeholder="测试轮次" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="oldpassword">任务工时</label>
-                    <?php
-                    $data = array(
-                        'type' => 'text',
-                        'class' => 'form-control',
-                        'id' => 'renwumingcheng',
-                        'placeholder' => '任务名称',
-                        'name' => 'renwumingcheng',
-                        'value' => ''
-                    );
-                    echo form_input($data);
-                    ?>
+                    <input type="text" placeholder="测试轮次" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="oldpassword">备注</label>
-                    <?php
-                    $data = array(
-                        'type' => 'text',
-                        'class' => 'form-control',
-                        'id' => 'renwumingcheng',
-                        'placeholder' => '任务名称',
-                        'name' => 'renwumingcheng',
-                        'value' => ''
-                    );
-                    echo form_input($data);
-                    ?>
+                    <input type="text" placeholder="测试轮次" class="form-control">
                 </div>
 
             </div>
