@@ -16,8 +16,17 @@ class Teammodel extends CI_Model{
         $this->db->query('insert into team(xiangmumingcheng,renwumingcheng,leibie,ceshirenyuan,ceshilunci,kaishishijian,jieshushijian,gongshi,yusuanlaiyuan,beizhu) values(\''.$xiangmumingcheng.'\',\''.$renwumingcheng.'\',\''.$leibie.'\',\''.$ceshirenyuan.'\',\''.$ceshilunci.'\',\''.$kaishishijian.'\',\''.$jieshushijian.'\',\''.$renwugongshi.'\',\''.$yusuanlaiyuan.'\',\''.$beizhu.'\')');
     }
 
+    public function update($xiangmumingcheng,$renwumingcheng,$leibie,$ceshirenyuan,$ceshilunci,$kaishishijian,$jieshushijian,$renwugongshi,$yusuanlaiyuan,$beizhu,$uid){
+        $this->db->query('update team set xiangmumingcheng = \''.$xiangmumingcheng.'\',renwumingcheng =\''.$renwumingcheng.'\',leibie=\''.$leibie.'\',ceshirenyuan=\''.$ceshirenyuan.'\',ceshilunci=\''.$ceshilunci.'\',kaishishijian=\''.$kaishishijian.'\',jieshushijian=\''.$jieshushijian.'\',gongshi=\''.$renwugongshi.'\',yusuanlaiyuan=\''.$yusuanlaiyuan.'\',beizhu=\''.$beizhu.'\' where uid=\''.$uid.'\'');
+    }
+
     public function show(){
         $query = $this->db->query('select * from team');
+        return $query->result_array();
+    }
+
+    public function show2($uid){
+        $query = $this->db->query('select * from team where uid =\''.$uid.'\'');
         return $query->result_array();
     }
 

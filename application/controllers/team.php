@@ -63,6 +63,27 @@ class Team extends CI_Controller{
             echo '<script>window.location.href=\''.site_url('Team/index').'\';</script>';
         }
     }
+
+    public function edit($uid){
+        $data['info'] = $this->Teammodel->show2($uid)[0];
+        $this->load->view('teameditview',$data);
+    }
+
+    public function update(){
+        $xiangmumingcheng = $this->input->post('xiangmumingcheng');
+        $renwumingcheng = $this->input->post('remwumingcheng');
+        $leibie = $this->input->post('leibie');
+        $ceshirenyuan = $this->input->post('ceshirenyuan');
+        $ceshilunci = $this->input->post('ceshilunci');
+        $kaishishijian = $this->input->post('kaishishijian');
+        $jieshushijian = $this->input->post('jieshushijian');
+        $renwugongshi = $this->input->post('renwugongshi');
+        $yusuanlaiyuan = $this->input->post('yusuanlaiyuan');
+        $beizhu = $this->input->post('beizhu');
+        $uid = $this->input->post('uid');
+        $this->Teammodel->update($xiangmumingcheng,$renwumingcheng,$leibie,$ceshirenyuan,$ceshilunci,$kaishishijian,$jieshushijian,$renwugongshi,$yusuanlaiyuan,$beizhu,$uid);
+        redirect('Team/index');
+    }
 }
 
 ?>
