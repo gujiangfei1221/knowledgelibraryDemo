@@ -97,17 +97,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="#home" data-toggle="tab">总览</a></li>
-                <li ><a href="#home2" data-toggle="tab">项目统计</a></li>
+                <li ><a href="#home" data-toggle="tab">总览</a></li>
+                <li class="active"><a href="#home2" data-toggle="tab">项目统计</a></li>
                 <li><a href="#home4" data-toggle="tab">服务器自动巡检结果</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div class="tab-content">
-                <div class="tab-pane fade in active" id="home">
+                <div class="tab-pane fade" id="home">
                     <h1>总览</h1>
                     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-                    <div id="main" style="width: 100%;height:400px;"></div>
+                    <div id="main" style="width: 1000px;height:400px;"></div>
                     <script type="text/javascript">
                         // 基于准备好的dom，初始化echarts实例
                         var myChart = echarts.init(document.getElementById('main'));
@@ -165,12 +165,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     }
                                 },
                                 data: [
-                                    {value: 335, name: '功能测试'},
-                                    {value: 310, name: '性能测试'},
-                                    {value: 234, name: '安全测试'},
-                                    {value: 135, name: '自动化测试'},
-                                    {value: 1548, name: '研究任务'},
-                                    {value: 100, name: '服务器维护'},
+                                    {value: <?php echo  $gongnengceshi; ?>, name: '功能测试'},
+                                    {value: <?php echo  $xingnengceshi; ?>, name: '性能测试'},
+                                    {value: <?php echo  $anquanceshi; ?>, name: '安全测试'},
+                                    {value: <?php echo  $zidonghuaceshi; ?>, name: '自动化测试'},
+                                    {value: <?php echo  $yanjiurenwu; ?>, name: '研究任务'}
                                 ],
                                 itemStyle: itemStyle
                             }]
@@ -180,7 +179,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         myChart.setOption(option);
                     </script>
                 </div>
-                <div class="tab-pane fade" id="home2">
+                <div class="tab-pane fade in active" id="home2">
                     <h1>测试项目统计</h1>
                     <button id="exampleInputName2" type="button" class="btn btn-default" data-toggle="modal"
                             data-target="#ceshixiangmu" style="margin-bottom: 8px">新增
@@ -367,7 +366,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <option value="性能测试">性能测试</option>
                         <option value="安全测试">安全测试</option>
                         <option value="自动化测试">自动化测试</option>
-                        <option value="自动化测试">研究任务</option>
+                        <option value="研究任务">研究任务</option>
                     </select>
                 </div>
                 <div class="form-group">
