@@ -181,7 +181,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <div class="tab-pane fade" id="home2">
                     <h1>测试项目统计</h1>
-                    <button id="exampleInputName2" type="button" class="btn btn-default" data-toggle="modal" data-target="#ceshixiangmu" style="margin-bottom: 8px">新增</button>
+                    <button id="exampleInputName2" type="button" class="btn btn-default" data-toggle="modal"
+                            data-target="#ceshixiangmu" style="margin-bottom: 8px">新增
+                    </button>
                     <table class="table table-striped">
                         <tr>
                             <th>序号</th>
@@ -193,24 +195,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>开始时间</th>
                             <th>结束时间</th>
                             <th>工时(小时)</th>
+                            <th>预算来源</th>
                             <th>备注</th>
                             <th>修改</th>
                             <th>删除</th>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>F9标版</td>
-                            <td>工程建设</td>
-                            <td>功能测试</td>
-                            <td>顾疆飞</td>
-                            <td>2</td>
-                            <td>2016/7/29</td>
-                            <td>2016/7/30</td>
-                            <td>8</td>
-                            <td>备注</td>
-                            <td><a href="#" data-toggle="modal" data-target="#ceshixiangmu">修改</a></td>
-                            <td>删除</td>
-                        </tr>
+                        <?php
+                        $i = 1;
+                        foreach ($info as $item) {
+                            echo "
+                             <tr>
+                            <td>" . $i . "</td>
+                            <td>" . $item['xiangmumingcheng'] . "</td>
+                            <td>" . $item['renwumingcheng'] . "</td>
+                            <td>" . $item['leibie'] . "</td>
+                            <td>" . $item['ceshirenyuan'] . "</td>
+                            <td>" . $item['ceshilunci'] . "</td>
+                            <td>" . $item['kaishishijian'] . "</td>
+                            <td>" . $item['jieshushijian'] . "</td>
+                            <td>" . $item['gongshi'] . "</td>
+                            <td>" . $item['yusuanlaiyuan'] . "</td>
+                            <td>" . $item['beizhu']."</td>
+                            <td><a href=\"#\" data-toggle=\"modal\" data-target=\"#ceshixiangmu\">修改</a></td>
+                            <td><a href=\"#\">删除</a></td>
+                        </tr>";
+                            $i++;
+                        }
+                        ?>
                     </table>
                 </div>
                 <div class="tab-pane fade" id="home3">
@@ -225,6 +236,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <!-- Modal -->
+<!--修改密码 -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -280,6 +292,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <!-- Modal2 -->
+<!-- 修改测试环境信息 -->
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -336,7 +349,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="modal fade" id="ceshixiangmu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <?php echo form_open('Common/xiugaimima') ?>
+            <?php echo form_open('Team/add') ?>
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
@@ -344,16 +357,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label >项目名称</label>
-                    <input type="text" placeholder="项目名称" class="form-control">
+                    <label>项目名称</label>
+                    <input type="text" placeholder="项目名称" class="form-control" name="xiangmumingcheng">
                 </div>
                 <div class="form-group">
-                    <label >任务名称</label>
-                    <input type="text" placeholder="任务名称" class="form-control">
+                    <label>任务名称</label>
+                    <input type="text" placeholder="任务名称" class="form-control" name="remwumingcheng">
                 </div>
                 <div class="form-group">
-                    <label >类别</label>
-                    <select class="form-control">
+                    <label>类别</label>
+                    <select class="form-control" name="leibie">
                         <option value="功能测试">功能测试</option>
                         <option value="性能测试">性能测试</option>
                         <option value="安全测试">安全测试</option>
@@ -361,8 +374,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="oldpassword">测试人员</label>
-                    <select class="form-control">
+                    <label>测试人员</label>
+                    <select class="form-control" name="ceshirenyuan">
                         <option value="顾疆飞">顾疆飞</option>
                         <option value="姜志伟">姜志伟</option>
                         <option value="田园">田园</option>
@@ -371,24 +384,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="oldpassword">测试轮次</label>
-                    <input type="text" placeholder="测试轮次" class="form-control">
+                    <label>测试轮次</label>
+                    <input type="text" placeholder="测试轮次" class="form-control" name="ceshilunci">
                 </div>
                 <div class="form-group">
-                    <label for="oldpassword">开始时间</label>
-                    <input type="text" placeholder="测试轮次" class="form-control">
+                    <label>开始时间</label>
+                    <input type="text" placeholder="开始时间" class="form-control" name="kaishishijian">
                 </div>
                 <div class="form-group">
-                    <label for="oldpassword">结束时间</label>
-                    <input type="text" placeholder="测试轮次" class="form-control">
+                    <label>结束时间</label>
+                    <input type="text" placeholder="结束时间" class="form-control" name="jieshushijian">
                 </div>
                 <div class="form-group">
-                    <label for="oldpassword">任务工时</label>
-                    <input type="text" placeholder="测试轮次" class="form-control">
+                    <label>任务工时</label>
+                    <input type="text" placeholder="任务工时" class="form-control" name="renwugongshi">
                 </div>
                 <div class="form-group">
-                    <label for="oldpassword">备注</label>
-                    <input type="text" placeholder="测试轮次" class="form-control">
+                    <label>预算来源</label>
+                    <input type="text" placeholder="预算来源" class="form-control" name="yusuanlaiyuan">
+                </div>
+                <div class="form-group">
+                    <label>备注</label>
+                    <input type="text" placeholder="备注" class="form-control" name="beizhu">
                 </div>
 
             </div>
@@ -398,7 +415,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <?php
             $data = array(
-                'controlname' => 'Select'
+                'controlname' => 'Team'
             );
             echo form_hidden($data);
             ?>
