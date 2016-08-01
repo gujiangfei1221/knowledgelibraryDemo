@@ -45,6 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
                 <li><a href="<?php echo site_url('Urltool/index') ?>">编解码小工具</a></li>
                 <li><a href="<?php echo site_url('Testinfo/index') ?>">测试环境查看</a></li>
+                <li <?php if ($_SESSION['team'] != 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Team/index') ?>">技术研究小组</a></li>
                 <?php
                 if ($_SESSION['quanxian'] == '管理员') {
                     echo '<li><a href="' . site_url('Manage/index') . '">后台管理</a></li>';

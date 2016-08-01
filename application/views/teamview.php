@@ -46,6 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
                 <li><a href="<?php echo site_url('Urltool/index') ?>">编解码小工具</a></li>
                 <li><a href="<?php echo site_url('Testinfo/index') ?>">测试环境查看</a></li>
+                <li <?php if ($_SESSION['team'] != 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Team/index') ?>">技术研究小组</a></li>
                 <?php
                 if ($_SESSION['quanxian'] == '管理员') {
                     echo '<li><a href="' . site_url('Manage/index') . '">后台管理</a></li>';
@@ -65,7 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </li>
                 <li><a href="<?php echo site_url('Common/logout') ?>">退出</a></li>
             </ul>
-            <?php echo form_open('Common/search', 'class="navbar-form navbar-right" role="search"') ?>
+            <?php echo form_open('Team/search', 'class="navbar-form navbar-right" role="search"') ?>
             <div class="form-group">
                 <?php
                 $data = array(
@@ -97,8 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li class="active"><a href="#home" data-toggle="tab">总览</a></li>
-                <li><a href="#home2" data-toggle="tab">测试项目统计</a></li>
-                <li><a href="#home3" data-toggle="tab">研究任务统计</a></li>
+                <li ><a href="#home2" data-toggle="tab">项目统计</a></li>
                 <li><a href="#home4" data-toggle="tab">服务器自动巡检结果</a></li>
             </ul>
         </div>
@@ -137,7 +137,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 repeat: 'repeat'
                             },
                             title: {
-                                text: '饼图纹理',
+                                text: '小组任务类型统计',
                                 textStyle: {
                                     color: '#235894'
                                 }
@@ -165,11 +165,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     }
                                 },
                                 data: [
-                                    {value: 335, name: '直接访问'},
-                                    {value: 310, name: '邮件营销'},
-                                    {value: 234, name: '联盟广告'},
-                                    {value: 135, name: '视频广告'},
-                                    {value: 1548, name: '搜索引擎'}
+                                    {value: 335, name: '功能测试'},
+                                    {value: 310, name: '性能测试'},
+                                    {value: 234, name: '安全测试'},
+                                    {value: 135, name: '自动化测试'},
+                                    {value: 1548, name: '研究任务'},
+                                    {value: 100, name: '服务器维护'},
                                 ],
                                 itemStyle: itemStyle
                             }]
@@ -197,7 +198,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>工时(小时)</th>
                             <th>预算来源</th>
                             <th>备注</th>
-                            <th>修改</th>
                             <th>删除</th>
                         </tr>
                         <?php
@@ -216,16 +216,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td>" . $item['gongshi'] . "</td>
                             <td>" . $item['yusuanlaiyuan'] . "</td>
                             <td>" . $item['beizhu']."</td>
-                            <td><a href=\"#\" data-toggle=\"modal\" data-target=\"#ceshixiangmu\">修改</a></td>
-                            <td><a href=\"#\">删除</a></td>
+                            <td><a href=\"".site_url('Team/delete/' . $item['uid'])."\">删除</a></td>
                         </tr>";
                             $i++;
                         }
                         ?>
                     </table>
-                </div>
-                <div class="tab-pane fade" id="home3">
-                    <h1>研究任务统计</h1>
                 </div>
                 <div class="tab-pane fade" id="home4">
                     <h1>服务器自动巡检结果</h1>
@@ -357,7 +353,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label>项目名称</label>
+                    <label >项目名称</label>
                     <input type="text" placeholder="项目名称" class="form-control" name="xiangmumingcheng">
                 </div>
                 <div class="form-group">
@@ -371,6 +367,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <option value="性能测试">性能测试</option>
                         <option value="安全测试">安全测试</option>
                         <option value="自动化测试">自动化测试</option>
+                        <option value="自动化测试">研究任务</option>
                     </select>
                 </div>
                 <div class="form-group">
