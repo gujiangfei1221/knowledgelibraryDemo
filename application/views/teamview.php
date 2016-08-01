@@ -46,7 +46,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
                 <li><a href="<?php echo site_url('Urltool/index') ?>">编解码小工具</a></li>
                 <li><a href="<?php echo site_url('Testinfo/index') ?>">测试环境查看</a></li>
-                <li <?php if ($_SESSION['team'] != 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Team/index') ?>">技术研究小组</a></li>
+                <li <?php if ($_SESSION['team'] != 'yes') {
+                    echo "style='display:none'";
+                } ?>><a href="<?php echo site_url('Team/index') ?>">技术研究小组</a></li>
                 <?php
                 if ($_SESSION['quanxian'] == '管理员') {
                     echo '<li><a href="' . site_url('Manage/index') . '">后台管理</a></li>';
@@ -97,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li ><a href="#home" data-toggle="tab">总览</a></li>
+                <li><a href="#home" data-toggle="tab">总览</a></li>
                 <li class="active"><a href="#home2" data-toggle="tab">项目统计</a></li>
                 <li><a href="#home4" data-toggle="tab">服务器自动巡检结果</a></li>
             </ul>
@@ -197,6 +199,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <th>工时(小时)</th>
                             <th>预算来源</th>
                             <th>备注</th>
+                            <th>修改</th>
                             <th>删除</th>
                         </tr>
                         <?php
@@ -214,8 +217,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td>" . $item['jieshushijian'] . "</td>
                             <td>" . $item['gongshi'] . "</td>
                             <td>" . $item['yusuanlaiyuan'] . "</td>
-                            <td>" . $item['beizhu']."</td>
-                            <td><a href=\"".site_url('Team/delete/' . $item['uid'])."\">删除</a></td>
+                            <td>" . $item['beizhu'] . "</td>
+                            <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
+                            <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
                         </tr>";
                             $i++;
                         }
@@ -352,7 +356,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label >项目名称</label>
+                    <label>项目名称</label>
                     <input type="text" placeholder="项目名称" class="form-control" name="xiangmumingcheng">
                 </div>
                 <div class="form-group">
@@ -419,6 +423,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div>
+
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
