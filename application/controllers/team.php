@@ -59,8 +59,9 @@ class Team extends CI_Controller{
             $this->load->view('teamview',$data);
         }
         else{
-            echo '<script>alert("搜索值不能为空！")</script>';
-            echo '<script>window.location.href=\''.site_url('Team/index').'\';</script>';
+            redirect('Team/index');
+//            echo '<script>alert("搜索值不能为空！")</script>';
+//            echo '<script>window.location.href=\''.site_url('Team/index').'\';</script>';
         }
     }
 

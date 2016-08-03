@@ -43,6 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <option <?php if($info['leibie']=='安全测试'){echo "selected='selected'";} ?> value="安全测试">安全测试</option>
                         <option <?php if($info['leibie']=='自动化测试'){echo "selected='selected'";} ?> value="自动化测试">自动化测试</option>
                         <option <?php if($info['leibie']=='研究任务'){echo "selected='selected'";} ?> value="研究任务">研究任务</option>
+                        <option <?php if($info['leibie']=='服务器维护'){echo "selected='selected'";} ?> value="服务器维护">服务器维护</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -53,6 +54,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <option <?php if($info['ceshirenyuan']=='田园'){echo "selected='selected'";} ?>value="田园">田园</option>
                         <option <?php if($info['ceshirenyuan']=='杨剑'){echo "selected='selected'";} ?>value="杨剑">杨剑</option>
                         <option <?php if($info['ceshirenyuan']=='张榆'){echo "selected='selected'";} ?>value="张榆">张榆</option>
+                        <option <?php if($info['ceshirenyuan']=='姜志伟、田园'){echo "selected='selected'";} ?>value="姜志伟、田园">姜志伟、田园</option>
+                        <option <?php if($info['ceshirenyuan']=='顾疆飞、杨剑'){echo "selected='selected'";} ?>value="顾疆飞、杨剑">顾疆飞、杨剑</option>
+                        <option <?php if($info['ceshirenyuan']=='张榆、杨剑'){echo "selected='selected'";} ?>value="张榆、杨剑">张榆、杨剑</option>
+                        <option <?php if($info['ceshirenyuan']=='张榆、顾疆飞'){echo "selected='selected'";} ?>value="张榆、顾疆飞">张榆、顾疆飞</option>
                     </select>
                 </div>
                 <div class="form-group">

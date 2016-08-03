@@ -371,6 +371,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <option value="安全测试">安全测试</option>
                         <option value="自动化测试">自动化测试</option>
                         <option value="研究任务">研究任务</option>
+                        <option value="服务器维护">服务器维护</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -381,6 +382,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <option value="田园">田园</option>
                         <option value="杨剑">杨剑</option>
                         <option value="张榆">张榆</option>
+                        <option value="姜志伟、田园">姜志伟、田园</option>
+                        <option value="顾疆飞、杨剑">顾疆飞、杨剑</option>
+                        <option value="张榆、杨剑">张榆、杨剑</option>
+                        <option value="张榆、顾疆飞">张榆、顾疆飞</option>
                     </select>
                 </div>
                 <div class="form-group">
