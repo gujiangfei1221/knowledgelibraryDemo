@@ -11,6 +11,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>选择</title>
     <script src="//cdn.bootcss.com/echarts/3.2.2/echarts.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= $this->config->item('base_url'); ?>/css/bootstrapDatepickr-1.0.0.min.css">
+    <script src="<?= $this->config->item('base_url'); ?>/js/jquery-1.7.2.min.js"></script>
+    <script src="<?= $this->config->item('base_url'); ?>/js/bootstrap.min.js"></script>
+    <script src="<?= $this->config->item('base_url'); ?>/js/bootstrapDatepickr-1.0.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#calendar1").bootstrapDatepickr({date_format: "Y-m-d"});
+            $("#calendar2").bootstrapDatepickr({date_format: "Y-m-d"});
+        });
+    </script>
+
     <!-- Bootstrap -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -184,7 +203,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <div class="tab-pane fade in active" id="home2">
                     <h1>测试项目统计</h1>
-                    <button id="exampleInputName2" type="button" class="btn btn-default" data-toggle="modal"
+                    <button id="exampleInputName2" type="button" class="btn btn-primary" data-toggle="modal"
                             data-target="#ceshixiangmu" style="margin-bottom: 8px">新增
                     </button>
                     <table class="table table-striped">
@@ -206,7 +225,99 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?php
                         $i = 1;
                         foreach ($info as $item) {
-                            echo "
+                            switch ($item['leibie']) {
+                                case '功能测试':
+                                    echo "
+                             <tr class='danger'>
+                            <td>" . $i . "</td>
+                            <td>" . $item['xiangmumingcheng'] . "</td>
+                            <td>" . $item['renwumingcheng'] . "</td>
+                            <td>" . $item['leibie'] . "</td>
+                            <td>" . $item['ceshirenyuan'] . "</td>
+                            <td>" . $item['ceshilunci'] . "</td>
+                            <td>" . $item['kaishishijian'] . "</td>
+                            <td>" . $item['jieshushijian'] . "</td>
+                            <td>" . $item['gongshi'] . "</td>
+                            <td>" . $item['yusuanlaiyuan'] . "</td>
+                            <td>" . $item['beizhu'] . "</td>
+                            <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
+                            <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
+                        </tr>";
+                                    break;
+                                case '性能测试':
+                                    echo "
+                             <tr class='success'>
+                            <td>" . $i . "</td>
+                            <td>" . $item['xiangmumingcheng'] . "</td>
+                            <td>" . $item['renwumingcheng'] . "</td>
+                            <td>" . $item['leibie'] . "</td>
+                            <td>" . $item['ceshirenyuan'] . "</td>
+                            <td>" . $item['ceshilunci'] . "</td>
+                            <td>" . $item['kaishishijian'] . "</td>
+                            <td>" . $item['jieshushijian'] . "</td>
+                            <td>" . $item['gongshi'] . "</td>
+                            <td>" . $item['yusuanlaiyuan'] . "</td>
+                            <td>" . $item['beizhu'] . "</td>
+                            <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
+                            <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
+                        </tr>";
+                                    break;
+                                case '安全测试':
+                                    echo "
+                             <tr class='warning'>
+                            <td>" . $i . "</td>
+                            <td>" . $item['xiangmumingcheng'] . "</td>
+                            <td>" . $item['renwumingcheng'] . "</td>
+                            <td>" . $item['leibie'] . "</td>
+                            <td>" . $item['ceshirenyuan'] . "</td>
+                            <td>" . $item['ceshilunci'] . "</td>
+                            <td>" . $item['kaishishijian'] . "</td>
+                            <td>" . $item['jieshushijian'] . "</td>
+                            <td>" . $item['gongshi'] . "</td>
+                            <td>" . $item['yusuanlaiyuan'] . "</td>
+                            <td>" . $item['beizhu'] . "</td>
+                            <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
+                            <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
+                        </tr>";
+                                    break;
+                                case '自动化测试':
+                                    echo "
+                             <tr class='active'>
+                            <td>" . $i . "</td>
+                            <td>" . $item['xiangmumingcheng'] . "</td>
+                            <td>" . $item['renwumingcheng'] . "</td>
+                            <td>" . $item['leibie'] . "</td>
+                            <td>" . $item['ceshirenyuan'] . "</td>
+                            <td>" . $item['ceshilunci'] . "</td>
+                            <td>" . $item['kaishishijian'] . "</td>
+                            <td>" . $item['jieshushijian'] . "</td>
+                            <td>" . $item['gongshi'] . "</td>
+                            <td>" . $item['yusuanlaiyuan'] . "</td>
+                            <td>" . $item['beizhu'] . "</td>
+                            <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
+                            <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
+                        </tr>";
+                                    break;
+                                case '研究任务':
+                                    echo "
+                             <tr class='info'>
+                            <td>" . $i . "</td>
+                            <td>" . $item['xiangmumingcheng'] . "</td>
+                            <td>" . $item['renwumingcheng'] . "</td>
+                            <td>" . $item['leibie'] . "</td>
+                            <td>" . $item['ceshirenyuan'] . "</td>
+                            <td>" . $item['ceshilunci'] . "</td>
+                            <td>" . $item['kaishishijian'] . "</td>
+                            <td>" . $item['jieshushijian'] . "</td>
+                            <td>" . $item['gongshi'] . "</td>
+                            <td>" . $item['yusuanlaiyuan'] . "</td>
+                            <td>" . $item['beizhu'] . "</td>
+                            <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
+                            <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
+                        </tr>";
+                                    break;
+                                case '服务器维护':
+                                    echo "
                              <tr>
                             <td>" . $i . "</td>
                             <td>" . $item['xiangmumingcheng'] . "</td>
@@ -222,6 +333,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
                             <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
                         </tr>";
+                                    break;
+                            }
+
                             $i++;
                         }
                         ?>
@@ -244,7 +358,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </ol>
 
 
-                    <hr />
+                    <hr/>
 
                     <h1>小组备忘</h1>
 
@@ -254,9 +368,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li>小组的事情分类：
 
                             <ul>
-                                <li>普通项目的功能测试支援        #只需要记录测试项目、测试人员、测试起止时间、测试所花预算等相关信息即可</li>
+                                <li>普通项目的功能测试支援 #只需要记录测试项目、测试人员、测试起止时间、测试所花预算等相关信息即可</li>
                                 <li>性能测试、安全测试、自动化测试 #需要记录测试项目、测试人员、测试起止时间、测试所花预算等相关信息即可</li>
-                                <li>技术研究          #需要记录研究项目、研究人员、研究起止时间、研究所花预算等相关信息即可</li>
+                                <li>技术研究 #需要记录研究项目、研究人员、研究起止时间、研究所花预算等相关信息即可</li>
                                 <li>测试服务器维护、复杂项目部署、部署疑难问题协助解决</li>
                             </ul>
                         </li>
@@ -267,7 +381,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <li>专精化培养：原先负责相关方向的人员需要对该方向进行更深层次的研究</li>
                             </ul>
                         </li>
-                        <li>安全测试、性能测试预算有限单独下拨预算，如果项目经理不愿意则项目测试负责人先发任务并记录     #安全测试和性能测试工作量超出预期，后续需要领导去定下，预算来源由项目经理下拨</li>
+                        <li>安全测试、性能测试预算有限单独下拨预算，如果项目经理不愿意则项目测试负责人先发任务并记录 #安全测试和性能测试工作量超出预期，后续需要领导去定下，预算来源由项目经理下拨</li>
                         <li>安全测试、性能测试前发送邮件告知基础设施部</li>
                     </ol>
                 </div>
@@ -436,11 +550,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <div class="form-group">
                     <label>开始时间</label>
-                    <input type="text" placeholder="开始时间" class="form-control" name="kaishishijian">
+                    <!--                    <input type="text" placeholder="开始时间" class="form-control" name="kaishishijian">-->
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+                        <input type="text" id="calendar1" placeholder="开始时间" class="form-control" name="kaishishijian">
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>结束时间</label>
-                    <input type="text" placeholder="结束时间" class="form-control" name="jieshushijian">
+                    <!--                    <input type="text" placeholder="结束时间" class="form-control" name="jieshushijian">-->
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+                        <input type="text" id="calendar2" placeholder="结束时间" class="form-control" name="jieshushijian">
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>任务工时</label>
@@ -470,12 +592,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div>
-
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 
 </html>
