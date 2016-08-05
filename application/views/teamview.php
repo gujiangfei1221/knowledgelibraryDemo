@@ -27,6 +27,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $(document).ready(function () {
             $("#calendar1").bootstrapDatepickr({date_format: "Y-m-d"});
             $("#calendar2").bootstrapDatepickr({date_format: "Y-m-d"});
+            $("#calendar3").bootstrapDatepickr({date_format: "Y-m-d"});
+            $("#calendar4").bootstrapDatepickr({date_format: "Y-m-d"});
         });
     </script>
 
@@ -203,9 +205,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <div class="tab-pane fade in active" id="home2">
                     <h1>测试项目统计</h1>
-                    <button id="exampleInputName2" type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#ceshixiangmu" style="margin-bottom: 8px">新增
-                    </button>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <button id="exampleInputName2" type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#ceshixiangmu" style="margin-bottom: 8px">新增
+                            </button>
+                        </div>
+                        <?php echo form_open('Team/search2') ?>
+                        <div class="col-md-3">
+                            <input class="form-control" placeholder="请输入值" name="search2">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+                                <input type="text" id="calendar3" placeholder="开始时间" class="form-control" name="kaishishijian2">
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+                                <input type="text" id="calendar4" placeholder="结束时间" class="form-control" name="jieshushijian2">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary">搜索</button>
+                        </div>
+                        <?php echo form_close() ?>
+                    </div>
+
+
                     <table class="table table-striped">
                         <tr>
                             <th>序号</th>
@@ -340,7 +369,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         }
                         ?>
                     </table>
-                    <nav class="text-center">
+                    <nav class="text-center" style="<?php if($value != null && $value != ''){echo 'display:none';} ?>">
                         <ul class="pagination">
                             <li>
                                 <a href="<?php echo site_url('Team/index/1'); ?>" aria-label="Previous">
@@ -354,7 +383,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <li>
                                 <a href="<?php
                                 if (count($page) == 0) {
-                                    echo site_url('Team/index/1/');
+                                    echo site_url('Team/index/1');
                                 } else {
                                     echo site_url('Team/index/' . count($page));
                                 }

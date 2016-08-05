@@ -39,6 +39,57 @@ class Teammodel extends CI_Model{
         return $query->result_array();
     }
 
+    public function search2($value,$kaishishijian2,$jieshushijian2){
+        if($value != '' ){
+            if($kaishishijian2 != ''){
+                if($jieshushijian2 != ''){
+                    $query = $this->db->query('select * from team 
+where (xiangmumingcheng like \'%'.$value.'%\' or renwumingcheng like \'%'.$value.'%\' or leibie like \'%'.$value.'%\'or 
+ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\') and kaishishijian >= \''.$kaishishijian2.'\' and jieshushijian <= \''.$jieshushijian2.'\'');
+                }
+                else {
+                    $query = $this->db->query('select * from team 
+where (xiangmumingcheng like \'%'.$value.'%\' or renwumingcheng like \'%'.$value.'%\' or leibie like \'%'.$value.'%\'or 
+ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\') and kaishishijian >= \''.$kaishishijian2.'\'');
+                }
+            }
+            else{
+                if($jieshushijian2 != ''){
+                    $query = $this->db->query('select * from team 
+where (xiangmumingcheng like \'%'.$value.'%\' or renwumingcheng like \'%'.$value.'%\' or leibie like \'%'.$value.'%\'or 
+ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\') and jieshushijian <= \''.$jieshushijian2.'\'');
+                }
+                else {
+                    $query = $this->db->query('select * from team 
+where (xiangmumingcheng like \'%'.$value.'%\' or renwumingcheng like \'%'.$value.'%\' or leibie like \'%'.$value.'%\'or 
+ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\')');
+                }
+            }
+        }
+        else{
+            if($kaishishijian2 != ''){
+                if($jieshushijian2 != ''){
+                    $query = $this->db->query('select * from team 
+where kaishishijian >= \''.$kaishishijian2.'\' and jieshushijian <= \''.$jieshushijian2.'\'');
+                }
+                else {
+                    $query = $this->db->query('select * from team 
+where kaishishijian >= \''.$kaishishijian2.'\'');
+                }
+            }
+            else{
+                if($jieshushijian2 != ''){
+                    $query = $this->db->query('select * from team 
+where jieshushijian <= \''.$jieshushijian2.'\'');
+                }
+                else {
+                    $query = $this->db->query('select * from team');
+                }
+            }
+        }
+        return $query->result_array();
+    }
+
     public function gongnengceshi(){
         $query = $this->db->query('select count(*) from team where leibie =\'功能测试\'');
         return $query->result_array();

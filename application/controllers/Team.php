@@ -39,6 +39,7 @@ class Team extends CI_Controller{
         $data['anquanceshi'] = $this->Teammodel->anquanceshi()[0]['count(*)'];
         $data['zidonghuaceshi'] = $this->Teammodel->zidonghuaceshi()[0]['count(*)'];
         $data['yanjiurenwu'] = $this->Teammodel->yanjiurenwu()[0]['count(*)'];
+        $data['value'] = null;
         $this->load->view('teamview',$data);
     }
 
@@ -64,10 +65,23 @@ class Team extends CI_Controller{
         echo '<script>window.location.href=\''.site_url('Team/index').'\';</script>';
     }
 
-    public function search(){
+    public function search($p=1){
         $value = $this->input->post('search');
         if($value != ''){
+            $pagesize = 10;
+            $offset = ($p-1)*$pagesize;
+            $count = $this->Teammodel->getcount();
+            $count = $count[0]['count(*)'];
+            $page = array();
+            for($i=0;$i<$count;$i++){
+                if($i % $pagesize == 0){
+                    $page[] = $i / $pagesize + 1;
+                }
+            }
+            $data['page'] = $page;
+            $data['p'] = $p;
             $data['info'] = $this->Teammodel->search($value);
+            $data['value'] = 'test';
             $this->load->view('teamview',$data);
         }
         else{
@@ -75,6 +89,28 @@ class Team extends CI_Controller{
 //            echo '<script>alert("搜索值不能为空！")</script>';
 //            echo '<script>window.location.href=\''.site_url('Team/index').'\';</script>';
         }
+    }
+
+    public function search2($p=1){
+        $value = $this->input->post('search2');
+        $kaishishijian2 = $this->input->post('kaishishijian2');
+        $jieshushijian2 = $this->input->post('jieshushijian2');
+
+        $pagesize = 10;
+        $offset = ($p-1)*$pagesize;
+        $count = $this->Teammodel->getcount();
+        $count = $count[0]['count(*)'];
+        $page = array();
+        for($i=0;$i<$count;$i++){
+            if($i % $pagesize == 0){
+                $page[] = $i / $pagesize + 1;
+            }
+        }
+        $data['page'] = $page;
+        $data['p'] = $p;
+        $data['info'] = $this->Teammodel->search2($value,$kaishishijian2,$jieshushijian2);
+        $data['value'] = 'test';
+        $this->load->view('teamview',$data);
     }
 
     public function edit($uid){
