@@ -340,6 +340,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         }
                         ?>
                     </table>
+                    <nav class="text-center">
+                        <ul class="pagination">
+                            <li>
+                                <a href="<?php echo site_url('Team/index/1'); ?>" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <?php foreach ($page as $row): ?>
+                                <li><a href="<?php echo site_url('Team/index/' . $row ); ?> " <?php if($p == $row){echo "style=\"color: red\"";} ?>><?php echo($row); ?></a>
+                                </li>
+                            <?php endforeach; ?>
+                            <li>
+                                <a href="<?php
+                                if (count($page) == 0) {
+                                    echo site_url('Team/index/1/');
+                                } else {
+                                    echo site_url('Team/index/' . count($page));
+                                }
+
+                                ?>" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
                 <div class="tab-pane fade" id="home4">
                     <h1>服务器自动巡检结果</h1>
