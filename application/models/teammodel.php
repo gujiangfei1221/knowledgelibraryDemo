@@ -20,8 +20,8 @@ class Teammodel extends CI_Model{
         $this->db->query('update team set xiangmumingcheng = \''.$xiangmumingcheng.'\',renwumingcheng =\''.$renwumingcheng.'\',leibie=\''.$leibie.'\',ceshirenyuan=\''.$ceshirenyuan.'\',ceshilunci=\''.$ceshilunci.'\',kaishishijian=\''.$kaishishijian.'\',jieshushijian=\''.$jieshushijian.'\',gongshi=\''.$renwugongshi.'\',yusuanlaiyuan=\''.$yusuanlaiyuan.'\',beizhu=\''.$beizhu.'\' where uid=\''.$uid.'\'');
     }
 
-    public function show(){
-        $query = $this->db->query('select * from team');
+    public function show($offset,$pagesize){
+        $query = $this->db->query('select * from team limit '.$offset.','.$pagesize);
         return $query->result_array();
     }
 
@@ -61,6 +61,11 @@ class Teammodel extends CI_Model{
 
     public function yanjiurenwu(){
         $query = $this->db->query('select count(*) from team where leibie =\'研究任务\'');
+        return $query->result_array();
+    }
+
+    public function getcount(){
+        $query = $this->db->query('select count(*) from team');
         return $query->result_array();
     }
 }

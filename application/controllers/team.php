@@ -15,13 +15,25 @@ class Team extends CI_Controller{
         $this->load->model('Teammodel');
     }
 
-    public function index(){
+    public function index($p=1){
         if(!isset($_SESSION['name'])){
             echo '<script>alert("请登录系统!")</script>';
             echo '<script>window.location.href=\''.site_url('Login/index').'\';</script>';
             return;
         }
-        $data['info'] = $this->Teammodel->show();
+        $pagesize = 10;
+        $offset = ($p-1)*$pagesize;
+        $count = $this->Teammodel->getcount();
+        $count = $count[0]['count(*)'];
+        $page = array();
+        for($i=0;$i<$count;$i++){
+            if($i % $pagesize == 0){
+                $page[] = $i / $pagesize + 1;
+            }
+        }
+        $data['page'] = $page;
+        $data['p'] = $p;
+        $data['info'] = $this->Teammodel->show($offset,$pagesize);
         $data['gongnengceshi'] = $this->Teammodel->gongnengceshi()[0]['count(*)'];
         $data['xingnengceshi'] = $this->Teammodel->xingnengceshi()[0]['count(*)'];
         $data['anquanceshi'] = $this->Teammodel->anquanceshi()[0]['count(*)'];
