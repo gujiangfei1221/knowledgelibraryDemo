@@ -237,19 +237,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     <table class="table table-striped">
                         <tr>
-                            <th>序号</th>
-                            <th>项目名称</th>
-                            <th>任务名称</th>
-                            <th>类别</th>
-                            <th>测试人员</th>
-                            <th>测试轮次</th>
-                            <th>开始时间</th>
-                            <th>结束时间</th>
-                            <th>工时(小时)</th>
-                            <th>预算来源</th>
-                            <th>备注</th>
-                            <th>修改</th>
-                            <th>删除</th>
+                            <th width="2%">序号</th>
+                            <th width="15%">项目名称</th>
+                            <th width="15%">任务名称</th>
+                            <th width="8%">类别</th>
+                            <th width="8%">测试人员</th>
+                            <th width="6%">测试轮次</th>
+                            <th width="5%">开始时间</th>
+                            <th width="5%">结束时间</th>
+                            <th width="5%">工时(小时)</th>
+                            <th width="10%">预算来源</th>
+                            <th width="10%">备注</th>
+                            <th width="5%">修改</th>
+                            <th width="5%">删除</th>
                         </tr>
                         <?php
                         $i = 1;
