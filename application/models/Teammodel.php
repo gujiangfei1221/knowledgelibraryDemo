@@ -26,7 +26,7 @@ class Teammodel extends CI_Model{
     }
 
     public function show2($uid){
-        $query = $this->db->query('select * from team order by uid desc where uid =\''.$uid.'\'');
+        $query = $this->db->query('select * from team where uid =\''.$uid.'\''.'order by uid desc');
         return $query->result_array();
     }
 
@@ -35,7 +35,9 @@ class Teammodel extends CI_Model{
     }
 
     public function search($value){
-        $query = $this->db->query('select * from team order by uid desc where xiangmumingcheng like \'%'.$value.'%\' or renwumingcheng like \'%'.$value.'%\' or leibie like \'%'.$value.'%\'or ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\'');
+        $query = $this->db->query('select * from team
+where xiangmumingcheng like \'%'.$value.'%\' or renwumingcheng like \'%'.$value.'%\' or leibie like \'%'.$value.'%\'
+or ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\''.'order by uid desc');
         return $query->result_array();
     }
 
@@ -43,44 +45,44 @@ class Teammodel extends CI_Model{
         if($value != '' ){
             if($kaishishijian2 != ''){
                 if($jieshushijian2 != ''){
-                    $query = $this->db->query('select * from team order by uid desc
+                    $query = $this->db->query('select * from team
 where (xiangmumingcheng like \'%'.$value.'%\' or renwumingcheng like \'%'.$value.'%\' or leibie like \'%'.$value.'%\'or 
-ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\') and kaishishijian >= \''.$kaishishijian2.'\' and jieshushijian <= \''.$jieshushijian2.'\'');
+ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\') and kaishishijian >= \''.$kaishishijian2.'\' and jieshushijian <= \''.$jieshushijian2.'\''.'order by uid desc');
                 }
                 else {
-                    $query = $this->db->query('select * from team order by uid desc
+                    $query = $this->db->query('select * from team
 where (xiangmumingcheng like \'%'.$value.'%\' or renwumingcheng like \'%'.$value.'%\' or leibie like \'%'.$value.'%\'or 
-ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\') and kaishishijian >= \''.$kaishishijian2.'\'');
+ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\') and kaishishijian >= \''.$kaishishijian2.'\''.'order by uid desc');
                 }
             }
             else{
                 if($jieshushijian2 != ''){
-                    $query = $this->db->query('select * from team order by uid desc
+                    $query = $this->db->query('select * from team
 where (xiangmumingcheng like \'%'.$value.'%\' or renwumingcheng like \'%'.$value.'%\' or leibie like \'%'.$value.'%\'or 
-ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\') and jieshushijian <= \''.$jieshushijian2.'\'');
+ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\') and jieshushijian <= \''.$jieshushijian2.'\''.'order by uid desc');
                 }
                 else {
-                    $query = $this->db->query('select * from team order by uid desc
+                    $query = $this->db->query('select * from team
 where (xiangmumingcheng like \'%'.$value.'%\' or renwumingcheng like \'%'.$value.'%\' or leibie like \'%'.$value.'%\'or 
-ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\')');
+ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\')'.'order by uid desc');
                 }
             }
         }
         else{
             if($kaishishijian2 != ''){
                 if($jieshushijian2 != ''){
-                    $query = $this->db->query('select * from team order by uid desc
-where kaishishijian >= \''.$kaishishijian2.'\' and jieshushijian <= \''.$jieshushijian2.'\'');
+                    $query = $this->db->query('select * from team
+where kaishishijian >= \''.$kaishishijian2.'\' and jieshushijian <= \''.$jieshushijian2.'\''.'order by uid desc');
                 }
                 else {
-                    $query = $this->db->query('select * from team order by uid desc
-where kaishishijian >= \''.$kaishishijian2.'\'');
+                    $query = $this->db->query('select * from team
+where kaishishijian >= \''.$kaishishijian2.'\''.'order by uid desc');
                 }
             }
             else{
                 if($jieshushijian2 != ''){
-                    $query = $this->db->query('select * from team order by uid desc
-where jieshushijian <= \''.$jieshushijian2.'\'');
+                    $query = $this->db->query('select * from team
+where jieshushijian <= \''.$jieshushijian2.'\''.'order by uid desc');
                 }
                 else {
                     $query = $this->db->query('select * from team order by uid desc');
