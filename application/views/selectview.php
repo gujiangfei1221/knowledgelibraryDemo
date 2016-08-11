@@ -41,11 +41,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="<?php echo site_url('Select/index') ?>">欢迎：<?php echo $_SESSION['name'] ?></a></li>
-                <li><a href="<?php echo site_url('Main/index/1') ?>">下载文档</a></li>
-                <li><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
-                <li><a href="<?php echo site_url('Urltool/index') ?>">编解码小工具</a></li>
-                <li><a href="<?php echo site_url('Testinfo/index') ?>">测试环境查看</a></li>
+                <li <?php if ($_SESSION['duiwai'] == 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Main/index/1') ?>">下载文档</a></li>
+                <li <?php if ($_SESSION['duiwai'] == 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
+                <li <?php if ($_SESSION['duiwai'] == 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Urltool/index') ?>">编解码小工具</a></li>
+                <li <?php if ($_SESSION['duiwai'] == 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Testinfo/index') ?>">测试环境查看</a></li>
                 <li <?php if ($_SESSION['team'] != 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Team/index') ?>">技术研究小组</a></li>
+                <li><a href="<?php echo site_url('Security/index') ?>">安全测试结果下载</a></li>
                 <?php
                 if ($_SESSION['quanxian'] == '管理员') {
                     echo '<li><a href="' . site_url('Manage/index') . '">后台管理</a></li>';
@@ -128,24 +129,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="col-md-1"></div>
 </div>
 
+<div class="row">
+    <div class="col-md-1"></div>
 <?php
 if ($_SESSION['team'] == 'yes') {
-    echo "<div class=\"row\">
-    <div class=\"col-md-1\"></div>
+    echo "
     <div class=\"col-md-5\">
         <div class=\"jumbotron text-center\">
             <h2>技术研究小组</h2>
             <a class=\"btn btn-primary btn-lg\" href=\"".site_url('Team/index') ."\" role=\"button\">查看信息</a>
         </div>
-    </div>
-    <div class=\"col-md-5\">
-
+    </div>";}?>
+    <div class="col-md-5">
+        <div class="jumbotron text-center">
+            <h2>安全测试结果下载</h2>
+            <a class="btn btn-primary btn-lg" href="<?php echo site_url('Security/index') ?>" role="button">结果下载</a>
+        </div>
     </div>
     <div class=\"col-md-1\"></div>
-</div>";
-}
-?>
-
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

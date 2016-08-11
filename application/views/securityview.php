@@ -12,7 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>下载文档</title>
 
     <!-- Bootstrap -->
-    <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="<?= $this->config->item('base_url'); ?>/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </li>
                 <li><a href="<?php echo site_url('Common/logout') ?>">退出</a></li>
             </ul>
-            <?php echo form_open('Main/index/1', 'class="navbar-form navbar-right" role="search"') ?>
+            <?php echo form_open('Security/index/1', 'class="navbar-form navbar-right" role="search"') ?>
             <div class="form-group">
                 <?php
                 $data = array(
@@ -100,7 +101,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="col-md-3">
         <div id="treeview6" class="treeview">
         </div>
-
     </div>
     <div class="col-md-9">
         <table class="table table-striped table-hover text-center">
@@ -121,8 +121,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td><a href=\"" . site_url('Detail/index/' . $row['uid']) . "\">" . $row['title'] . "</a></td>
                         <td>" . $row['lanmupath'] . "</td>
                         <td>" . $row['user'] . "</td>
-                        <td><a href=\"" . site_url('Main/download/' . $row['filename']) . "\">下载</a></td>
-                        <td style='display:none;'><a href=\"" . site_url('Main/deletecontent/' . $row['title']) . "\"> 删除</a ></td >
+                        <td><a href=\"" . site_url('Security/download/' . $row['filename']) . "\">下载</a></td>
+                        <td style='display:none;'><a href=\"" . site_url('Security/deletecontent/' . $row['title']) . "\"> 删除</a ></td >
             </tr>";
                 } else {
                     echo "<tr>
@@ -130,8 +130,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td><a href=\"" . site_url('Detail/index/' . $row['uid']) . "\" >" . $row['title'] . "</a></td>
                         <td>" . $row['lanmupath'] . "</td>
                         <td>" . $row['user'] . "</td>
-                        <td><a href=\"" . site_url('Main/download/' . $row['filename']) . "\">下载</a></td>
-                        <td><a href=\"" . site_url('Main/deletecontent/' . $row['uid']) . "\"> 删除</a ></td >
+                        <td><a href=\"" . site_url('Security/download/' . $row['filename']) . "\">下载</a></td>
+                        <td><a href=\"" . site_url('Security/deletecontent/' . $row['uid']) . "\"> 删除</a ></td >
             </tr>";
                 }
                 $i++;
@@ -141,20 +141,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <nav class="text-center" style="<?php if($value != null && $value != ''){echo 'display:none';} ?>">
             <ul class="pagination">
                 <li>
-                    <a href="<?php echo site_url('Main/index/1/' . $lanmu2); ?>" aria-label="Previous">
+                    <a href="<?php echo site_url('Security/index/1/' . $lanmu2); ?>" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
                 <?php foreach ($page as $row): ?>
-                    <li><a href="<?php echo site_url('Main/index/' . $row . '/' . $lanmu2); ?> " <?php if($p == $row){echo "style=\"color: red\"";} ?>><?php echo($row); ?></a>
+                    <li><a href="<?php echo site_url('Security/index/' . $row . '/' . $lanmu2); ?> " <?php if($p == $row){echo "style=\"color: red\"";} ?>><?php echo($row); ?></a>
                     </li>
                 <?php endforeach; ?>
                 <li>
                     <a href="<?php
                     if (count($page) == 0) {
-                        echo site_url('Main/index/1/' . $lanmu2);
+                        echo site_url('Security/index/1/' . $lanmu2);
                     } else {
-                        echo site_url('Main/index/' . count($page) . '/' . $lanmu2);
+                        echo site_url('Security/index/' . count($page) . '/' . $lanmu2);
                     }
 
                     ?>" aria-label="Next">
@@ -163,113 +163,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </li>
             </ul>
         </nav>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <?php echo form_open('Common/xiugaimima') ?>
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">修改密码</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="oldpassword">原密码</label>
-                    <?php
-                    $data = array(
-                        'type' => 'password',
-                        'class' => 'form-control',
-                        'id' => 'oldpassword',
-                        'placeholder' => '原密码',
-                        'name' => 'oldpassword',
-                        'value' => ''
-                    );
-                    echo form_input($data);
-                    ?>
-                </div>
-                <div class="form-group">
-                    <label for="newpassword">新密码</label>
-                    <?php
-                    $data = array(
-                        'type' => 'password',
-                        'class' => 'form-control',
-                        'id' => 'newpassword',
-                        'placeholder' => '新密码',
-                        'name' => 'newpassword',
-                        'value' => ''
-                    );
-                    echo form_input($data);
-                    ?>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="submit" class="btn btn-primary">保存</button>
-            </div>
-            <?php
-            $data = array(
-                'controlname' => 'Main'
-            );
-            echo form_hidden($data);
-            ?>
-            <?php echo form_close() ?>
-        </div>
-    </div>
-</div>
-
-<!-- Modal2 -->
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <?php echo form_open('Common/xiugaitestinfo') ?>
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">修改测试环境</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="oldpassword">操作系统</label>
-                    <?php
-                    $data = array(
-                        'type' => 'text',
-                        'class' => 'form-control',
-                        'placeholder' => '操作系统版本',
-                        'name' => 'osinfo',
-                        'value'=>''
-                    );
-                    echo form_input($data);
-                    ?>
-                </div>
-                <div class="form-group">
-                    <label for="newpassword">浏览器版本</label>
-                    <?php
-                    $data = array(
-                        'type' => 'text',
-                        'class' => 'form-control',
-                        'placeholder' => '浏览器版本',
-                        'name' => 'ieinfo',
-                        'value'=>''
-                    );
-                    echo form_input($data);
-                    ?>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="submit" class="btn btn-primary">保存</button>
-            </div>
-            <?php
-            $data = array(
-                'controlname' => 'Main'
-            );
-            echo form_hidden($data);
-            ?>
-            <?php echo form_close() ?>
-        </div>
     </div>
 </div>
 
@@ -300,3 +193,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </body>
 
 </html>
+

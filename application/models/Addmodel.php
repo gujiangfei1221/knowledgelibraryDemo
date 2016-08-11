@@ -27,8 +27,15 @@ class Addmodel extends CI_Model{
         return $query->result_array();
     }
 
-    public function insertcontent($title,$lanmu,$content,$filename,$filepath,$lanmupath,$name,$user){
-        $this->db->query('insert into content(title,lanmu,content,filename,filepath,lanmupath,name,user) values(\''.$title.'\',\''.$lanmu.'\',\''.$content.'\',\''.$filename.'\',\''.$filepath.'\',\''.$lanmupath.'\',\''.$name.'\',\''.$user.'\')');
+    public function insertcontent($title,$lanmu,$content,$filename,$filepath,$lanmupath,$name,$user,$duiwai){
+        if($duiwai == null){
+            $duiwai = 'no';
+        }
+        elseif($duiwai == 'on'){
+            $duiwai = 'yes';
+        }
+        $this->db->query('insert into content(title,lanmu,content,filename,filepath,lanmupath,name,user,duiwai)
+values(\''.$title.'\',\''.$lanmu.'\',\''.$content.'\',\''.$filename.'\',\''.$filepath.'\',\''.$lanmupath.'\',\''.$name.'\',\''.$user.'\',\''.$duiwai.'\')');
     }
 }
 

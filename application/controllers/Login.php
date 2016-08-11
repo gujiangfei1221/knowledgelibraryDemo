@@ -31,6 +31,7 @@ class Login extends CI_Controller{
                 $_SESSION['name'] = $data[0]['name'];
                 $_SESSION['quanxian'] = $data[0]['quanxian'];
                 $_SESSION['team'] = $data[0]['team'];
+                $_SESSION['duiwai'] = $data[0]['duiwai'];
                 redirect('Select/index');
             }
             else{

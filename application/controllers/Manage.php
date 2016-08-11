@@ -35,12 +35,13 @@ class Manage extends CI_Controller
     {
         $selectvalue = $this->input->post('lanmus');
         $lanmuname = $this->input->post('lanmuname');
+        $duiwai = $this->input->post('duiwai2');
         if ($selectvalue == 'root') {
             $level = 1;
             $parentpath = 'root/';
             $namepath = $parentpath . $lanmuname . '/';
             if (!is_dir('mulu/' . $namepath)) {
-                $this->Managemodel->addlanmu($selectvalue, $lanmuname, $level, $parentpath, $namepath);
+                $this->Managemodel->addlanmu($selectvalue, $lanmuname, $level, $parentpath, $namepath,$duiwai);
                 mkdir('mulu/' . $namepath, 0777);
                 redirect('Manage/index');
             } else {
@@ -53,7 +54,7 @@ class Manage extends CI_Controller
             $parentpath = $data[0]['namepath'];
             $namepath = $parentpath . $lanmuname . '/';
             if (!is_dir('mulu/' . $namepath)) {
-                $this->Managemodel->addlanmu($selectvalue, $lanmuname, $level + 1, $parentpath, $namepath);
+                $this->Managemodel->addlanmu($selectvalue, $lanmuname, $level + 1, $parentpath, $namepath,$duiwai);
                 mkdir('mulu/' . $namepath, 0777);
                 redirect('Manage/index');
             } else {
@@ -68,7 +69,8 @@ class Manage extends CI_Controller
         $loginname = $this->input->post('loginname');
         $password = $this->input->post('password');
         $password = md5($password);
-        $this->Managemodel->adduser($loginid,$loginname,$password);
+        $duiwai = $this->input->post('duiwai');
+        $this->Managemodel->adduser($loginid,$loginname,$password,$duiwai);
         echo '<script>alert("用户新增成功!")</script>';
         echo '<script>window.location.href=\'' . site_url('Manage/index') . '\';</script>';
     }

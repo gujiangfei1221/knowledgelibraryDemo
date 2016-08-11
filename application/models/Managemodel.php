@@ -12,12 +12,24 @@ class Managemodel extends CI_Model{
         parent::__construct();
     }
 
-    public function addlanmu($parentname,$name,$level,$parentpath,$namepath){
-        $this->db->query('insert into lanmu(parentname,name,level,parentpath,namepath) values(\''.$parentname.'\',\''.$name.'\',\''.$level.'\',\''.$parentpath.'\',\''.$namepath.'\')');
+    public function addlanmu($parentname,$name,$level,$parentpath,$namepath,$duiwai){
+        if($duiwai == null){
+            $duiwai = 'no';
+        }
+        elseif($duiwai == 'on'){
+            $duiwai = 'yes';
+        }
+        $this->db->query('insert into lanmu(parentname,name,level,parentpath,namepath,duiwai) values(\''.$parentname.'\',\''.$name.'\',\''.$level.'\',\''.$parentpath.'\',\''.$namepath.'\',\''.$duiwai.'\')');
     }
 
-    public function adduser($loginid,$loginname,$password){
-        $this->db->query('insert into user(name,username,password,quanxian) values (\''.$loginname.'\',\''.$loginid.'\',\''.$password.'\',\''.'普通用户\''.')');
+    public function adduser($loginid,$loginname,$password,$duiwai){
+        if($duiwai == null){
+            $duiwai = 'no';
+        }
+        elseif($duiwai == 'on'){
+            $duiwai = 'yes';
+        }
+        $this->db->query('insert into user(name,username,password,quanxian,duiwai) values (\''.$loginname.'\',\''.$loginid.'\',\''.$password.'\',\''.'普通用户\''.',\''.$duiwai.'\')');
     }
 
     public function resetuserpassword($uid){

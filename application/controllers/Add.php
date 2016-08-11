@@ -32,6 +32,7 @@ class Add extends CI_Controller{
         $path = $this->Addmodel->getpath($selectvalue);
         $name = $_FILES['userfile']['name'];
         $user = $_SESSION['name'];
+        $duiwai = $this->input->post('duiwai');
 
         $data0 = $this->Addmodel->getlanmu($selectvalue);
         $lanmu2 = $data0[0]['name'];
@@ -59,7 +60,7 @@ class Add extends CI_Controller{
             $data = array('upload_data' => $this->upload->data());
             $filepath = $data['upload_data']['full_path'];
             $filename = $data['upload_data']['file_name'];
-            $this->Addmodel->insertcontent($title,$lanmu2,$content,$filename,$filepath,$path[0]['namepath'],$name,$user);
+            $this->Addmodel->insertcontent($title,$lanmu2,$content,$filename,$filepath,$path[0]['namepath'],$name,$user,$duiwai);
             echo '<script>alert("新增成功！")</script>';
             echo '<script>window.location.href=\''.site_url('Add/index').'\';</script>';
         }
