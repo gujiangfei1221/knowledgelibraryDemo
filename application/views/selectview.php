@@ -41,11 +41,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="<?php echo site_url('Select/index') ?>">欢迎：<?php echo $_SESSION['name'] ?></a></li>
-                <li <?php if ($_SESSION['duiwai'] == 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Main/index/1') ?>">下载文档</a></li>
-                <li <?php if ($_SESSION['duiwai'] == 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
-                <li <?php if ($_SESSION['duiwai'] == 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Urltool/index') ?>">编解码小工具</a></li>
-                <li <?php if ($_SESSION['duiwai'] == 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Testinfo/index') ?>">测试环境查看</a></li>
-                <li <?php if ($_SESSION['team'] != 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Team/index') ?>">技术研究小组</a></li>
+                <li <?php if ($_SESSION['duiwai'] == 'yes') {
+                    echo "style='display:none'";
+                } ?>><a href="<?php echo site_url('Main/index/1') ?>">下载文档</a></li>
+                <li <?php if ($_SESSION['duiwai'] == 'yes') {
+                    echo "style='display:none'";
+                } ?>><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
+                <li <?php if ($_SESSION['duiwai'] == 'yes') {
+                    echo "style='display:none'";
+                } ?>><a href="<?php echo site_url('Urltool/index') ?>">编解码小工具</a></li>
+                <li <?php if ($_SESSION['duiwai'] == 'yes') {
+                    echo "style='display:none'";
+                } ?>><a href="<?php echo site_url('Testinfo/index') ?>">测试环境查看</a></li>
+                <li <?php if ($_SESSION['team'] != 'yes') {
+                    echo "style='display:none'";
+                } ?>><a href="<?php echo site_url('Team/index') ?>">技术研究小组</a></li>
                 <li><a href="<?php echo site_url('Security/index') ?>">安全测试结果下载</a></li>
                 <?php
                 if ($_SESSION['quanxian'] == '管理员') {
@@ -93,53 +103,60 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <!-- /.container-fluid -->
 </nav>
-<div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-5">
-        <div class="jumbotron text-center">
+<?php if ($_SESSION['duiwai'] != 'yes') {
+    echo "
+    <div class=\"row\">
+    <div class=\"col-md-1\"></div>
+    <div class=\"col-md-5\">
+        <div class=\"jumbotron text-center\">
             <h2>下载文档或搜索问题</h2>
 
-            <p><a class="btn btn-primary btn-lg" href="<?php echo site_url('Main/index') ?>" role="button">下载文档</a></p>
+            <p><a class=\"btn btn-primary btn-lg\" href=\"<?php echo site_url('Main/index') ?>\" role=\"button\">下载文档</a></p>
         </div>
     </div>
-    <div class="col-md-5">
-        <div class="jumbotron text-center">
+    <div class=\"col-md-5\">
+        <div class=\"jumbotron text-center\">
             <h2>上传文档或登记问题</h2>
 
-            <p><a class="btn btn-primary btn-lg" href="<?php echo site_url('Add/index') ?>" role="button">上传文档</a></p>
+            <p><a class=\"btn btn-primary btn-lg\" href=\"<?php echo site_url('Add/index') ?>\" role=\"button\">上传文档</a></p>
         </div>
     </div>
-    <div class="col-md-1"></div>
+    <div class=\"col-md-1\"></div>
 </div>
 
-<div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-5">
-        <div class="jumbotron text-center">
+<div class=\"row\">
+    <div class=\"col-md-1\"></div>
+    <div class=\"col-md-5\">
+        <div class=\"jumbotron text-center\">
             <h2>编解码小工具</h2>
-            <a class="btn btn-primary btn-lg" href="<?php echo site_url('Urltool/index') ?>" role="button">编解码工具</a>
+            <a class=\"btn btn-primary btn-lg\" href=\"<?php echo site_url('Urltool/index') ?>\" role=\"button\">编解码工具</a>
         </div>
     </div>
-    <div class="col-md-5">
-        <div class="jumbotron text-center">
+    <div class=\"col-md-5\">
+        <div class=\"jumbotron text-center\">
             <h2>部门个人测试环境查看</h2>
-            <a class="btn btn-primary btn-lg" href="<?php echo site_url('Testinfo/index') ?>" role="button">查看信息</a>
+            <a class=\"btn btn-primary btn-lg\" href=\"<?php echo site_url('Testinfo/index') ?>\" role=\"button\">查看信息</a>
         </div>
     </div>
-    <div class="col-md-1"></div>
+    <div class=\"col-md-1\"></div>
 </div>
+    ";
+}
+?>
+
 
 <div class="row">
     <div class="col-md-1"></div>
-<?php
-if ($_SESSION['team'] == 'yes') {
-    echo "
+    <?php
+    if ($_SESSION['team'] == 'yes') {
+        echo "
     <div class=\"col-md-5\">
         <div class=\"jumbotron text-center\">
             <h2>技术研究小组</h2>
-            <a class=\"btn btn-primary btn-lg\" href=\"".site_url('Team/index') ."\" role=\"button\">查看信息</a>
+            <a class=\"btn btn-primary btn-lg\" href=\"" . site_url('Team/index') . "\" role=\"button\">查看信息</a>
         </div>
-    </div>";}?>
+    </div>";
+    } ?>
     <div class="col-md-5">
         <div class="jumbotron text-center">
             <h2>安全测试结果下载</h2>
