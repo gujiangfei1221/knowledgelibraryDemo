@@ -111,14 +111,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class=\"jumbotron text-center\">
             <h2>下载文档或搜索问题</h2>
 
-            <p><a class=\"btn btn-primary btn-lg\" href=\"<?php echo site_url('Main/index') ?>\" role=\"button\">下载文档</a></p>
+            <p><a class=\"btn btn-primary btn-lg\" href=\"".site_url('Main/index')."\" role=\"button\">下载文档</a></p>
         </div>
     </div>
     <div class=\"col-md-5\">
         <div class=\"jumbotron text-center\">
             <h2>上传文档或登记问题</h2>
 
-            <p><a class=\"btn btn-primary btn-lg\" href=\"<?php echo site_url('Add/index') ?>\" role=\"button\">上传文档</a></p>
+            <p><a class=\"btn btn-primary btn-lg\" href=\"".site_url('Add/index')."\" role=\"button\">上传文档</a></p>
         </div>
     </div>
     <div class=\"col-md-1\"></div>
@@ -129,13 +129,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class=\"col-md-5\">
         <div class=\"jumbotron text-center\">
             <h2>编解码小工具</h2>
-            <a class=\"btn btn-primary btn-lg\" href=\"<?php echo site_url('Urltool/index') ?>\" role=\"button\">编解码工具</a>
+            <a class=\"btn btn-primary btn-lg\" href=\"".site_url('Urltool/index')."\" role=\"button\">编解码工具</a>
         </div>
     </div>
     <div class=\"col-md-5\">
         <div class=\"jumbotron text-center\">
             <h2>部门个人测试环境查看</h2>
-            <a class=\"btn btn-primary btn-lg\" href=\"<?php echo site_url('Testinfo/index') ?>\" role=\"button\">查看信息</a>
+            <a class=\"btn btn-primary btn-lg\" href=\"".site_url('Testinfo/index')."\" role=\"button\">查看信息</a>
         </div>
     </div>
     <div class=\"col-md-1\"></div>
