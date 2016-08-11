@@ -105,15 +105,15 @@ class Security extends CI_Controller
 
     public function deletecontent($uid){
         $uid = urldecode($uid);
-        $data = $this->Mainmodel->getpath($uid);
+        $data = $this->Securitymodel->getpath($uid);
         unlink($data[0]['filepath']);
-        $this->Mainmodel->deletecontent($uid);
+        $this->Securitymodel->deletecontent($uid);
         echo '<script>alert("É¾³ý³É¹¦£¡")</script>';
         echo '<script>window.location.href=\''.site_url('Security/index').'\';</script>';
     }
 
     public function download($filename){
-        $data = $this->Mainmodel->getpath2($filename);
+        $data = $this->Securitymodel->getpath2($filename);
         $filename0 = $data[0]['filepath'];
         $out_filename0 = $data[0]['name'];
         $this->forceDownload($filename0,$out_filename0);
@@ -149,13 +149,13 @@ class Security extends CI_Controller
     public function search($p=1,$lanmu = 'all'){
         $value = $this->input->post('search');
         $lanmu = urldecode($lanmu);
-        $count = $this->Mainmodel->getcount($lanmu);
+        $count = $this->MainmSecuritymodelodel->getcount($lanmu);
         $count = $count[0]['count(*)'];
         $pagesize = 20;
         $offset = ($p-1)*$pagesize;
 
 
-        $data = $this->Mainmodel->selectlanmu();
+        $data = $this->Securitymodel->selectlanmu();
         $data2 = $this->getmulu($data);
 
         $data3 = $this->handledata($data2);
@@ -167,11 +167,11 @@ class Security extends CI_Controller
 
         $data3['lanmu'] = $tmp;
         if($lanmu == 'all'){
-            $data3['content'] = $this->Mainmodel->search($value);
+            $data3['content'] = $this->Securitymodel->search($value);
         }
         else{
 
-            $data3['content'] = $this->Mainmodel->search($value);
+            $data3['content'] = $this->Securitymodel->search($value);
         }
 
         $page = array();
