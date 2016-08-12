@@ -36,7 +36,7 @@ class Login extends CI_Controller{
                 }
                 else{
                     echo '<script>alert("您的密码是初始密码，请修改后再登录！")</script>';
-                    echo '<script>window.location.href=\''.site_url('Login/index').'\';</script>';
+                    echo '<script>window.location.href=\''.site_url('Changepwd/index').'\';</script>';
                 }
             }
             else{
