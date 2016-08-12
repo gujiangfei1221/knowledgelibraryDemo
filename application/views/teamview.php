@@ -214,8 +214,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <h1>测试项目统计</h1>
                     <div class="row">
                         <div class="col-md-1">
-                            <button id="exampleInputName2" type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#ceshixiangmu" style="margin-bottom: 8px">新增
+                            <button  type="button" class="btn btn-primary" style="margin-bottom: 8px" onclick="window.location.href='<?php echo site_url('Teamadd/index') ?>'">新增
                             </button>
                         </div>
                         <?php echo form_open('Team/search2') ?>
@@ -540,98 +539,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </div>
 
-<!-- ceshixiangmu -->
-<div class="modal fade" id="ceshixiangmu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <?php echo form_open('Team/add') ?>
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">新增</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>项目名称</label>
-                    <input type="text" placeholder="项目名称" class="form-control" name="xiangmumingcheng">
-                </div>
-                <div class="form-group">
-                    <label>任务名称</label>
-                    <input type="text" placeholder="任务名称" class="form-control" name="remwumingcheng">
-                </div>
-                <div class="form-group">
-                    <label>类别</label>
-                    <select class="form-control" name="leibie">
-                        <option value="功能测试">功能测试</option>
-                        <option value="性能测试">性能测试</option>
-                        <option value="安全测试">安全测试</option>
-                        <option value="自动化测试">自动化测试</option>
-                        <option value="研究任务">研究任务</option>
-                        <option value="服务器维护">服务器维护</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>测试人员</label>
-                    <select class="form-control" name="ceshirenyuan">
-                        <option value="顾疆飞">顾疆飞</option>
-                        <option value="姜志伟">姜志伟</option>
-                        <option value="田园">田园</option>
-                        <option value="杨剑">杨剑</option>
-                        <option value="张榆">张榆</option>
-                        <option value="姜志伟、田园">姜志伟、田园</option>
-                        <option value="顾疆飞、杨剑">顾疆飞、杨剑</option>
-                        <option value="张榆、杨剑">张榆、杨剑</option>
-                        <option value="张榆、顾疆飞">张榆、顾疆飞</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>测试轮次</label>
-                    <input type="text" placeholder="测试轮次" class="form-control" name="ceshilunci">
-                </div>
-                <div class="form-group">
-                    <label>开始时间</label>
-                    <!--                    <input type="text" placeholder="开始时间" class="form-control" name="kaishishijian">-->
-                    <div class="input-group">
-                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar"></i></span>
-                        <input type="text" id="calendar1" placeholder="开始时间" class="form-control" name="kaishishijian">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>结束时间</label>
-                    <!--                    <input type="text" placeholder="结束时间" class="form-control" name="jieshushijian">-->
-                    <div class="input-group">
-                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar"></i></span>
-                        <input type="text" id="calendar2" placeholder="结束时间" class="form-control" name="jieshushijian">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>任务工时</label>
-                    <input type="text" placeholder="任务工时" class="form-control" name="renwugongshi">
-                </div>
-                <div class="form-group">
-                    <label>预算来源</label>
-                    <input type="text" placeholder="预算来源" class="form-control" name="yusuanlaiyuan">
-                </div>
-                <div class="form-group">
-                    <label>备注</label>
-                    <input type="text" placeholder="备注" class="form-control" name="beizhu">
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="submit" class="btn btn-primary">保存</button>
-            </div>
-            <?php
-            $data = array(
-                'controlname' => 'Team'
-            );
-            echo form_hidden($data);
-            ?>
-            <?php echo form_close() ?>
-        </div>
-    </div>
-</div>
 </body>
 
 </html>

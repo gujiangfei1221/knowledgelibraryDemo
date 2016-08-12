@@ -22,6 +22,11 @@ class Main extends CI_Controller
             echo '<script>window.location.href=\'' . site_url('Login/index') . '\';</script>';
             return;
         }
+        if($_SESSION['duiwai'] == 'yes'){
+            echo '<script>alert("您没有权限访问该模块!")</script>';
+            echo '<script>window.location.href=\''.site_url('Select/index').'\';</script>';
+            return;
+        }
         $lanmu = urldecode($lanmu);
         $count = $this->Mainmodel->getcount($lanmu);
         $count = $count[0]['count(*)'];
@@ -146,6 +151,16 @@ class Main extends CI_Controller
     }
 
     public function search($p=1,$lanmu = 'all'){
+        if (!isset($_SESSION['name'])) {
+            echo '<script>alert("请登录系统!")</script>';
+            echo '<script>window.location.href=\'' . site_url('Login/index') . '\';</script>';
+            return;
+        }
+        if($_SESSION['duiwai'] == 'yes'){
+            echo '<script>alert("您没有权限访问该模块!")</script>';
+            echo '<script>window.location.href=\''.site_url('Select/index').'\';</script>';
+            return;
+        }
         $value = $this->input->post('search');
         $lanmu = urldecode($lanmu);
         $count = $this->Mainmodel->getcount($lanmu);
@@ -186,6 +201,16 @@ class Main extends CI_Controller
     }
 
     public function edit($uid){
+        if (!isset($_SESSION['name'])) {
+            echo '<script>alert("请登录系统!")</script>';
+            echo '<script>window.location.href=\'' . site_url('Login/index') . '\';</script>';
+            return;
+        }
+        if($_SESSION['duiwai'] == 'yes'){
+            echo '<script>alert("您没有权限访问该模块!")</script>';
+            echo '<script>window.location.href=\''.site_url('Select/index').'\';</script>';
+            return;
+        }
         $data['info'] = $this->Mainmodel->showedit($uid);
         $this->load->view('maineditview',$data);
     }

@@ -21,6 +21,11 @@ class Team extends CI_Controller{
             echo '<script>window.location.href=\''.site_url('Login/index').'\';</script>';
             return;
         }
+        if($_SESSION['duiwai'] == 'yes'){
+            echo '<script>alert("您没有权限访问该模块!")</script>';
+            echo '<script>window.location.href=\''.site_url('Select/index').'\';</script>';
+            return;
+        }
         $pagesize = 10;
         $offset = ($p-1)*$pagesize;
         $count = $this->Teammodel->getcount();
@@ -66,6 +71,16 @@ class Team extends CI_Controller{
     }
 
     public function search($p=1){
+        if(!isset($_SESSION['name'])){
+            echo '<script>alert("请登录系统!")</script>';
+            echo '<script>window.location.href=\''.site_url('Login/index').'\';</script>';
+            return;
+        }
+        if($_SESSION['duiwai'] == 'yes'){
+            echo '<script>alert("您没有权限访问该模块!")</script>';
+            echo '<script>window.location.href=\''.site_url('Select/index').'\';</script>';
+            return;
+        }
         $value = $this->input->post('search');
         if($value != ''){
             $pagesize = 10;
@@ -92,6 +107,16 @@ class Team extends CI_Controller{
     }
 
     public function search2($p=1){
+        if (!isset($_SESSION['name'])) {
+            echo '<script>alert("请登录系统!")</script>';
+            echo '<script>window.location.href=\'' . site_url('Login/index') . '\';</script>';
+            return;
+        }
+        if($_SESSION['duiwai'] == 'yes'){
+            echo '<script>alert("您没有权限访问该模块!")</script>';
+            echo '<script>window.location.href=\''.site_url('Select/index').'\';</script>';
+            return;
+        }
         $value = $this->input->post('search2');
         $kaishishijian2 = $this->input->post('kaishishijian2');
         $jieshushijian2 = $this->input->post('jieshushijian2');
@@ -114,6 +139,16 @@ class Team extends CI_Controller{
     }
 
     public function edit($uid){
+        if (!isset($_SESSION['name'])) {
+            echo '<script>alert("请登录系统!")</script>';
+            echo '<script>window.location.href=\'' . site_url('Login/index') . '\';</script>';
+            return;
+        }
+        if($_SESSION['duiwai'] == 'yes'){
+            echo '<script>alert("您没有权限访问该模块!")</script>';
+            echo '<script>window.location.href=\''.site_url('Select/index').'\';</script>';
+            return;
+        }
         $data['info'] = $this->Teammodel->show2($uid)[0];
         $this->load->view('teameditview',$data);
     }

@@ -11,6 +11,7 @@
     <file url="file://$PROJECT_DIR$/application/controllers/Security.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/controllers/Select.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/controllers/Team.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/controllers/Teamadd.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/controllers/Testinfo.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/controllers/Urltool.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/models/Addmodel.php" charset="UTF-8" />
@@ -28,6 +29,7 @@
     <file url="file://$PROJECT_DIR$/application/views/detailview.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/maineditview.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/securityview.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/teamaddview.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/teameditview.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/teamview.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/testinfoview.php" charset="UTF-8" />

@@ -22,6 +22,11 @@ class Manage extends CI_Controller
             echo '<script>window.location.href=\'' . site_url('Login/index') . '\';</script>';
             return;
         }
+        if($_SESSION['duiwai'] == 'yes'){
+            echo '<script>alert("您没有权限访问该模块!")</script>';
+            echo '<script>window.location.href=\''.site_url('Select/index').'\';</script>';
+            return;
+        }
         $data['lanmu'] = $this->Managemodel->selectlanmu();
         $data['content'] = $this->Managemodel->selectcontent();
         $data['user'] = $this->Managemodel->selectuser();
