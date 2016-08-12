@@ -60,6 +60,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li><a href="<?php echo site_url('Testinfo/index') ?>">测试环境查看</a></li>
                     </ul>
                 </li>
+                <li <?php if ($_SESSION['team'] != 'yes') {
+                    echo "style='display:none'";
+                } ?>><a href="<?php echo site_url('Team/index') ?>">技术研究小组</a></li>
                 <li><a href="<?php echo site_url('Security/index') ?>">安全测试结果下载</a></li>
                 <?php
                 if ($_SESSION['quanxian'] == '管理员') {
