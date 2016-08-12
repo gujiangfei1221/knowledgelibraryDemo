@@ -43,11 +43,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="<?php echo site_url('Select/index') ?>">欢迎：<?php echo $_SESSION['name'] ?></a></li>
-                <li <?php if ($_SESSION['duiwai'] == 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Main/index/1') ?>">下载文档</a></li>
-                <li <?php if ($_SESSION['duiwai'] == 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
-                <li <?php if ($_SESSION['duiwai'] == 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Urltool/index') ?>">编解码小工具</a></li>
-                <li <?php if ($_SESSION['duiwai'] == 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Testinfo/index') ?>">测试环境查看</a></li>
-                <li <?php if ($_SESSION['team'] != 'yes'){echo "style='display:none'"; } ?>><a href="<?php echo site_url('Team/index') ?>">技术研究小组</a></li>
+                <li class="dropdown" <?php if ($_SESSION['duiwai'] == 'yes') {
+                    echo "style='display:none'";
+                } ?>><a class="dropdown-toggle" data-toggle="dropdown" href="#">下载文档和上传文档<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo site_url('Main/index/1') ?>">下载文档</a></li>
+                        <li><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown" <?php if ($_SESSION['duiwai'] == 'yes') {
+                    echo "style='display:none'";
+                } ?>><a class="dropdown-toggle" data-toggle="dropdown" href="#">其他菜单<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo site_url('Urltool/index') ?>">编解码小工具</a></li>
+                        <li><a href="<?php echo site_url('Testinfo/index') ?>">测试环境查看</a></li>
+                    </ul>
+                </li>
                 <li><a href="<?php echo site_url('Security/index') ?>">安全测试结果下载</a></li>
                 <?php
                 if ($_SESSION['quanxian'] == '管理员') {
