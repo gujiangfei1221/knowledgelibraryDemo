@@ -76,6 +76,11 @@ class Managemodel extends CI_Model{
     public function deletecontent($lanmupath){
         $this->db->query('delete from content where lanmupath =\''.$lanmupath.'\'');
     }
+
+    public function isuserexist($username){
+        $query = $this->db->query('select * from user where username = \''.$username.'\'');
+        return $query->result_array();
+    }
 }
 
 ?>

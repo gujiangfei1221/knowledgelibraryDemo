@@ -70,9 +70,17 @@ class Manage extends CI_Controller
         $password = $this->input->post('password');
         $password = md5($password);
         $duiwai = $this->input->post('duiwai');
-        $this->Managemodel->adduser($loginid,$loginname,$password,$duiwai);
-        echo '<script>alert("用户新增成功!")</script>';
-        echo '<script>window.location.href=\'' . site_url('Manage/index') . '\';</script>';
+        $data = $this->Managemodel->isuserexist($loginid);
+        if($data == ''){
+            $this->Managemodel->adduser($loginid,$loginname,$password,$duiwai);
+            echo '<script>alert("用户新增成功!")</script>';
+            echo '<script>window.location.href=\'' . site_url('Manage/index') . '\';</script>';
+        }
+        else{
+            echo '<script>alert("用户已存在，请确认!")</script>';
+            echo '<script>window.location.href=\'' . site_url('Manage/index') . '\';</script>';
+        }
+
     }
 
     public function resetpassword($uid){
