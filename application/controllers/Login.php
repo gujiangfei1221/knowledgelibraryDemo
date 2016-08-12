@@ -27,12 +27,17 @@ class Login extends CI_Controller{
         if($data0){
             $data = $this->Loginmodel->dologin($username,$password);
             if($data){
-//            echo '登录成功';
-                $_SESSION['name'] = $data[0]['name'];
-                $_SESSION['quanxian'] = $data[0]['quanxian'];
-                $_SESSION['team'] = $data[0]['team'];
-                $_SESSION['duiwai'] = $data[0]['duiwai'];
-                redirect('Select/index');
+                if($data[0]['password'] != 'e10adc3949ba59abbe56e057f20f883e'){
+                    $_SESSION['name'] = $data[0]['name'];
+                    $_SESSION['quanxian'] = $data[0]['quanxian'];
+                    $_SESSION['team'] = $data[0]['team'];
+                    $_SESSION['duiwai'] = $data[0]['duiwai'];
+                    redirect('Select/index');
+                }
+                else{
+                    echo '<script>alert("您的密码是初始密码，请修改后再登录！")</script>';
+                    echo '<script>window.location.href=\''.site_url('Login/index').'\';</script>';
+                }
             }
             else{
                 echo '<script>alert("账号或密码不正确,请确认!")</script>';

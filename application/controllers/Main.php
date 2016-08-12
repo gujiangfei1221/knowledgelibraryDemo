@@ -185,6 +185,19 @@ class Main extends CI_Controller
         $this->load->view('mainview', $data3);
     }
 
+    public function edit($uid){
+        $data['info'] = $this->Mainmodel->showedit($uid);
+        $this->load->view('maineditview',$data);
+    }
+
+    public function update(){
+        $title = $this->input->post('title');
+        $content = $this->input->post('content');
+        $duiwai = $this->input->post('duiwai');
+        $uid = $this->input->post('uid');
+        $this->Mainmodel->update($uid,$title,$content,$duiwai);
+        redirect('Main/index');
+    }
 
 }
 

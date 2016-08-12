@@ -67,4 +67,19 @@ class Mainmodel extends CI_Model
         return $query->result_array();
     }
 
+    public function showedit($uid){
+        $query = $this->db->query('select * from content where uid = \''.$uid.'\'');
+        return $query->result_array();
+    }
+
+    public function update($uid,$title,$content,$duiwai){
+        if($duiwai == null){
+            $duiwai = 'no';
+        }
+        elseif($duiwai == 'on'){
+            $duiwai = 'yes';
+        }
+        $this->db->query('update content set title = \''.$title.'\' , content = \''.$content.'\' , duiwai = \''.$duiwai.'\' where uid = \''.$uid.'\'');
+    }
+
 }

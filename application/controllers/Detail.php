@@ -18,7 +18,7 @@ class Detail extends CI_Controller{
 
     public function index($uid){
         if(!isset($_SESSION['name'])){
-            echo '<script>alert("���¼ϵͳ!")</script>';
+            echo '<script>alert("请登录系统!")</script>';
             echo '<script>window.location.href=\''.site_url('Login/index').'\';</script>';
             return;
         }

@@ -19,7 +19,7 @@ class Security extends CI_Controller
     public function index($p=1,$lanmu = 'all')
     {
         if (!isset($_SESSION['name'])) {
-            echo '<script>alert("ÇëµÇÂ¼ÏµÍ³!")</script>';
+            echo '<script>alert("è¯·ç™»å½•ç³»ç»Ÿ!")</script>';
             echo '<script>window.location.href=\'' . site_url('Login/index') . '\';</script>';
             return;
         }
@@ -108,7 +108,7 @@ class Security extends CI_Controller
         $data = $this->Securitymodel->getpath($uid);
         unlink($data[0]['filepath']);
         $this->Securitymodel->deletecontent($uid);
-        echo '<script>alert("É¾³ı³É¹¦£¡")</script>';
+        echo '<script>alert("åˆ é™¤æˆåŠŸï¼")</script>';
         echo '<script>window.location.href=\''.site_url('Security/index').'\';</script>';
     }
 

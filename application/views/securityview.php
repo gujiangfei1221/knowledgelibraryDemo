@@ -118,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 if ($_SESSION['name'] != $row['user']) {
                     echo "<tr>
                         <td>" . $i . "</td>
-                        <td><a href=\"" . site_url('Detail/index/' . $row['uid']) . "\">" . $row['title'] . "</a></td>
+                        <td class=\"text-left\"><a href=\"" . site_url('Detail/index/' . $row['uid']) . "\">" . $row['title'] . "</a></td>
                         <td>" . $row['lanmupath'] . "</td>
                         <td>" . $row['user'] . "</td>
                         <td><a href=\"" . site_url('Security/download/' . $row['filename']) . "\">下载</a></td>
@@ -127,7 +127,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 } else {
                     echo "<tr>
                         <td>" . $i . "</td>
-                        <td><a href=\"" . site_url('Detail/index/' . $row['uid']) . "\" >" . $row['title'] . "</a></td>
+                        <td class=\"text-left\"><a href=\"" . site_url('Detail/index/' . $row['uid']) . "\" >" . $row['title'] . "</a></td>
                         <td>" . $row['lanmupath'] . "</td>
                         <td>" . $row['user'] . "</td>
                         <td><a href=\"" . site_url('Security/download/' . $row['filename']) . "\">下载</a></td>
