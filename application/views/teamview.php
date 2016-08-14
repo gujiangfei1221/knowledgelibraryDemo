@@ -129,7 +129,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <ul class="nav nav-sidebar">
                 <li><a href="#home" data-toggle="tab">总览</a></li>
                 <li class="active"><a href="#home2" data-toggle="tab">项目统计</a></li>
-                <li><a href="#home4" data-toggle="tab">服务器自动巡检结果</a></li>
                 <li><a href="#home3" data-toggle="tab">小组职责和备忘</a></li>
             </ul>
         </div>
@@ -379,9 +378,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </li>
                         </ul>
                     </nav>
-                </div>
-                <div class="tab-pane fade" id="home4">
-                    <h1>服务器自动巡检结果</h1>
                 </div>
                 <div class="tab-pane fade" id="home3">
                     <h1>小组职责</h1>

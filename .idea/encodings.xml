@@ -8,6 +8,7 @@
     <file url="file://$PROJECT_DIR$/application/controllers/Login.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/controllers/Main.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/controllers/Manage.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/controllers/Moniter.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/controllers/Security.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/controllers/Select.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/controllers/Team.php" charset="UTF-8" />
@@ -18,16 +19,18 @@
     <file url="file://$PROJECT_DIR$/application/models/Changepwdmodel.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/models/Commonmodel.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/models/Detailmodel.php" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/application/models/Loginmodel.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/models/Mainmodel.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/models/Managemodel.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/models/Monitermodel.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/models/Securitymodel.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/models/Selectmodel.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/models/Teammodel.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/models/Testinfomodel.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/models/loginmodel.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/changepwdview.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/detailview.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/maineditview.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/moniterview.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/securityview.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/teamaddview.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/teameditview.php" charset="UTF-8" />
