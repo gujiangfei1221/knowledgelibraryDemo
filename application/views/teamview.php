@@ -242,12 +242,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     <table class="table table-striped">
                         <tr>
-                            <th width="2%">序号</th>
+                            <th width="2%">序</th>
                             <th width="15%">项目名称</th>
                             <th width="15%">任务名称</th>
                             <th width="8%">类别</th>
                             <th width="8%">测试人员</th>
-                            <th width="6%">测试轮次</th>
+                            <th width="3%">轮次</th>
+                            <th width="5%" >预算</th>
                             <th width="5%">开始时间</th>
                             <th width="5%">结束时间</th>
                             <th width="5%">修改</th>
@@ -266,6 +267,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td>" . $item['leibie'] . "</td>
                             <td>" . $item['ceshirenyuan'] . "</td>
                             <td>" . $item['ceshilunci'] . "</td>
+                            <td>" . $item['yusuanlaiyuan'] . "</td>
                             <td>" . $item['kaishishijian'] . "</td>
                             <td>" . $item['jieshushijian'] . "</td>
                             <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
@@ -281,6 +283,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td>" . $item['leibie'] . "</td>
                             <td>" . $item['ceshirenyuan'] . "</td>
                             <td>" . $item['ceshilunci'] . "</td>
+                            <td>" . $item['yusuanlaiyuan'] ."</td>
                             <td>" . $item['kaishishijian'] . "</td>
                             <td>" . $item['jieshushijian'] . "</td>
                             <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
@@ -296,6 +299,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td>" . $item['leibie'] . "</td>
                             <td>" . $item['ceshirenyuan'] . "</td>
                             <td>" . $item['ceshilunci'] . "</td>
+                            <td>" . $item['yusuanlaiyuan'] ."</td>
                             <td>" . $item['kaishishijian'] . "</td>
                             <td>" . $item['jieshushijian'] . "</td>
                             <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
@@ -311,6 +315,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td>" . $item['leibie'] . "</td>
                             <td>" . $item['ceshirenyuan'] . "</td>
                             <td>" . $item['ceshilunci'] . "</td>
+                            <td>" . $item['yusuanlaiyuan'] ."</td>
                             <td>" . $item['kaishishijian'] . "</td>
                             <td>" . $item['jieshushijian'] . "</td>
                             <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
@@ -326,6 +331,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td>" . $item['leibie'] . "</td>
                             <td>" . $item['ceshirenyuan'] . "</td>
                             <td>" . $item['ceshilunci'] . "</td>
+                            <td>" . $item['yusuanlaiyuan'] ."</td>
                             <td>" . $item['kaishishijian'] . "</td>
                             <td>" . $item['jieshushijian'] . "</td>
                             <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
@@ -341,6 +347,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td>" . $item['leibie'] . "</td>
                             <td>" . $item['ceshirenyuan'] . "</td>
                             <td>" . $item['ceshilunci'] . "</td>
+                            <td>" . $item['yusuanlaiyuan'] ."</td>
                             <td>" . $item['kaishishijian'] . "</td>
                             <td>" . $item['jieshushijian'] . "</td>
                             <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
