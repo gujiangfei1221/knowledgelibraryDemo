@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li><a href="<?php echo site_url('Testinfo/index') ?>">测试环境查看</a></li>
                         <li><a href="<?php echo site_url('Xingnengtest/index') ?>">性能测试文档</a></li>
                         <li><a href="<?php echo site_url('Select/index') ?>">安全测试文档</a></li>
-                        <li><a href="<?php echo site_url('Select/index') ?>">部署手册</a></li>
+                        <li><a href="<?php echo site_url('Deploy/index') ?>">部署手册</a></li>
                     </ul>
                 </li>
                 <li <?php if ($_SESSION['team'] != 'yes') {
