@@ -83,14 +83,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <table class="table table-striped">
         <tr>
             <th width="2%">序</th>
+            <th width="10%">测试类别</th>
             <th width="15%">项目名称</th>
-            <th width="15%">任务名称</th>
-            <th width="8%">类别</th>
+            <th width="15%">计划名称</th>
+            <th width="15%">测试内容概要</th>
             <th width="8%">测试人员</th>
-            <th width="3%">轮次</th>
-            <th width="5%">预算</th>
             <th width="5%">开始时间</th>
             <th width="5%">结束时间</th>
+            <th width="10%">备注</th>
             <th width="5%">修改</th>
             <th width="5%">删除</th>
         </tr>

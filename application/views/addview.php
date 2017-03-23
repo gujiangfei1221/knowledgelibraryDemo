@@ -61,18 +61,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <label>附件上传</label>
                 <input type="hidden" name="<?php echo ini_get("session.upload_progress.name"); ?>" value="test" />
                 <input type="file" id="userfile" name="userfile">
-                <input type="button" value="确定上传" id="upload">
+<!--                <input type="button" value="确定上传" id="upload">-->
                 <div class="progress" style="display: none">
                     <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
                         0%
                     </div>
                 </div>
                 <p class="help-block">支持“gif、jpg、png、doc、docx、rar、zip、pdf、txt、ppt、pptx、exe”格式文件</p>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="duiwai"> 是否对外开放
-                    </label>
-                </div>
+<!--                <div class="checkbox">-->
+<!--                    <label>-->
+<!--                        <input type="checkbox" name="duiwai"> 是否对外开放-->
+<!--                    </label>-->
+<!--                </div>-->
             </div>
             <button type="submit" class="btn btn-default">提交</button>
         <?php echo form_close() ?>
