@@ -23,88 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 <body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="<?php echo site_url('Select/index') ?>">知识库</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="<?php echo site_url('Select/index') ?>">欢迎：<?php echo $_SESSION['name'] ?></a></li>
-                <li class="dropdown" <?php if ($_SESSION['duiwai'] == 'yes') {
-                    echo "style='display:none'";
-                } ?>><a class="dropdown-toggle" data-toggle="dropdown" href="#">相关菜单<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="<?php echo site_url('Main/index/1') ?>">下载文档</a></li>
-                        <li><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
-                        <li><a href="<?php echo site_url('Urltool/index') ?>">编解码小工具</a></li>
-                        <li><a href="<?php echo site_url('Testinfo/index') ?>">测试环境查看</a></li>
-                        <li><a href="<?php echo site_url('Xingnengtest/index') ?>">性能测试文档</a></li>
-                        <li><a href="<?php echo site_url('Select/index') ?>">安全测试文档</a></li>
-                        <li><a href="<?php echo site_url('Deploy/index') ?>">部署手册</a></li>
-                        <li><a href="<?php echo site_url('Document/index') ?>">测试文档模板</a></li>
-                    </ul>
-                </li>
-                <li <?php if ($_SESSION['team'] != 'yes') {
-                    echo "style='display:none'";
-                } ?>><a href="<?php echo site_url('Team/index') ?>">技术研究小组</a></li>
-                <li><a href="<?php echo site_url('Security/index') ?>">安全测试结果下载</a></li>
-                <?php
-                if ($_SESSION['quanxian'] == '管理员') {
-                    echo '<li><a href="' . site_url('Manage/index') . '">后台管理</a></li>';
-                }
-                ?>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"
-                            style="margin-top: 8px">
-                        修改密码
-                    </button>
-                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal2"
-                            style="margin-top: 8px">
-                        修改测试环境
-                    </button>
-                </li>
-                <li><a href="<?php echo site_url('Common/logout') ?>">退出</a></li>
-            </ul>
-            <!--            --><?php //echo form_open('Common/search', 'class="navbar-form navbar-right" role="search"') ?>
-            <!--            <div class="form-group">-->
-            <!--                --><?php
-            //                $data = array(
-            //                    'type' => 'text',
-            //                    'class' => 'form-control',
-            //                    'placeholder' => '请输入',
-            //                    'name' => 'search'
-            //                );
-            //                echo form_input($data);
-            //                ?>
-            <!--            </div>-->
-            <!--            --><?php
-            //            $data = array(
-            //                'type' => 'submit',
-            //                'class' => 'btn btn-default',
-            //                'name' => 'submit',
-            //                'value' => '搜索'
-            //            );
-            //            echo form_submit($data);
-            //            ?>
-            <!--            --><?php //echo form_close() ?>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
-</nav>
+<?php include('head.php'); ?>
 <?php if ($_SESSION['duiwai'] != 'yes') {
     echo "
     <div class=\"row\">
@@ -121,23 +40,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <h2>上传文档或登记问题</h2>
 
             <p><a class=\"btn btn-primary btn-lg\" href=\"".site_url('Add/index')."\" role=\"button\">上传文档</a></p>
-        </div>
-    </div>
-    <div class=\"col-md-1\"></div>
-</div>
-
-<div class=\"row\">
-    <div class=\"col-md-1\"></div>
-    <div class=\"col-md-5\">
-        <div class=\"jumbotron text-center\">
-            <h2>编解码小工具</h2>
-            <a class=\"btn btn-primary btn-lg\" href=\"".site_url('Urltool/index')."\" role=\"button\">编解码工具</a>
-        </div>
-    </div>
-    <div class=\"col-md-5\">
-        <div class=\"jumbotron text-center\">
-            <h2>部门个人测试环境查看</h2>
-            <a class=\"btn btn-primary btn-lg\" href=\"".site_url('Testinfo/index')."\" role=\"button\">查看信息</a>
         </div>
     </div>
     <div class=\"col-md-1\"></div>
@@ -159,12 +61,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>";
     } ?>
-    <div class="col-md-5">
-        <div class="jumbotron text-center">
-            <h2>安全测试结果下载</h2>
-            <a class="btn btn-primary btn-lg" href="<?php echo site_url('Security/index') ?>" role="button">结果下载</a>
-        </div>
-    </div>
     <div class=\"col-md-1\"></div>
 </div>
 

@@ -134,7 +134,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <a class="btn btn-primary" href="<?php echo site_url('Team/index') ?>">关闭</a>
                 <button type="submit" class="btn btn-primary">保存</button>
             </div>
             <?php
