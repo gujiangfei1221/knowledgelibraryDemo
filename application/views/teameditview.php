@@ -51,7 +51,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="form-group">
                     <label class="col-sm-2 control-label">测试类别</label>
                     <div class="col-sm-10">
-                        <input type="text" placeholder="测试类别" class="form-control" name="ceshileibie" value="<?php echo $info['ceshileibie'] ?>">
+<!--                        <input type="text" placeholder="测试类别" class="form-control" name="ceshileibie" value="--><?php //echo $info['ceshileibie'] ?><!--">-->
+                        <select class="form-control" name="ceshileibie">
+                            <option value="功能测试" <?php if($info['ceshileibie'] == '功能测试'){ echo 'selected="selected"';} ?>>功能测试</option>
+                            <option value="性能测试" <?php if($info['ceshileibie'] == '性能测试'){ echo 'selected="selected"';} ?>>性能测试</option>
+                            <option value="安全测试" <?php if($info['ceshileibie'] == '安全测试'){ echo 'selected="selected"';} ?>>安全测试</option>
+                            <option value="自动化测试" <?php if($info['ceshileibie'] == '自动化测试'){ echo 'selected="selected"';} ?>>自动化测试</option>
+                            <option value="研究任务" <?php if($info['ceshileibie'] == '研究任务'){ echo 'selected="selected"';} ?>>研究任务</option>
+                            <option value="服务器维护" <?php if($info['ceshileibie'] == '服务器维护'){ echo 'selected="selected"';} ?>>服务器维护</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">

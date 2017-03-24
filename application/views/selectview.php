@@ -27,23 +27,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php if ($_SESSION['duiwai'] != 'yes') {
     echo "
     <div class=\"row\">
-    <div class=\"col-md-1\"></div>
-    <div class=\"col-md-5\">
-        <div class=\"jumbotron text-center\">
-            <h2>下载文档或搜索问题</h2>
-
-            <p><a class=\"btn btn-primary btn-lg\" href=\"".site_url('Main/index')."\" role=\"button\">下载文档</a></p>
+        <div class=\"col-md-1\"></div>
+        <div class=\"col-md-5\">
+            <div class=\"jumbotron text-center\">
+                <h2>下载文档或搜索问题</h2>
+    
+                <p><a class=\"btn btn-primary btn-lg\" href=\"" . site_url('Main/index') . "\" role=\"button\">下载文档</a></p>
+            </div>
         </div>
-    </div>
-    <div class=\"col-md-5\">
-        <div class=\"jumbotron text-center\">
-            <h2>上传文档或登记问题</h2>
-
-            <p><a class=\"btn btn-primary btn-lg\" href=\"".site_url('Add/index')."\" role=\"button\">上传文档</a></p>
+        <div class=\"col-md-5\">
+            <div class=\"jumbotron text-center\">
+                <h2>上传文档或登记问题</h2>
+    
+                <p><a class=\"btn btn-primary btn-lg\" href=\"" . site_url('Add/index') . "\" role=\"button\">上传文档</a></p>
+            </div>
         </div>
+        <div class=\"col-md-1\"></div>
     </div>
-    <div class=\"col-md-1\"></div>
-</div>
     ";
 }
 ?>

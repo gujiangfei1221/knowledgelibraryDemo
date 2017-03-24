@@ -51,7 +51,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="form-group">
                     <label class="col-sm-2 control-label">测试类别</label>
                     <div class="col-sm-10">
-                        <input type="text" placeholder="测试类别" class="form-control" name="ceshileibie" >
+                        <select class="form-control" name="ceshileibie">
+                            <option value="功能测试">功能测试</option>
+                            <option value="性能测试">性能测试</option>
+                            <option value="安全测试">安全测试</option>
+                            <option value="自动化测试">自动化测试</option>
+                            <option value="研究任务">研究任务</option>
+                            <option value="服务器维护">服务器维护</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
