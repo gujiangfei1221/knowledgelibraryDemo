@@ -49,53 +49,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?php echo form_open('Team/add','class="form-horizontal"') ?>
             <div class="modal-body">
                 <div class="form-group">
+                    <label class="col-sm-2 control-label">测试类别</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="测试类别" class="form-control" name="ceshileibie" >
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-2 control-label">项目名称</label>
                     <div class="col-sm-10">
                         <input type="text" placeholder="项目名称" class="form-control" name="xiangmumingcheng" >
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">任务名称</label>
+                    <label class="col-sm-2 control-label">计划名称</label>
                     <div class="col-sm-10">
-                        <input type="text" placeholder="任务名称" class="form-control" name="remwumingcheng" >
+                        <input type="text" placeholder="任务名称" class="form-control" name="jihuamingcheng" >
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">类别</label>
+                    <label class="col-sm-2 control-label">测试内容概要</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="leibie">
-                            <option value="功能测试">功能测试</option>
-                            <option value="性能测试">性能测试</option>
-                            <option value="安全测试">安全测试</option>
-                            <option value="自动化测试">自动化测试</option>
-                            <option value="研究任务">研究任务</option>
-                            <option value="服务器维护">服务器维护</option>
-                        </select>
+                        <input type="text" placeholder="测试内容概要" class="form-control" name="ceshineirong" >
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">测试人员</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="ceshirenyuan">
-                            <option value="顾疆飞">顾疆飞</option>
-                            <option value="姜志伟">姜志伟</option>
-                            <option value="田园">田园</option>
-                            <option value="杨剑">杨剑</option>
-                            <option value="张榆">张榆</option>
-                            <option value="姜志伟、田园">姜志伟、田园</option>
-                            <option value="顾疆飞、杨剑">顾疆飞、杨剑</option>
-                            <option value="张榆、杨剑">张榆、杨剑</option>
-                            <option value="张榆、顾疆飞">张榆、顾疆飞</option>
-                        </select>
+                        <input type="text" placeholder="测试人员" class="form-control" name="ceshirenyuan" >
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">测试轮次</label>
-                    <div class="col-sm-10">
-                        <input type="text" placeholder="测试轮次" class="form-control" name="ceshilunci">
-                    </div>
-                </div>
-
                 <div class="form-group">
                     <label class="col-sm-2 control-label">开始时间</label>
                     <div class="col-sm-10">
@@ -115,21 +97,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">任务工时</label>
-                    <div class="col-sm-10">
-                        <input type="text" placeholder="任务工时" class="form-control" name="renwugongshi" >
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">预算来源</label>
-                    <div class="col-sm-10">
-                        <input type="text" placeholder="预算来源" class="form-control" name="yusuanlaiyuan" >
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="col-sm-2 control-label">备注</label>
                     <div class="col-sm-10">
-                        <input type="text" placeholder="备注" class="form-control" name="beizhu" >
+                        <textarea class="form-control" rows="3"  name="beizhu" ></textarea>
                     </div>
                 </div>
             </div>

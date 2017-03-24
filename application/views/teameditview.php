@@ -49,53 +49,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?php echo form_open('Team/update','class="form-horizontal"') ?>
             <div class="modal-body">
                 <div class="form-group">
+                    <label class="col-sm-2 control-label">测试类别</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="测试类别" class="form-control" name="ceshileibie" value="<?php echo $info['ceshileibie'] ?>">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-2 control-label">项目名称</label>
                     <div class="col-sm-10">
                         <input type="text" placeholder="项目名称" class="form-control" name="xiangmumingcheng" value="<?php echo $info['xiangmumingcheng'] ?>">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">任务名称</label>
+                    <label class="col-sm-2 control-label">计划名称</label>
                     <div class="col-sm-10">
-                        <input type="text" placeholder="任务名称" class="form-control" name="remwumingcheng" value="<?php echo $info['renwumingcheng'] ?>">
+                        <input type="text" placeholder="任务名称" class="form-control" name="jihuamingcheng" value="<?php echo $info['jihuamingcheng'] ?>">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">类别</label>
+                    <label class="col-sm-2 control-label">测试内容概要</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="leibie">
-                            <option <?php if($info['leibie']=='功能测试'){echo "selected='selected'";} ?> value="功能测试">功能测试</option>
-                            <option <?php if($info['leibie']=='性能测试'){echo "selected='selected'";} ?> value="性能测试">性能测试</option>
-                            <option <?php if($info['leibie']=='安全测试'){echo "selected='selected'";} ?> value="安全测试">安全测试</option>
-                            <option <?php if($info['leibie']=='自动化测试'){echo "selected='selected'";} ?> value="自动化测试">自动化测试</option>
-                            <option <?php if($info['leibie']=='研究任务'){echo "selected='selected'";} ?> value="研究任务">研究任务</option>
-                            <option <?php if($info['leibie']=='服务器维护'){echo "selected='selected'";} ?> value="服务器维护">服务器维护</option>
-                        </select>
+                        <input type="text" placeholder="测试内容概要" class="form-control" name="ceshineirong" value="<?php echo $info['ceshineirong'] ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">测试人员</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="ceshirenyuan">
-                            <option <?php if($info['ceshirenyuan']=='顾疆飞'){echo "selected='selected'";} ?> value="顾疆飞">顾疆飞</option>
-                            <option <?php if($info['ceshirenyuan']=='姜志伟'){echo "selected='selected'";} ?>value="姜志伟">姜志伟</option>
-                            <option <?php if($info['ceshirenyuan']=='田园'){echo "selected='selected'";} ?>value="田园">田园</option>
-                            <option <?php if($info['ceshirenyuan']=='杨剑'){echo "selected='selected'";} ?>value="杨剑">杨剑</option>
-                            <option <?php if($info['ceshirenyuan']=='张榆'){echo "selected='selected'";} ?>value="张榆">张榆</option>
-                            <option <?php if($info['ceshirenyuan']=='姜志伟、田园'){echo "selected='selected'";} ?>value="姜志伟、田园">姜志伟、田园</option>
-                            <option <?php if($info['ceshirenyuan']=='顾疆飞、杨剑'){echo "selected='selected'";} ?>value="顾疆飞、杨剑">顾疆飞、杨剑</option>
-                            <option <?php if($info['ceshirenyuan']=='张榆、杨剑'){echo "selected='selected'";} ?>value="张榆、杨剑">张榆、杨剑</option>
-                            <option <?php if($info['ceshirenyuan']=='张榆、顾疆飞'){echo "selected='selected'";} ?>value="张榆、顾疆飞">张榆、顾疆飞</option>
-                        </select>
+                        <input type="text" placeholder="测试人员" class="form-control" name="ceshirenyuan" value="<?php echo $info['ceshirenyuan'] ?>">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">测试轮次</label>
-                    <div class="col-sm-10">
-                        <input type="text" placeholder="测试轮次" class="form-control" name="ceshilunci" value="<?php echo $info['ceshilunci'] ?>">
-                    </div>
-                </div>
-
                 <div class="form-group">
                     <label class="col-sm-2 control-label">开始时间</label>
                     <div class="col-sm-10">
@@ -115,26 +97,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">任务工时</label>
-                    <div class="col-sm-10">
-                        <input type="text" placeholder="任务工时" class="form-control" name="renwugongshi" value="<?php echo $info['gongshi'] ?>">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">预算来源</label>
-                    <div class="col-sm-10">
-                        <input type="text" placeholder="预算来源" class="form-control" name="yusuanlaiyuan" value="<?php echo $info['yusuanlaiyuan'] ?>">
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="col-sm-2 control-label">备注</label>
                     <div class="col-sm-10">
-                        <input type="text" placeholder="备注" class="form-control" name="beizhu" value="<?php echo $info['beizhu'] ?>">
+                        <textarea class="form-control" rows="3"  name="beizhu" ><?php echo $info['beizhu'] ?></textarea>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <a class="btn btn-primary" href="<?php echo site_url('Team/index') ?>">关闭</a>
                 <button type="submit" class="btn btn-primary">保存</button>
             </div>
             <?php

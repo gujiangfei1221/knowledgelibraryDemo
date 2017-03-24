@@ -33,6 +33,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     </div>
     <div class="col-md-9">
+        <?php echo form_open('Main/index/1', 'class="navbar-form navbar-right" role="search"') ?>
+        <div class="form-group">
+            <?php
+            $data = array(
+                'type' => 'text',
+                'class' => 'form-control',
+                'placeholder' => '请输入标题进行搜索',
+                'name' => 'search'
+            );
+            echo form_input($data);
+            ?>
+        </div>
+        <?php
+        $data = array(
+            'type' => 'submit',
+            'class' => 'btn btn-default',
+            'name' => 'submit',
+            'value' => '搜索'
+        );
+        echo form_submit($data);
+        ?>
+        <?php echo form_close() ?>
         <table class="table table-striped table-hover text-center">
             <tr>
                 <td>序号</td>

@@ -17,13 +17,13 @@
             <ul class="nav navbar-nav">
                 <li><a href="<?php echo site_url('Select/index') ?>">欢迎：<?php echo $_SESSION['name'] ?></a></li>
                 <li class="dropdown" <?php if ($_SESSION['duiwai'] == 'yes') {
-                    echo "style='display:none'";
-                } ?>><a class="dropdown-toggle" data-toggle="dropdown" href="#">相关菜单<span class="caret"></span></a>
+                    echo "style='display:none'";} ?>>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">相关菜单<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="<?php echo site_url('Main/index/1') ?>">下载文档</a></li>
                         <li><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
                         <li><a href="<?php echo site_url('Xingnengtest/index') ?>">性能测试文档</a></li>
-                        <li><a href="<?php echo site_url('Select/index') ?>">安全测试文档</a></li>
+                        <li><a href="#">安全测试文档</a></li>
                         <li><a href="<?php echo site_url('Deploy/index') ?>">部署手册</a></li>
                     </ul>
                 </li>
@@ -42,35 +42,9 @@
                             style="margin-top: 8px">
                         修改密码
                     </button>
-                    <!--                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal2"-->
-                    <!--                            style="margin-top: 8px">-->
-                    <!--                        修改测试环境-->
-                    <!--                    </button>-->
                 </li>
                 <li><a href="<?php echo site_url('Common/logout') ?>">退出</a></li>
             </ul>
-            <!--            --><?php //echo form_open('Common/search', 'class="navbar-form navbar-right" role="search"') ?>
-            <!--            <div class="form-group">-->
-            <!--                --><?php
-            //                $data = array(
-            //                    'type' => 'text',
-            //                    'class' => 'form-control',
-            //                    'placeholder' => '请输入',
-            //                    'name' => 'search'
-            //                );
-            //                echo form_input($data);
-            //                ?>
-            <!--            </div>-->
-            <!--            --><?php
-            //            $data = array(
-            //                'type' => 'submit',
-            //                'class' => 'btn btn-default',
-            //                'name' => 'submit',
-            //                'value' => '搜索'
-            //            );
-            //            echo form_submit($data);
-            //            ?>
-            <!--            --><?php //echo form_close() ?>
         </div>
         <!-- /.navbar-collapse -->
     </div>

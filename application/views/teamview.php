@@ -97,99 +97,99 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php
         $i = 1;
         foreach ($info as $item) {
-            switch ($item['leibie']) {
+            switch ($item['ceshileibie']) {
                 case '功能测试':
                     echo "
-                             <tr class='danger'>
+                            <tr class='danger'>
                             <td>" . $i . "</td>
+                            <td>" . $item['ceshileibie'] . "</td>
                             <td>" . $item['xiangmumingcheng'] . "</td>
-                            <td>" . $item['renwumingcheng'] . "</td>
-                            <td>" . $item['leibie'] . "</td>
+                            <td>" . $item['jihuamingcheng'] . "</td>
+                            <td>" . $item['ceshineirong'] . "</td>
                             <td>" . $item['ceshirenyuan'] . "</td>
-                            <td>" . $item['ceshilunci'] . "</td>
-                            <td>" . $item['yusuanlaiyuan'] . "</td>
                             <td>" . $item['kaishishijian'] . "</td>
                             <td>" . $item['jieshushijian'] . "</td>
+                            <td>" . $item['beizhu'] . "</td>
                             <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
                             <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
                         </tr>";
                     break;
                 case '性能测试':
                     echo "
-                             <tr class='success'>
+                            <tr class='success'>
                             <td>" . $i . "</td>
+                            <td>" . $item['ceshileibie'] . "</td>
                             <td>" . $item['xiangmumingcheng'] . "</td>
-                            <td>" . $item['renwumingcheng'] . "</td>
-                            <td>" . $item['leibie'] . "</td>
+                            <td>" . $item['jihuamingcheng'] . "</td>
+                            <td>" . $item['ceshineirong'] . "</td>
                             <td>" . $item['ceshirenyuan'] . "</td>
-                            <td>" . $item['ceshilunci'] . "</td>
-                            <td>" . $item['yusuanlaiyuan'] . "</td>
                             <td>" . $item['kaishishijian'] . "</td>
                             <td>" . $item['jieshushijian'] . "</td>
+                            <td>" . $item['beizhu'] . "</td>
                             <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
                             <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
                         </tr>";
                     break;
                 case '安全测试':
                     echo "
-                             <tr class='warning'>
+                            <tr class='warning'>
                             <td>" . $i . "</td>
+                            <td>" . $item['ceshileibie'] . "</td>
                             <td>" . $item['xiangmumingcheng'] . "</td>
-                            <td>" . $item['renwumingcheng'] . "</td>
-                            <td>" . $item['leibie'] . "</td>
+                            <td>" . $item['jihuamingcheng'] . "</td>
+                            <td>" . $item['ceshineirong'] . "</td>
                             <td>" . $item['ceshirenyuan'] . "</td>
-                            <td>" . $item['ceshilunci'] . "</td>
-                            <td>" . $item['yusuanlaiyuan'] . "</td>
                             <td>" . $item['kaishishijian'] . "</td>
                             <td>" . $item['jieshushijian'] . "</td>
+                            <td>" . $item['beizhu'] . "</td>
                             <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
                             <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
                         </tr>";
                     break;
                 case '自动化测试':
                     echo "
-                             <tr class='active'>
+                            <tr class='active'>
                             <td>" . $i . "</td>
+                            <td>" . $item['ceshileibie'] . "</td>
                             <td>" . $item['xiangmumingcheng'] . "</td>
-                            <td>" . $item['renwumingcheng'] . "</td>
-                            <td>" . $item['leibie'] . "</td>
+                            <td>" . $item['jihuamingcheng'] . "</td>
+                            <td>" . $item['ceshineirong'] . "</td>
                             <td>" . $item['ceshirenyuan'] . "</td>
-                            <td>" . $item['ceshilunci'] . "</td>
-                            <td>" . $item['yusuanlaiyuan'] . "</td>
                             <td>" . $item['kaishishijian'] . "</td>
                             <td>" . $item['jieshushijian'] . "</td>
+                            <td>" . $item['beizhu'] . "</td>
                             <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
                             <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
                         </tr>";
                     break;
                 case '研究任务':
                     echo "
-                             <tr class='info'>
+                            <tr class='info'>
                             <td>" . $i . "</td>
+                            <td>" . $item['ceshileibie'] . "</td>
                             <td>" . $item['xiangmumingcheng'] . "</td>
-                            <td>" . $item['renwumingcheng'] . "</td>
-                            <td>" . $item['leibie'] . "</td>
+                            <td>" . $item['jihuamingcheng'] . "</td>
+                            <td>" . $item['ceshineirong'] . "</td>
                             <td>" . $item['ceshirenyuan'] . "</td>
-                            <td>" . $item['ceshilunci'] . "</td>
-                            <td>" . $item['yusuanlaiyuan'] . "</td>
                             <td>" . $item['kaishishijian'] . "</td>
                             <td>" . $item['jieshushijian'] . "</td>
+                            <td>" . $item['beizhu'] . "</td>
                             <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
                             <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
                         </tr>";
                     break;
                 case '服务器维护':
                     echo "
-                             <tr>
+                            <tr>
                             <td>" . $i . "</td>
+                            <td>" . $item['ceshileibie'] . "</td>
                             <td>" . $item['xiangmumingcheng'] . "</td>
-                            <td>" . $item['renwumingcheng'] . "</td>
-                            <td>" . $item['leibie'] . "</td>
+                            <td>" . $item['jihuamingcheng'] . "</td>
+                            <td>" . $item['ceshineirong'] . "</td>
                             <td>" . $item['ceshirenyuan'] . "</td>
-                            <td>" . $item['ceshilunci'] . "</td>
-                            <td>" . $item['yusuanlaiyuan'] . "</td>
                             <td>" . $item['kaishishijian'] . "</td>
                             <td>" . $item['jieshushijian'] . "</td>
+                            <td>" . $item['beizhu'] . "</td>
                             <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
                             <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
                         </tr>";

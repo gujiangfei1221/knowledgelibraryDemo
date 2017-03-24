@@ -39,27 +39,25 @@ class Team extends CI_Controller{
         $data['page'] = $page;
         $data['p'] = $p;
         $data['info'] = $this->Teammodel->show($offset,$pagesize);
-        $data['gongnengceshi'] = $this->Teammodel->gongnengceshi()[0]['count(*)'];
-        $data['xingnengceshi'] = $this->Teammodel->xingnengceshi()[0]['count(*)'];
-        $data['anquanceshi'] = $this->Teammodel->anquanceshi()[0]['count(*)'];
-        $data['zidonghuaceshi'] = $this->Teammodel->zidonghuaceshi()[0]['count(*)'];
-        $data['yanjiurenwu'] = $this->Teammodel->yanjiurenwu()[0]['count(*)'];
+//        $data['gongnengceshi'] = $this->Teammodel->gongnengceshi()[0]['count(*)'];
+//        $data['xingnengceshi'] = $this->Teammodel->xingnengceshi()[0]['count(*)'];
+//        $data['anquanceshi'] = $this->Teammodel->anquanceshi()[0]['count(*)'];
+//        $data['zidonghuaceshi'] = $this->Teammodel->zidonghuaceshi()[0]['count(*)'];
+//        $data['yanjiurenwu'] = $this->Teammodel->yanjiurenwu()[0]['count(*)'];
         $data['value'] = null;
         $this->load->view('teamview',$data);
     }
 
     public function add(){
+        $ceshileibie = $this->input->post('ceshileibie');
         $xiangmumingcheng = $this->input->post('xiangmumingcheng');
-        $renwumingcheng = $this->input->post('remwumingcheng');
-        $leibie = $this->input->post('leibie');
+        $jihuamingcheng = $this->input->post('jihuamingcheng');
+        $ceshineirong = $this->input->post('ceshineirong');
         $ceshirenyuan = $this->input->post('ceshirenyuan');
-        $ceshilunci = $this->input->post('ceshilunci');
         $kaishishijian = $this->input->post('kaishishijian');
         $jieshushijian = $this->input->post('jieshushijian');
-        $renwugongshi = $this->input->post('renwugongshi');
-        $yusuanlaiyuan = $this->input->post('yusuanlaiyuan');
         $beizhu = $this->input->post('beizhu');
-        $this->Teammodel->add($xiangmumingcheng,$renwumingcheng,$leibie,$ceshirenyuan,$ceshilunci,$kaishishijian,$jieshushijian,$renwugongshi,$yusuanlaiyuan,$beizhu);
+        $this->Teammodel->add($ceshileibie,$xiangmumingcheng,$jihuamingcheng,$ceshineirong,$ceshirenyuan,$kaishishijian,$jieshushijian,$beizhu);
         redirect('Team/index');
     }
 
@@ -154,18 +152,16 @@ class Team extends CI_Controller{
     }
 
     public function update(){
+        $ceshileibie = $this->input->post('ceshileibie');
         $xiangmumingcheng = $this->input->post('xiangmumingcheng');
-        $renwumingcheng = $this->input->post('remwumingcheng');
-        $leibie = $this->input->post('leibie');
+        $jihuamingcheng = $this->input->post('jihuamingcheng');
+        $ceshineirong = $this->input->post('ceshineirong');
         $ceshirenyuan = $this->input->post('ceshirenyuan');
-        $ceshilunci = $this->input->post('ceshilunci');
         $kaishishijian = $this->input->post('kaishishijian');
         $jieshushijian = $this->input->post('jieshushijian');
-        $renwugongshi = $this->input->post('renwugongshi');
-        $yusuanlaiyuan = $this->input->post('yusuanlaiyuan');
         $beizhu = $this->input->post('beizhu');
         $uid = $this->input->post('uid');
-        $this->Teammodel->update($xiangmumingcheng,$renwumingcheng,$leibie,$ceshirenyuan,$ceshilunci,$kaishishijian,$jieshushijian,$renwugongshi,$yusuanlaiyuan,$beizhu,$uid);
+        $this->Teammodel->update($ceshileibie,$xiangmumingcheng,$jihuamingcheng,$ceshineirong,$ceshirenyuan,$kaishishijian,$jieshushijian,$beizhu,$uid);
         redirect('Team/index');
     }
 }

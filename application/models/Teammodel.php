@@ -12,12 +12,12 @@ class Teammodel extends CI_Model{
         parent::__construct();
     }
 
-    public function add($xiangmumingcheng,$renwumingcheng,$leibie,$ceshirenyuan,$ceshilunci,$kaishishijian,$jieshushijian,$renwugongshi,$yusuanlaiyuan,$beizhu){
-        $this->db->query('insert into team(xiangmumingcheng,renwumingcheng,leibie,ceshirenyuan,ceshilunci,kaishishijian,jieshushijian,gongshi,yusuanlaiyuan,beizhu) values(\''.$xiangmumingcheng.'\',\''.$renwumingcheng.'\',\''.$leibie.'\',\''.$ceshirenyuan.'\',\''.$ceshilunci.'\',\''.$kaishishijian.'\',\''.$jieshushijian.'\',\''.$renwugongshi.'\',\''.$yusuanlaiyuan.'\',\''.$beizhu.'\')');
+    public function add($ceshileibie,$xiangmumingcheng,$jihuamingcheng,$ceshirenyuan,$ceshineirong,$kaishishijian,$jieshushijian,$beizhu){
+        $this->db->query('insert into team(ceshileibie,xiangmumingcheng,jihuamingcheng,ceshineirong,ceshirenyuan,kaishishijian,jieshushijian,beizhu) values(\''.$ceshileibie.'\',\''.$xiangmumingcheng.'\',\''.$jihuamingcheng.'\',\''.$ceshineirong.'\',\''.$ceshirenyuan.'\',\''.$kaishishijian.'\',\''.$jieshushijian.'\',\''.$beizhu.'\')');
     }
 
-    public function update($xiangmumingcheng,$renwumingcheng,$leibie,$ceshirenyuan,$ceshilunci,$kaishishijian,$jieshushijian,$renwugongshi,$yusuanlaiyuan,$beizhu,$uid){
-        $this->db->query('update team set xiangmumingcheng = \''.$xiangmumingcheng.'\',renwumingcheng =\''.$renwumingcheng.'\',leibie=\''.$leibie.'\',ceshirenyuan=\''.$ceshirenyuan.'\',ceshilunci=\''.$ceshilunci.'\',kaishishijian=\''.$kaishishijian.'\',jieshushijian=\''.$jieshushijian.'\',gongshi=\''.$renwugongshi.'\',yusuanlaiyuan=\''.$yusuanlaiyuan.'\',beizhu=\''.$beizhu.'\' where uid=\''.$uid.'\'');
+    public function update($ceshileibie,$xiangmumingcheng,$jihuamingcheng,$ceshirenyuan,$ceshineirong,$kaishishijian,$jieshushijian,$beizhu,$uid){
+        $this->db->query('update team set xiangmumingcheng = \''.$xiangmumingcheng.'\',jihuamingcheng =\''.$jihuamingcheng.'\',ceshileibie=\''.$ceshileibie.'\',ceshirenyuan=\''.$ceshirenyuan.'\',ceshineirong=\''.$ceshineirong.'\',kaishishijian=\''.$kaishishijian.'\',jieshushijian=\''.$jieshushijian.'\',beizhu=\''.$beizhu.'\' where uid=\''.$uid.'\'');
     }
 
     public function show($offset,$pagesize){
@@ -34,10 +34,11 @@ class Teammodel extends CI_Model{
         $this->db->query('delete from team where uid = \'' . $uid . '\'');
     }
 
+
     public function search($value){
         $query = $this->db->query('select * from team
-where xiangmumingcheng like \'%'.$value.'%\' or renwumingcheng like \'%'.$value.'%\' or leibie like \'%'.$value.'%\'
-or ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\''.'order by uid desc');
+where xiangmumingcheng like \'%'.$value.'%\' or jihuamingcheng like \'%'.$value.'%\' or ceshileibie like \'%'.$value.'%\'
+or ceshirenyuan like \'%'.$value.'%\' or ceshineirong like \'%'.$value.'%\''.'order by uid desc');
         return $query->result_array();
     }
 
@@ -46,25 +47,25 @@ or ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\''.'o
             if($kaishishijian2 != ''){
                 if($jieshushijian2 != ''){
                     $query = $this->db->query('select * from team
-where (xiangmumingcheng like \'%'.$value.'%\' or renwumingcheng like \'%'.$value.'%\' or leibie like \'%'.$value.'%\'or 
-ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\') and kaishishijian >= \''.$kaishishijian2.'\' and jieshushijian <= \''.$jieshushijian2.'\''.'order by uid desc');
+where xiangmumingcheng like \'%'.$value.'%\' or jihuamingcheng like \'%'.$value.'%\' or ceshileibie like \'%'.$value.'%\'
+or ceshirenyuan like \'%'.$value.'%\' or ceshineirong like \'%'.$value.'%\''.'order by uid desc');
                 }
                 else {
                     $query = $this->db->query('select * from team
-where (xiangmumingcheng like \'%'.$value.'%\' or renwumingcheng like \'%'.$value.'%\' or leibie like \'%'.$value.'%\'or 
-ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\') and kaishishijian >= \''.$kaishishijian2.'\''.'order by uid desc');
+where xiangmumingcheng like \'%'.$value.'%\' or jihuamingcheng like \'%'.$value.'%\' or ceshileibie like \'%'.$value.'%\'
+or ceshirenyuan like \'%'.$value.'%\' or ceshineirong like \'%'.$value.'%\''.'order by uid desc');
                 }
             }
             else{
                 if($jieshushijian2 != ''){
                     $query = $this->db->query('select * from team
-where (xiangmumingcheng like \'%'.$value.'%\' or renwumingcheng like \'%'.$value.'%\' or leibie like \'%'.$value.'%\'or 
-ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\') and jieshushijian <= \''.$jieshushijian2.'\''.'order by uid desc');
+where xiangmumingcheng like \'%'.$value.'%\' or jihuamingcheng like \'%'.$value.'%\' or ceshileibie like \'%'.$value.'%\'
+or ceshirenyuan like \'%'.$value.'%\' or ceshineirong like \'%'.$value.'%\''.'order by uid desc');
                 }
                 else {
                     $query = $this->db->query('select * from team
-where (xiangmumingcheng like \'%'.$value.'%\' or renwumingcheng like \'%'.$value.'%\' or leibie like \'%'.$value.'%\'or 
-ceshirenyuan like \'%'.$value.'%\' or yusuanlaiyuan like \'%'.$value.'%\')'.'order by uid desc');
+where xiangmumingcheng like \'%'.$value.'%\' or jihuamingcheng like \'%'.$value.'%\' or ceshileibie like \'%'.$value.'%\'
+or ceshirenyuan like \'%'.$value.'%\' or ceshineirong like \'%'.$value.'%\''.'order by uid desc');
                 }
             }
         }
@@ -89,31 +90,6 @@ where jieshushijian <= \''.$jieshushijian2.'\''.'order by uid desc');
                 }
             }
         }
-        return $query->result_array();
-    }
-
-    public function gongnengceshi(){
-        $query = $this->db->query('select count(*) from team where leibie =\'功能测试\'');
-        return $query->result_array();
-    }
-
-    public function xingnengceshi(){
-        $query = $this->db->query('select count(*) from team where leibie =\'性能测试\'');
-        return $query->result_array();
-    }
-
-    public function anquanceshi(){
-        $query = $this->db->query('select count(*) from team where leibie =\'安全测试\'');
-        return $query->result_array();
-    }
-
-    public function zidonghuaceshi(){
-        $query = $this->db->query('select count(*) from team where leibie =\'自动化测试\'');
-        return $query->result_array();
-    }
-
-    public function yanjiurenwu(){
-        $query = $this->db->query('select count(*) from team where leibie =\'研究任务\'');
         return $query->result_array();
     }
 
