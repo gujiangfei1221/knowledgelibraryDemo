@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>选择</title>
+    <title>性能测试结果归档</title>
     <script src="//cdn.bootcss.com/echarts/3.2.2/echarts.min.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
@@ -47,11 +47,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 <?php include('head.php'); ?>
 <div class="col-md-12">
-    <h1>测试项目统计</h1>
+    <h1>性能测试结果归档</h1>
     <div class="row">
         <div class="col-md-1">
-            <button type="button" class="btn btn-primary" style="margin-bottom: 8px"
-                    onclick="window.location.href='<?php echo site_url('Teamadd/index') ?>'">新增
+            <button type="button" class="btn btn-primary" style="margin-bottom: 8px" data-toggle="modal" data-target="#myModal3">新增
             </button>
         </div>
         <?php echo form_open('Team/search2') ?>
@@ -83,152 +82,73 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <table class="table table-striped">
         <tr>
             <th width="2%">序</th>
-            <th width="10%">测试类别</th>
             <th width="15%">项目名称</th>
-            <th width="15%">计划名称</th>
+            <th width="15%">测试计划</th>
             <th width="15%">测试内容概要</th>
             <th width="8%">测试人员</th>
             <th width="5%">开始时间</th>
             <th width="5%">结束时间</th>
-            <th width="10%">备注</th>
+            <th width="5%">查看</th>
             <th width="5%">修改</th>
             <th width="5%">删除</th>
         </tr>
-        <?php
-        $i = 1;
-        foreach ($info as $item) {
-            switch ($item['ceshileibie']) {
-                case '功能测试':
-                    echo "
-                            <tr class='danger'>
-                            <td>" . $i . "</td>
-                            <td>" . $item['ceshileibie'] . "</td>
-                            <td>" . $item['xiangmumingcheng'] . "</td>
-                            <td>" . $item['jihuamingcheng'] . "</td>
-                            <td>" . $item['ceshineirong'] . "</td>
-                            <td>" . $item['ceshirenyuan'] . "</td>
-                            <td>" . $item['kaishishijian'] . "</td>
-                            <td>" . $item['jieshushijian'] . "</td>
-                            <td>" . $item['beizhu'] . "</td>
-                            <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
-                            <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
-                        </tr>";
-                    break;
-                case '性能测试':
-                    echo "
-                            <tr class='success'>
-                            <td>" . $i . "</td>
-                            <td>" . $item['ceshileibie'] . "</td>
-                            <td>" . $item['xiangmumingcheng'] . "</td>
-                            <td>" . $item['jihuamingcheng'] . "</td>
-                            <td>" . $item['ceshineirong'] . "</td>
-                            <td>" . $item['ceshirenyuan'] . "</td>
-                            <td>" . $item['kaishishijian'] . "</td>
-                            <td>" . $item['jieshushijian'] . "</td>
-                            <td>" . $item['beizhu'] . "</td>
-                            <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
-                            <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
-                        </tr>";
-                    break;
-                case '安全测试':
-                    echo "
-                            <tr class='warning'>
-                            <td>" . $i . "</td>
-                            <td>" . $item['ceshileibie'] . "</td>
-                            <td>" . $item['xiangmumingcheng'] . "</td>
-                            <td>" . $item['jihuamingcheng'] . "</td>
-                            <td>" . $item['ceshineirong'] . "</td>
-                            <td>" . $item['ceshirenyuan'] . "</td>
-                            <td>" . $item['kaishishijian'] . "</td>
-                            <td>" . $item['jieshushijian'] . "</td>
-                            <td>" . $item['beizhu'] . "</td>
-                            <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
-                            <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
-                        </tr>";
-                    break;
-                case '自动化测试':
-                    echo "
-                            <tr class='active'>
-                            <td>" . $i . "</td>
-                            <td>" . $item['ceshileibie'] . "</td>
-                            <td>" . $item['xiangmumingcheng'] . "</td>
-                            <td>" . $item['jihuamingcheng'] . "</td>
-                            <td>" . $item['ceshineirong'] . "</td>
-                            <td>" . $item['ceshirenyuan'] . "</td>
-                            <td>" . $item['kaishishijian'] . "</td>
-                            <td>" . $item['jieshushijian'] . "</td>
-                            <td>" . $item['beizhu'] . "</td>
-                            <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
-                            <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
-                        </tr>";
-                    break;
-                case '研究任务':
-                    echo "
-                            <tr class='info'>
-                            <td>" . $i . "</td>
-                            <td>" . $item['ceshileibie'] . "</td>
-                            <td>" . $item['xiangmumingcheng'] . "</td>
-                            <td>" . $item['jihuamingcheng'] . "</td>
-                            <td>" . $item['ceshineirong'] . "</td>
-                            <td>" . $item['ceshirenyuan'] . "</td>
-                            <td>" . $item['kaishishijian'] . "</td>
-                            <td>" . $item['jieshushijian'] . "</td>
-                            <td>" . $item['beizhu'] . "</td>
-                            <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
-                            <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
-                        </tr>";
-                    break;
-                case '服务器维护':
-                    echo "
-                            <tr>
-                            <td>" . $i . "</td>
-                            <td>" . $item['ceshileibie'] . "</td>
-                            <td>" . $item['xiangmumingcheng'] . "</td>
-                            <td>" . $item['jihuamingcheng'] . "</td>
-                            <td>" . $item['ceshineirong'] . "</td>
-                            <td>" . $item['ceshirenyuan'] . "</td>
-                            <td>" . $item['kaishishijian'] . "</td>
-                            <td>" . $item['jieshushijian'] . "</td>
-                            <td>" . $item['beizhu'] . "</td>
-                            <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
-                            <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
-                        </tr>";
-                    break;
-            }
-
-            $i++;
-        }
-        ?>
+<!--        --><?php
+//        $i = 1;
+//        foreach ($info as $item) {
+//            switch ($item['ceshileibie']) {
+//                case '功能测试':
+//                    echo "
+//                            <tr class='danger'>
+//                            <td>" . $i . "</td>
+//                            <td>" . $item['ceshileibie'] . "</td>
+//                            <td>" . $item['xiangmumingcheng'] . "</td>
+//                            <td>" . $item['jihuamingcheng'] . "</td>
+//                            <td>" . $item['ceshineirong'] . "</td>
+//                            <td>" . $item['ceshirenyuan'] . "</td>
+//                            <td>" . $item['kaishishijian'] . "</td>
+//                            <td>" . $item['jieshushijian'] . "</td>
+//                            <td>" . $item['beizhu'] . "</td>
+//                            <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
+//                            <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
+//                        </tr>";
+//                    break;
+//                default:
+//                    break;
+//            }
+//
+//            $i++;
+//        }
+//        ?>
     </table>
-    <nav class="text-center" style="<?php if ($value != null && $value != '') {
-        echo 'display:none';
-    } ?>">
-        <ul class="pagination">
-            <li>
-                <a href="<?php echo site_url('Team/index/1'); ?>" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <?php foreach ($page as $row): ?>
-                <li><a href="<?php echo site_url('Team/index/' . $row); ?> " <?php if ($p == $row) {
-                        echo "style=\"color: red\"";
-                    } ?>><?php echo($row); ?></a>
-                </li>
-            <?php endforeach; ?>
-            <li>
-                <a href="<?php
-                if (count($page) == 0) {
-                    echo site_url('Team/index/1');
-                } else {
-                    echo site_url('Team/index/' . count($page));
-                }
-
-                ?>" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+<!--    <nav class="text-center" style="--><?php //if ($value != null && $value != '') {
+//        echo 'display:none';
+//    } ?><!--">-->
+<!--        <ul class="pagination">-->
+<!--            <li>-->
+<!--                <a href="--><?php //echo site_url('Team/index/1'); ?><!--" aria-label="Previous">-->
+<!--                    <span aria-hidden="true">&laquo;</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            --><?php //foreach ($page as $row): ?>
+<!--                <li><a href="--><?php //echo site_url('Team/index/' . $row); ?><!-- " --><?php //if ($p == $row) {
+//                        echo "style=\"color: red\"";
+//                    } ?><!-->--><?php //echo($row); ?><!--</a>-->
+<!--                </li>-->
+<!--            --><?php //endforeach; ?>
+<!--            <li>-->
+<!--                <a href="--><?php
+//                if (count($page) == 0) {
+//                    echo site_url('Team/index/1');
+//                } else {
+//                    echo site_url('Team/index/' . count($page));
+//                }
+//
+//                ?><!--" aria-label="Next">-->
+<!--                    <span aria-hidden="true">&raquo;</span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </nav>-->
 </div>
 
 <!-- Modal -->
@@ -340,6 +260,113 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div>
+
+<!-- Modal3 -->
+<!--新增项目相关信息 -->
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <?php echo form_open('Loadrunner/addproject') ?>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">新增项目</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="xiangmumingcheng">项目名称</label>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'form-control',
+                        'id' => 'xiangmumingcheng',
+                        'placeholder' => '项目名称',
+                        'name' => 'xiangmumingcheng',
+                        'value' => ''
+                    );
+                    echo form_input($data);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label for="ceshijihua">测试计划</label>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'form-control',
+                        'id' => 'ceshijihua',
+                        'placeholder' => '测试计划',
+                        'name' => 'ceshijihua',
+                        'value' => ''
+                    );
+                    echo form_input($data);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label for="ceshineirong">测试内容概要</label>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'form-control',
+                        'id' => 'ceshineirong',
+                        'placeholder' => '测试内容概要',
+                        'name' => 'ceshineirong',
+                        'value' => ''
+                    );
+                    echo form_input($data);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label for="ceshirenyuan">测试人员</label>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'form-control',
+                        'id' => 'ceshirenyuan',
+                        'placeholder' => '测试人员',
+                        'name' => 'ceshirenyuan',
+                        'value' => ''
+                    );
+                    echo form_input($data);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">开始时间</label>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'form-control',
+                        'id' => 'calendar1',
+                        'placeholder' => '开始时间',
+                        'name' => 'kaishishijian',
+                        'value' => ''
+                    );
+                    echo form_input($data);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">结束时间</label>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'form-control',
+                        'id' => 'calendar2',
+                        'placeholder' => '结束时间',
+                        'name' => 'jieshushijian',
+                        'value' => ''
+                    );
+                    echo form_input($data);
+                    ?>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="submit" class="btn btn-primary">保存</button>
+            </div>
+            <?php echo form_close() ?>
+        </div>
+    </div>
+</div>
+
 
 </body>
 
