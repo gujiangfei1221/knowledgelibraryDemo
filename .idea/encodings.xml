@@ -36,6 +36,8 @@
     <file url="file://$PROJECT_DIR$/application/views/documentview.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/fuwuqiview.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/head.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/loadrunneraddview.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/application/views/loadrunnerresultview.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/loadrunnerview.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/maineditview.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/securityview.php" charset="UTF-8" />

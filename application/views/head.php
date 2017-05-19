@@ -22,8 +22,6 @@
                     <ul class="dropdown-menu">
                         <li><a href="<?php echo site_url('Main/index/1') ?>">下载文档</a></li>
                         <li><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
-                        <li><a href="<?php echo site_url('Xingnengtest/index') ?>">性能测试文档</a></li>
-                        <li><a href="#">安全测试文档</a></li>
                         <li><a href="<?php echo site_url('Deploy/index') ?>">部署手册</a></li>
                         <li><a href="<?php echo site_url('Loadrunner/index') ?>">性能测试结果归档</a></li>
                     </ul>

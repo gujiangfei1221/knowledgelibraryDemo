@@ -81,44 +81,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <table class="table table-striped">
         <tr>
-            <th width="2%">序</th>
-            <th width="15%">项目名称</th>
-            <th width="15%">测试计划</th>
-            <th width="15%">测试内容概要</th>
-            <th width="8%">测试人员</th>
-            <th width="5%">开始时间</th>
-            <th width="5%">结束时间</th>
-            <th width="5%">查看</th>
-            <th width="5%">修改</th>
-            <th width="5%">删除</th>
+            <th>序</th>
+            <th>项目名称</th>
+            <th>测试计划</th>
+            <th>测试内容概要</th>
+            <th>测试人员</th>
+            <th>测试版本</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>上传结果</th>
+            <th>查看结果</th>
+            <th>删除</th>
         </tr>
-<!--        --><?php
-//        $i = 1;
-//        foreach ($info as $item) {
-//            switch ($item['ceshileibie']) {
-//                case '功能测试':
-//                    echo "
-//                            <tr class='danger'>
-//                            <td>" . $i . "</td>
-//                            <td>" . $item['ceshileibie'] . "</td>
-//                            <td>" . $item['xiangmumingcheng'] . "</td>
-//                            <td>" . $item['jihuamingcheng'] . "</td>
-//                            <td>" . $item['ceshineirong'] . "</td>
-//                            <td>" . $item['ceshirenyuan'] . "</td>
-//                            <td>" . $item['kaishishijian'] . "</td>
-//                            <td>" . $item['jieshushijian'] . "</td>
-//                            <td>" . $item['beizhu'] . "</td>
-//                            <td><a href=\"" . site_url('Team/edit/' . $item['uid']) . "\">修改</a></td>
-//                            <td><a href=\"" . site_url('Team/delete/' . $item['uid']) . "\">删除</a></td>
-//                        </tr>";
-//                    break;
-//                default:
-//                    break;
-//            }
-//
-//            $i++;
-//        }
-//        ?>
+        <?php
+        $i = 1;
+        foreach ($content as $item) {
+            echo "
+                            <tr>
+                            <td>" . $i . "</td>
+                            <td>" . $item['xiangmumingcheng'] . "</td>
+                            <td>" . $item['ceshijihua'] . "</td>
+                            <td>" . $item['ceshineirong'] . "</td>
+                            <td>" . $item['ceshirenyuan'] . "</td>
+                            <td>" . $item['ceshibanben'] . "</td>
+                            <td>" . $item['kaishishijian'] . "</td>
+                            <td>" . $item['jieshushijian'] . "</td>                          
+                            <td><a href=\"" . site_url('Loadrunner/addscenario/' . $item['uid']) . "\">上传结果</a></td>
+                            <td><a href=\"" . site_url('Loadrunner/viewresult/' . $item['uid']) . "\">查看结果</a></a></td>
+                            <td><a href=\"" . site_url('Loadrunner/deleteproject/' . $item['uid']) . "\">删除</a></td>
+                        </tr>";
+            $i++;
+        }
+        ?>
     </table>
 <!--    <nav class="text-center" style="--><?php //if ($value != null && $value != '') {
 //        echo 'display:none';
@@ -324,6 +318,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'id' => 'ceshirenyuan',
                         'placeholder' => '测试人员',
                         'name' => 'ceshirenyuan',
+                        'value' => ''
+                    );
+                    echo form_input($data);
+                    ?>
+                </div>
+                <div class="form-group">
+                    <label for="ceshirenyuan">测试版本</label>
+                    <?php
+                    $data = array(
+                        'type' => 'text',
+                        'class' => 'form-control',
+                        'id' => 'ceshibanben',
+                        'placeholder' => '测试版本',
+                        'name' => 'ceshibanben',
                         'value' => ''
                     );
                     echo form_input($data);
