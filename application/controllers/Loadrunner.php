@@ -53,7 +53,35 @@ class Loadrunner extends CI_Controller{
     }
 
     public function deleteproject($uid){
+        $data2 = $this->Loadrunnermodel->selectguid($uid);
+        $this->Loadrunnermodel->delete($uid);
+        $this->Loadrunnermodel->delete2($data2[0]['ceshijihuaguid']);
+        $data3 = $this->Loadrunnermodel->delete3($data2[0]['ceshijihuaguid']);
+        foreach ($data3 as $item){
+            unlink($item['filepath']);
+            $path = explode('.',$item['filename']);
+//            unlink('/var/www/html/LoadRnunnerReport/'.$path[0].'/');
+            $this->delDirAndFile('/var/www/html/LoadRunnerReport/'.$path[0].'/');
+        }
+    }
 
+    public function delDirAndFile($path, $delDir = 1) {
+        $handle = opendir($path);
+        if ($handle) {
+            while (false !== ( $item = readdir($handle) )) {
+                if ($item != "." && $item != "..")
+                    is_dir("$path/$item") ? $this->delDirAndFile("$path/$item", $delDir) : unlink("$path/$item");
+            }
+            closedir($handle);
+            if ($delDir)
+                return rmdir($path);
+        }else {
+            if (file_exists($path)) {
+                return unlink($path);
+            } else {
+                return FALSE;
+            }
+        }
     }
 
     public function do_upload($uid){
