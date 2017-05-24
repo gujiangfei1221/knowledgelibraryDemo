@@ -49,6 +49,8 @@ class Loadrunner extends CI_Controller{
         $data2 = $this->Loadrunnermodel->selectguid($uid);
         $ceshijihuaguid = $data2[0]['ceshijihuaguid'];
         $data['info'] = $this->Loadrunnermodel->selectscenario($ceshijihuaguid);
+        $filename = $data['info'][0]['filename'];
+        $data['info2'] = $this->Loadrunnermodel->selecttransaction($filename);
         $this->load->view('loadrunnerresultview',$data);
     }
 
@@ -62,7 +64,10 @@ class Loadrunner extends CI_Controller{
             $path = explode('.',$item['filename']);
 //            unlink('/var/www/html/LoadRnunnerReport/'.$path[0].'/');
             $this->delDirAndFile('/var/www/html/LoadRunnerReport/'.$path[0].'/');
+            $this->Loadrunnermodel->delete4($item['filename']);
         }
+        echo '<script>alert("删除成功！")</script>';
+        echo '<script>window.location.href=\''.site_url('Loadrunner/index').'\';</script>';
     }
 
     public function delDirAndFile($path, $delDir = 1) {
@@ -108,7 +113,7 @@ class Loadrunner extends CI_Controller{
             $path = explode('.',$filename);
             $fileurl = 'http://192.168.203.223/LoadRunnerReport/'.$path[0].'/Report.htm';
 
-            //todo
+            //解压缩
             $zip = new ZipArchive();
             if ($zip->open($filepath) === TRUE) {
                 $zip->extractTo('/var/www/html/LoadRunnerReport/'.$path[0].'/');
@@ -117,7 +122,10 @@ class Loadrunner extends CI_Controller{
             else{
                 echo '文件打开失败';
             }
-
+            $myfile = fopen("/var/www/html/LoadRunnerReport/sum.txt", "a") or die("Unable to open file!");
+            $txt = $path[0]."#1\n";
+            fwrite($myfile, $txt);
+            fclose($myfile);
             $this->Loadrunnermodel->upload($data2[0]['ceshijihuaguid'],$filename,$filepath,$scenariotitle,$fileurl);
             echo '<script>alert("新增成功！")</script>';
             echo '<script>window.location.href=\''.site_url('Loadrunner/index').'\';</script>';

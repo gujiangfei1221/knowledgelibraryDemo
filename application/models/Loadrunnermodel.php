@@ -37,17 +37,26 @@ class Loadrunnermodel extends CI_Model
         return $query->result_array();
     }
 
+    public function  selecttransaction($filename){
+        $query = $this->db->query('select * from transaction where filename = \''.$filename.'\'');
+        return $query->result_array();
+    }
+
     public function delete($uid){
         $this->db->query('delete from result where uid = \''.$uid.'\'');
     }
 
     public function delete2($ceshijihuaguid){
-        $this->db->query('delete from scenario where uid = \''.$ceshijihuaguid.'\'');
+        $this->db->query('delete from scenario where ceshijihuaguid = \''.$ceshijihuaguid.'\'');
     }
 
     public function delete3($ceshijihuaguid){
         $query = $this->db->query('select * from scenario where ceshijihuaguid = \''.$ceshijihuaguid.'\'');
         return $query->result_array();
+    }
+
+    public function delete4($filename){
+        $this->db->query('delete from transaction where filename = \''.$filename.'\'');
     }
 
 }
