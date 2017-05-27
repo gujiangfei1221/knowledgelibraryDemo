@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <button type="button" class="btn btn-primary" style="margin-bottom: 8px" data-toggle="modal" data-target="#myModal3">新增
             </button>
         </div>
-        <?php echo form_open('Team/search2') ?>
+        <?php echo form_open('Loadrunner/search') ?>
         <div class="col-md-3">
             <input class="form-control" placeholder="请输入值" name="search2">
         </div>

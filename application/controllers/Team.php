@@ -164,6 +164,10 @@ class Team extends CI_Controller{
         $this->Teammodel->update($ceshileibie,$xiangmumingcheng,$jihuamingcheng,$ceshineirong,$ceshirenyuan,$kaishishijian,$jieshushijian,$beizhu,$uid);
         redirect('Team/index');
     }
+
+    public function index2(){
+        $this->load->view('secrurityview');
+    }
 }
 
 ?>

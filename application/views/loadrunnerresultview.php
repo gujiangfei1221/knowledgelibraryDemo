@@ -30,6 +30,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-md-6">
             <a class="btn btn-primary btn-lg" role="button" href="<?php echo site_url('Loadrunner/index'); ?>" style="margin-bottom: 8px">返回</a>
         </div>
+        <div>
+            <h4><strong style="color: red">后台每1分钟执行脚本，如果没有数据显示请稍等！</strong></h4>
+        </div>
     </div>
     <table class="table table-striped">
         <tr>
@@ -52,16 +55,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         foreach ($info as $item) {
             echo "
                             <tr>
-                            <td rowspan = ".count($info2)." style = \"vertical-align: middle !important;\">" . $i . "</td>
-                            <td rowspan = ".count($info2)." style = \"vertical-align: middle !important;\">" . $item['scenarioname'] . "</td>
-                            <td rowspan = ".count($info2)." style = \"vertical-align: middle !important;\">" . $item['vusers'] . "</td>
-                            <td rowspan = ".count($info2)." style = \"vertical-align: middle !important;\">" . $item['throughoutput'] . "</td>
-                            <td rowspan = ".count($info2)." style = \"vertical-align: middle !important;\">" . $item['hitpersec'] . "</td>
-                            <td rowspan = ".count($info2)." style = \"vertical-align: middle !important;\">" . $item['loadtime'] . "</td>
-                            <td rowspan = ".count($info2)." style = \"vertical-align: middle !important;\"><a href=\"".$item['fileurl']."\">查看报告</a></td>
+                            <td rowspan = ".count($item['info2'][0])." style = \"vertical-align: middle !important;\">" . $i . "</td>
+                            <td rowspan = ".count($item['info2'][0])." style = \"vertical-align: middle !important;\">" . $item['scenarioname'] . "</td>
+                            <td rowspan = ".count($item['info2'][0])." style = \"vertical-align: middle !important;\">" . $item['vusers'] . "</td>
+                            <td rowspan = ".count($item['info2'][0])." style = \"vertical-align: middle !important;\">" . $item['throughoutput'] . "</td>
+                            <td rowspan = ".count($item['info2'][0])." style = \"vertical-align: middle !important;\">" . $item['hitpersec'] . "</td>
+                            <td rowspan = ".count($item['info2'][0])." style = \"vertical-align: middle !important;\">" . $item['loadtime'] . "</td>
+                            <td rowspan = ".count($item['info2'][0])." style = \"vertical-align: middle !important;\"><a href=\"".$item['fileurl']."\" target=\"_blank\">查看报告</a></td>
             ";
-            foreach ($info2 as $item2) {
-                echo "
+            foreach ($item['info2'][0] as $item2) {
+                    echo "
                             <td>" . $item2['transactionname'] . "</td>
                             <td>" . $item2['avgresponsetime'] . "</td>
                             <td>" . $item2['90percenttime'] . "</td>

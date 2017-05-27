@@ -22,13 +22,17 @@
                     <ul class="dropdown-menu">
                         <li><a href="<?php echo site_url('Main/index/1') ?>">下载文档</a></li>
                         <li><a href="<?php echo site_url('Add/index') ?>">上传文档</a></li>
-                        <li><a href="<?php echo site_url('Deploy/index') ?>">部署手册</a></li>
                         <li><a href="<?php echo site_url('Loadrunner/index') ?>">性能测试结果归档</a></li>
+                        <li><a href="<?php echo site_url('Deploy/index') ?>">部署手册</a></li>
+                        <li><a href="<?php echo site_url('Xingnengtest/index') ?>">性能测试手册</a></li>
                     </ul>
                 </li>
                 <li <?php if ($_SESSION['team'] != 'yes') {
                     echo "style='display:none'";
-                } ?>><a href="<?php echo site_url('Team/index') ?>">技术研究小组</a></li>
+                } ?>><a href="<?php echo site_url('Team/index') ?>">性能测试项目登记</a></li>
+                <li <?php if ($_SESSION['team'] != 'yes') {
+                    echo "style='display:none'";
+                } ?>><a href="#" onclick="window.location.href='http://192.168.203.124/Security/index.aspx'" target="_blank">安全测试项目登记</a></li>
                 <?php
                 if ($_SESSION['quanxian'] == '管理员') {
                     echo '<li><a href="' . site_url('Manage/index') . '">后台管理</a></li>';

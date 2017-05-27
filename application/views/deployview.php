@@ -20,17 +20,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-</head>
-
-<body>
-<?php include('head.php'); ?>
-
-<iframe src="http://192.168.203.223/%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/" width="100%" height="1080px" scrolling="no"frameborder="0"  >
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<?php include('head.php'); ?>
+<iframe src="http://192.168.203.223/bushushouche/_book/JAVA_Deploy.html" width="100%" height="1080px" scrolling="no"frameborder="0"  >
 </body>
 
 </html>

@@ -46,26 +46,33 @@ class Loadrunner extends CI_Controller{
     }
 
     public function viewresult($uid){
+        $tmp = array();
+
         $data2 = $this->Loadrunnermodel->selectguid($uid);
         $ceshijihuaguid = $data2[0]['ceshijihuaguid'];
         $data['info'] = $this->Loadrunnermodel->selectscenario($ceshijihuaguid);
-        $filename = $data['info'][0]['filename'];
-        $data['info2'] = $this->Loadrunnermodel->selecttransaction($filename);
+        for($i = 0;$i<count($data['info']);$i++){
+            $filename = $data['info'][$i]['filename'];
+            $data['info'][$i]['info2'] = array();
+            array_push($data['info'][$i]['info2'],$this->Loadrunnermodel->selecttransaction($filename));
+        }
+//        var_dump($data['info']);
         $this->load->view('loadrunnerresultview',$data);
     }
 
     public function deleteproject($uid){
         $data2 = $this->Loadrunnermodel->selectguid($uid);
+        $data3 = $this->Loadrunnermodel->delete3($data2[0]['ceshijihuaguid']);
+
+        unlink($data3[0]['filepath']);
+
+        $path = explode('.',$data3[0]['filename']);
+        $this->delDirAndFile('/var/www/html/LoadRunnerReport/'.$path[0].'/');
+
         $this->Loadrunnermodel->delete($uid);
         $this->Loadrunnermodel->delete2($data2[0]['ceshijihuaguid']);
-        $data3 = $this->Loadrunnermodel->delete3($data2[0]['ceshijihuaguid']);
-        foreach ($data3 as $item){
-            unlink($item['filepath']);
-            $path = explode('.',$item['filename']);
-//            unlink('/var/www/html/LoadRnunnerReport/'.$path[0].'/');
-            $this->delDirAndFile('/var/www/html/LoadRunnerReport/'.$path[0].'/');
-            $this->Loadrunnermodel->delete4($item['filename']);
-        }
+        $this->Loadrunnermodel->delete4($data3[0]['filename']);
+
         echo '<script>alert("删除成功！")</script>';
         echo '<script>window.location.href=\''.site_url('Loadrunner/index').'\';</script>';
     }
@@ -123,13 +130,39 @@ class Loadrunner extends CI_Controller{
                 echo '文件打开失败';
             }
             $myfile = fopen("/var/www/html/LoadRunnerReport/sum.txt", "a") or die("Unable to open file!");
-            $txt = $path[0]."#1\n";
+            $tmp = filesize("/var/www/html/LoadRunnerReport/sum.txt");
+            if($tmp != 0){
+                $txt = "\r\n".$path[0]."#1";
+            }
+            else{
+                $txt = $path[0]."#1";
+            }
             fwrite($myfile, $txt);
             fclose($myfile);
             $this->Loadrunnermodel->upload($data2[0]['ceshijihuaguid'],$filename,$filepath,$scenariotitle,$fileurl);
             echo '<script>alert("新增成功！")</script>';
             echo '<script>window.location.href=\''.site_url('Loadrunner/index').'\';</script>';
         }
+    }
+
+    public function search(){
+        if (!isset($_SESSION['name'])) {
+            echo '<script>alert("请登录系统!")</script>';
+            echo '<script>window.location.href=\'' . site_url('Login/index') . '\';</script>';
+            return;
+        }
+        if($_SESSION['duiwai'] == 'yes'){
+            echo '<script>alert("您没有权限访问该模块!")</script>';
+            echo '<script>window.location.href=\''.site_url('Select/index').'\';</script>';
+            return;
+        }
+        $value = $this->input->post('search2');
+        $kaishishijian2 = $this->input->post('kaishishijian2');
+        $jieshushijian2 = $this->input->post('jieshushijian2');
+
+        $data['content'] = $this->Loadrunnermodel->search2($value,$kaishishijian2,$jieshushijian2);
+
+        $this->load->view('loadrunnerview',$data);
     }
 }
 ?>

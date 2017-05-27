@@ -38,7 +38,7 @@ class Loadrunnermodel extends CI_Model
     }
 
     public function  selecttransaction($filename){
-        $query = $this->db->query('select * from transaction where filename = \''.$filename.'\'');
+        $query = $this->db->query('select * from transactions where filename = \''.$filename.'\'');
         return $query->result_array();
     }
 
@@ -56,7 +56,58 @@ class Loadrunnermodel extends CI_Model
     }
 
     public function delete4($filename){
-        $this->db->query('delete from transaction where filename = \''.$filename.'\'');
+        $this->db->query('delete from transactions where filename = \''.$filename.'\'');
+    }
+
+    public function search2($value,$kaishishijian2,$jieshushijian2){
+        if($value != '' ){
+            if($kaishishijian2 != ''){
+                if($jieshushijian2 != ''){
+                    $query = $this->db->query('select * from result
+where xiangmumingcheng like \'%'.$value.'%\' or ceshijihua like \'%'.$value.'%\' or ceshineirong like \'%'.$value.'%\'
+or ceshirenyuan like \'%'.$value.'%\' or ceshibanben like \'%'.$value.'%\''.'order by uid desc');
+                }
+                else {
+                    $query = $this->db->query('select * from result
+where xiangmumingcheng like \'%'.$value.'%\' or ceshijihua like \'%'.$value.'%\' or ceshineirong like \'%'.$value.'%\'
+or ceshirenyuan like \'%'.$value.'%\' or ceshibanben like \'%'.$value.'%\''.'order by uid desc');
+                }
+            }
+            else{
+                if($jieshushijian2 != ''){
+                    $query = $this->db->query('select * from result
+where xiangmumingcheng like \'%'.$value.'%\' or ceshijihua like \'%'.$value.'%\' or ceshineirong like \'%'.$value.'%\'
+or ceshirenyuan like \'%'.$value.'%\' or ceshibanben like \'%'.$value.'%\''.'order by uid desc');
+                }
+                else {
+                    $query = $this->db->query('select * from result
+where xiangmumingcheng like \'%'.$value.'%\' or ceshijihua like \'%'.$value.'%\' or ceshineirong like \'%'.$value.'%\'
+or ceshirenyuan like \'%'.$value.'%\' or ceshibanben like \'%'.$value.'%\''.'order by uid desc');
+                }
+            }
+        }
+        else{
+            if($kaishishijian2 != ''){
+                if($jieshushijian2 != ''){
+                    $query = $this->db->query('select * from result
+where kaishishijian >= \''.$kaishishijian2.'\' and jieshushijian <= \''.$jieshushijian2.'\''.'order by uid desc');
+                }
+                else {
+                    $query = $this->db->query('select * from result
+where kaishishijian >= \''.$kaishishijian2.'\''.'order by uid desc');
+                }
+            }
+            else{
+                if($jieshushijian2 != ''){
+                    $query = $this->db->query('select * from result
+where jieshushijian <= \''.$jieshushijian2.'\''.'order by uid desc');
+                }
+                else {
+                    $query = $this->db->query('select * from result order by uid desc');
+                }
+            }
+        }
+        return $query->result_array();
     }
 
 }
