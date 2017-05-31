@@ -60,21 +60,64 @@ class Loadrunner extends CI_Controller{
         $this->load->view('loadrunnerresultview',$data);
     }
 
-    public function deleteproject($uid){
-        $data2 = $this->Loadrunnermodel->selectguid($uid);
-        $data3 = $this->Loadrunnermodel->delete3($data2[0]['ceshijihuaguid']);
+    public function editproject($uid){
+        $data['info'] = $this->Loadrunnermodel->selectguid($uid);
+        $this->load->view('loadrunnereditview',$data);
+    }
+
+    public function doedit(){
+        $xiangmumingcheng = $this->input->post('xiangmumingcheng');
+        $ceshijihua = $this->input->post('ceshijihua');
+        $uid = $this->uri->segment(3);
+        $ceshineirong = $this->input->post('ceshineirong');
+        $ceshirenyuan = $this->input->post('ceshirenyuan');
+        $ceshibanben = $this->input->post('ceshibanben');
+        $kaishijian = $this->input->post('kaishishijian');
+        $jieshushijian = $this->input->post('jieshushijian');
+        $this->Loadrunnermodel->doedit($xiangmumingcheng,$ceshijihua,$ceshineirong,$ceshirenyuan,$ceshibanben,$kaishijian,$jieshushijian,$uid);
+//        echo $this->db->last_query();
+        redirect('Loadrunner/index');
+    }
+
+    public function delscenario($ceshijihuaguid){
+        $data3 = $this->Loadrunnermodel->delete3($ceshijihuaguid);
 
         unlink($data3[0]['filepath']);
 
         $path = explode('.',$data3[0]['filename']);
         $this->delDirAndFile('/var/www/html/LoadRunnerReport/'.$path[0].'/');
 
-        $this->Loadrunnermodel->delete($uid);
-        $this->Loadrunnermodel->delete2($data2[0]['ceshijihuaguid']);
+        $this->Loadrunnermodel->delete2($ceshijihuaguid);
         $this->Loadrunnermodel->delete4($data3[0]['filename']);
 
         echo '<script>alert("删除成功！")</script>';
-        echo '<script>window.location.href=\''.site_url('Loadrunner/index').'\';</script>';
+        echo '<script>window.location.href=\''.site_url('Loadrunner/viewresult/'.$data3[0]['uid']).'\';</script>';
+    }
+
+    public function deleteproject($uid){
+        $data2 = $this->Loadrunnermodel->selectguid($uid);
+        $data3 = $this->Loadrunnermodel->delete3($data2[0]['ceshijihuaguid']);
+        if(!$data3){
+//            echo '1';
+            $this->Loadrunnermodel->delete($uid);
+            echo '<script>alert("删除成功！")</script>';
+            echo '<script>window.location.href=\''.site_url('Loadrunner/index').'\';</script>';
+        }
+        else{
+//            echo '2';
+            unlink($data3[0]['filepath']);
+
+            $path = explode('.',$data3[0]['filename']);
+            $this->delDirAndFile('/var/www/html/LoadRunnerReport/'.$path[0].'/');
+
+            $this->Loadrunnermodel->delete($uid);
+            $this->Loadrunnermodel->delete2($data2[0]['ceshijihuaguid']);
+            $this->Loadrunnermodel->delete4($data3[0]['filename']);
+
+            echo '<script>alert("删除成功！")</script>';
+            echo '<script>window.location.href=\''.site_url('Loadrunner/index').'\';</script>';
+        }
+
     }
 
     public function delDirAndFile($path, $delDir = 1) {

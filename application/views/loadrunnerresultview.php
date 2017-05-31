@@ -43,6 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <th >点击率</th>
             <th >压测时长</th>
             <th >查看报告</th>
+            <th >删除报告</th>
             <th >事务名称</th>
             <th >平均响应时间(s)</th>
             <th >90%响应时间(s)</th>
@@ -62,6 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td rowspan = ".count($item['info2'][0])." style = \"vertical-align: middle !important;\">" . $item['hitpersec'] . "</td>
                             <td rowspan = ".count($item['info2'][0])." style = \"vertical-align: middle !important;\">" . $item['loadtime'] . "</td>
                             <td rowspan = ".count($item['info2'][0])." style = \"vertical-align: middle !important;\"><a href=\"".$item['fileurl']."\" target=\"_blank\">查看报告</a></td>
+                            <td rowspan = ".count($item['info2'][0])." style = \"vertical-align: middle !important;\"><a href=\"".site_url('Loadrunner/delscenario/'.$item['ceshijihuaguid'])."\" target=\"_blank\">删除报告</a></td>
             ";
             foreach ($item['info2'][0] as $item2) {
                     echo "

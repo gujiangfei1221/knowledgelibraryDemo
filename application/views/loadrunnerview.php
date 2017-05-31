@@ -91,6 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <th>结束时间</th>
             <th>上传结果</th>
             <th>查看结果</th>
+            <th>修改</th>
             <th>删除</th>
         </tr>
         <?php
@@ -108,6 +109,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <td>" . $item['jieshushijian'] . "</td>                          
                             <td><a href=\"" . site_url('Loadrunner/addscenario/' . $item['uid']) . "\">上传结果</a></td>
                             <td><a href=\"" . site_url('Loadrunner/viewresult/' . $item['uid']) . "\">查看结果</a></a></td>
+                            <td><a href=\"" . site_url('Loadrunner/editproject/' . $item['uid']) . "\">修改</a></td>
                             <td><a href=\"" . site_url('Loadrunner/deleteproject/' . $item['uid']) . "\">删除</a></td>
                         </tr>";
             $i++;
@@ -301,7 +303,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         'type' => 'text',
                         'class' => 'form-control',
                         'id' => 'ceshibanben',
-                        'placeholder' => '测试版本',
+                        'placeholder' => '比如招投标6.0',
                         'name' => 'ceshibanben',
                         'value' => ''
                     );
@@ -345,8 +347,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div>
-
-
 </body>
 
 </html>

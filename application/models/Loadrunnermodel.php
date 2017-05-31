@@ -110,4 +110,7 @@ where jieshushijian <= \''.$jieshushijian2.'\''.'order by uid desc');
         return $query->result_array();
     }
 
+    public function doedit($xiangmumingcheng,$ceshijihua,$ceshineirong,$ceshirenyuan,$ceshibanben,$kaishijian,$jieshushijian,$uid){
+        $this->db->query("update result set xiangmumingcheng ='" .$xiangmumingcheng."' ,ceshijihua = '" .$ceshijihua."' ,ceshineirong = '" .$ceshineirong ."' ,ceshirenyuan='" . $ceshirenyuan."' ,ceshibanben = '" .$ceshibanben."' ,kaishishijian = '" .$kaishijian."' ,jieshushijian = '".$jieshushijian."' where uid = '". $uid."'");
+    }
 }
