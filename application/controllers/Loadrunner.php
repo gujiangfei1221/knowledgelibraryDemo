@@ -81,6 +81,7 @@ class Loadrunner extends CI_Controller{
 
     public function delscenario($ceshijihuaguid,$uid){
         $data3 = $this->Loadrunnermodel->delete3($ceshijihuaguid);
+        $data33 = $this->Loadrunnermodel->delete33($ceshijihuaguid);
 
         unlink($data3[0]['filepath']);
 
@@ -91,7 +92,7 @@ class Loadrunner extends CI_Controller{
         $this->Loadrunnermodel->delete4($data3[0]['filename']);
 
         echo '<script>alert("删除成功！")</script>';
-        echo '<script>window.location.href=\''.site_url('Loadrunner/viewresult/'.$data3[0]['uid']).'\';</script>';
+        echo '<script>window.location.href=\''.site_url('Loadrunner/viewresult/'.$data33[0]['uid']).'\';</script>';
     }
 
     public function deleteproject($uid){

@@ -59,6 +59,11 @@ class Loadrunnermodel extends CI_Model
         return $query->result_array();
     }
 
+    public function delete33($ceshijihuaguid){
+        $query = $this->db->query('select * from result where ceshijihuaguid = \''.$ceshijihuaguid.'\'');
+        return $query->result_array();
+    }
+
     public function delete4($filename){
         $this->db->query('delete from transactions where filename = \''.$filename.'\'');
     }
@@ -117,4 +122,6 @@ where jieshushijian <= \''.$jieshushijian2.'\''.'order by uid desc');
     public function doedit($xiangmumingcheng,$ceshijihua,$ceshineirong,$ceshirenyuan,$ceshibanben,$kaishijian,$jieshushijian,$uid){
         $this->db->query("update result set xiangmumingcheng ='" .$xiangmumingcheng."' ,ceshijihua = '" .$ceshijihua."' ,ceshineirong = '" .$ceshineirong ."' ,ceshirenyuan='" . $ceshirenyuan."' ,ceshibanben = '" .$ceshibanben."' ,kaishishijian = '" .$kaishijian."' ,jieshushijian = '".$jieshushijian."' where uid = '". $uid."'");
     }
+
+
 }
