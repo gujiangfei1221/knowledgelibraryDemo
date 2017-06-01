@@ -50,6 +50,10 @@ class Loadrunnermodel extends CI_Model
         $this->db->query('delete from scenario where ceshijihuaguid = \''.$ceshijihuaguid.'\'');
     }
 
+    public function delete22($uid){
+        $this->db->query('delete from scenario where uid = \''.$uid.'\'');
+    }
+
     public function delete3($ceshijihuaguid){
         $query = $this->db->query('select * from scenario where ceshijihuaguid = \''.$ceshijihuaguid.'\'');
         return $query->result_array();
